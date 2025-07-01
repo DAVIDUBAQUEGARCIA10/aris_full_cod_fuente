@@ -1,0 +1,982 @@
+<script>
+/*============================================================
+
+   ================ Variable Globales  =================
+   
+==============================================================*/
+
+ var ticketActivo;
+ var pagTicket;
+ var rol;
+ var pagActual;
+
+/*============================================================
+
+   ==================== Al Cargar  ==========================
+   
+==============================================================*/
+
+window.onload = function(){
+  
+  carguePagina('listarSelectAreas');
+
+
+}
+
+/*============================================================
+
+   ==================== Listar Areas Select  =================
+   
+==============================================================*/
+function carguePagina(pag){
+
+  google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarSelectAreas).controlador("",pag);
+
+}
+
+/*============================================================
+
+   ==================== Envio PQR  ==========================
+   
+==============================================================*/
+  function enviarPQR(form){
+  
+  
+  
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarAlerta).enviarPQRControl(form);
+      
+    
+      
+  }
+  
+  
+/*=======================================================================
+
+     =====================  Mostrar Pagina  =======================
+
+==============================================================================*/
+
+function mostrarContent(pag){
+ 
+ $.LoadingOverlay("show");
+ 
+ var datosRol = [];
+ 
+ if(pag=="listarEtiquetas"){
+    
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEtiquetas).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+ 
+ }else if(pag=="listarAreas"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarAreas).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listartest"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrartest).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listarcausas"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarcausas).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listarmoni"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarmoni).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listaracti"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostraracti).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+
+ }else if(pag=="listarlistas"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarlistas).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listarpais"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarpais).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listarrequ"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarrequ).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listardash"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrardash).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listarmatriz"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarmatriz).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listartrans"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrartrans).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }        
+
+ }else if(pag=="listarcanal"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarcanal).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listarperson"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarperson).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }     
+
+ }else if(pag=="listarprod"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarprod).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }         
+
+ }else if(pag=="listaralerta"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostraralerta).withSuccessHandler(mostraralerta).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }    
+
+ }else if(pag=="listarriesgos"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarriesgos).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
+ }else if(pag=="listarUsuarios"){
+   
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+     datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarUsuarios).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+ 
+ }else if(pag=="listarTicketsAll"){
+ 
+    pagTicket ="listarTicketsAll";
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+   datosRol.push(pag,rol);
+   pagActual = pag;
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarTickets).controlador("",datosRol);
+   }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+    
+ }else if(pag=="listarTicketsNuevos"){
+   
+   pagTicket = "listarTicketsNuevos";
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+   datosRol.push(pag,rol);
+   pagActual = pag;
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarTickets).controlador("",datosRol);
+   }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+ 
+ }else if(pag=="listarTicketsPendientes"){
+   
+   pagTicket="listarTicketsPendientes";
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+   datosRol.push(pag,rol);
+   pagActual = pag;
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarTickets).controlador("",datosRol);
+   }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+ 
+ }else if(pag=="listarTicketsResueltos"){
+ 
+   pagTicket="listarTicketsResueltos";
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+   datosRol.push(pag,rol);
+   pagActual = pag;
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarTickets).controlador("",datosRol);
+   }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+    
+ }else if(pag=="listarTicketsBorrados"){
+   
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    pagActual = pag;
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarTickets).controlador("",pag);
+   }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+    
+ }else if(pag=="listarMisTickets"){
+   
+   pagTicket="listarMisTickets";
+   pagActual = pag;
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarTickets).controlador("",pag);
+   
+ }else if(pag=="listarMisTareas"){
+    
+    pagTicket="listarMisTareas";
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    pagActual = pag;
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarTickets).controlador("",pag);
+   }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+ }else if(pag=="smart"){
+   
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarGraficasHTML).incluirArchivo("smart");
+   
+   }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+ 
+ }else if(pag=="inicio"){
+ 
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarInicio).incluirArchivo("inicio");
+ 
+ }
+}  
+
+
+/*=======================================================================
+
+     =====================  Crear Etiqueta  =======================
+
+==============================================================================*/
+
+function crear(form){
+  
+   
+   
+   $.LoadingOverlay("show");
+   
+   var archivo =0;
+   
+//   Estensión Crear Imagen
+   var filename = document.querySelector("#fotoUsuario").value;
+   
+   if(filename != ""){
+      
+      var extension = filename.replace(/^.*\./, '');
+      if(extension=="jpg" || extension=="JPG" || extension=="png" || extension=="jpeg" || extension=="PNG" || extension=="jfif" ){
+         
+         form.extensionFotoUsuario.value=extension;
+      
+      }else{
+         
+         var archivo =1;
+         return mostrarAlerta("extensionNoValida")
+      
+      }
+   
+   }
+   
+//   Extensión Editar imagen
+   var filenameEditar = document.querySelector("#fotoUsuarioEditar").value;
+   
+   if(filenameEditar != ""){
+      
+      var extension = filenameEditar.replace(/^.*\./, '');
+      if(extension=="jpg" || extension=="JPG" || extension=="png" || extension=="jpeg" || extension=="PNG" || extension=="jfif" ){
+         
+         form.extensionFotoUsuarioEditar.value=extension;
+      
+      }else{
+         
+         var archivo =1;
+         return mostrarAlerta("extensionNoValida")
+      
+      }
+   
+   }
+   
+
+//   Extensión Crear Ticket 
+   var filenameAdjunto = document.querySelector("#adjunto").value;
+   
+   if(filenameAdjunto != ""){
+      
+      var extension = filenameAdjunto.replace(/^.*\./, '');
+      if(extension=="jpg" || extension=="JPG" || extension=="png" || extension=="jpeg" || extension=="PNG" || extension=="jfif" ){
+         
+         form.extensionAdjunto.value=extension;
+      
+      }else{
+         
+         var archivo =1;
+         return mostrarAlerta("extensionNoValida")
+      
+      }
+   
+   }
+   
+//   console.log(form);
+   
+   if(archivo==0){
+     
+     google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarAlerta).controlador(form);
+     
+   }   
+
+}
+
+/*=======================================================================
+
+     =====================  Ver Etiqueta  =======================
+
+==============================================================================*/
+function verEditarEtiqueta(idEtiqueta){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarEtiqueta).controlador("","listarEtiquetas",idEtiqueta);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Etiqueta  =======================
+
+==============================================================================*/
+function eliminarEtiqueta(id){
+   
+  confirmar(id);
+}
+
+
+/*=======================================================================
+
+     =====================  Ver Area  =======================
+
+==============================================================================*/
+function verEditarArea(idArea){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarArea).controlador("","listarAreas",idArea);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Area  =======================
+
+==============================================================================*/
+function eliminarArea(id){
+
+  confirmarArea(id);
+}
+
+
+/*=======================================================================
+
+     =====================  Ver causas  =======================
+
+==============================================================================*/
+function verEditarcausas(idcausas){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarcausas).controlador("","listarcausas",idcausas);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar causas  =======================
+
+==============================================================================*/
+function eliminarcausas(id){
+
+  confirmarcausas(id);
+}
+
+
+
+/*=======================================================================
+
+     =====================  Ver TESTEO FINAL  =======================
+
+==============================================================================*/
+function verEditarmoni(idmoni){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarmoni).controlador("","listarmoni",idmoni);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar testeos  =======================
+
+==============================================================================*/
+function eliminarmoni(id){
+
+  confirmarmoni(id);
+}
+
+
+/*=======================================================================
+
+     =====================  Ver TEsteo  =======================
+
+==============================================================================*/
+function verEditartest(idtest){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditartest).controlador("","listartest",idtest);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar TEsteo  =======================
+
+==============================================================================*/
+function eliminartest(id){
+
+  confirmartest(id);
+}
+
+
+
+/*=======================================================================
+
+     =====================  Ver Actividad Economica  =======================
+
+==============================================================================*/
+function verEditaracti(idacti){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditaracti).controlador("","listaracti",idacti);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Actividad Economico  =======================
+
+==============================================================================*/
+function eliminaracti(id){
+
+  confirmaracti(id);
+}
+
+
+
+/*=======================================================================
+
+     =====================  Ver Listas  =======================
+
+==============================================================================*/
+function verEditarlistas(idlistas){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarlistas).controlador("","listarlistas",idlistas);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Listas  =======================
+
+==============================================================================*/
+function eliminarlistas(id){
+
+  confirmarlistas(id);
+}
+
+
+
+/*=======================================================================
+
+     =====================  Ver Nacionalidad  =======================
+
+==============================================================================*/
+function verEditarpais(idpais){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarpais).controlador("","listarpais",idpais);
+
+
+}
+
+/*=======================================================================
+
+     =====================  Ver Requerimientos  =======================
+
+==============================================================================*/
+function verEditarrequ(idrequ){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarrequ).controlador("","listarrequ",idrequ);
+
+
+}
+
+/*=======================================================================
+
+     =====================  Eliminar Requerimiento  =======================
+
+==============================================================================*/
+function eliminarrequ(id){
+
+  confirmarrequ(id);
+}
+
+/*=======================================================================
+
+     =====================  Ver Tablero de informe  =======================
+
+==============================================================================*/
+function verEditardash(iddash){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditardash).controlador("","listardash",iddash);
+
+
+}
+
+
+
+/*=======================================================================
+
+     =====================  Eliminar Nacionalidad  =======================
+
+==============================================================================*/
+function eliminarpais(id){
+
+  confirmarpais(id);
+}
+
+/*=======================================================================
+
+     =====================  Eliminar Tablero informe  =======================
+
+==============================================================================*/
+function eliminardash(id){
+
+  confirmardash(id);
+}
+
+
+/*=======================================================================
+
+     =====================  Ver Matriz  =======================
+
+==============================================================================*/
+function verEditarmatriz(idmatriz){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarmatriz).controlador("","listarmatriz",idmatriz);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Matriz  =======================
+
+==============================================================================*/
+function eliminarmatriz(id){
+
+  confirmarmatriz(id);
+}
+
+
+
+/*=======================================================================
+
+     =====================  Ver TRansaccionalidad  =======================
+
+==============================================================================*/
+function verEditartrans(idtrans){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditartrans).controlador("","listartrans",idtrans);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Transaccionalidad  =======================
+
+==============================================================================*/
+function eliminartrans(id){
+
+  confirmartrans(id);
+}
+
+
+/*=======================================================================
+
+     =====================  Ver Canal  =======================
+
+==============================================================================*/
+function verEditarcanal(idcanal){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarcanal).controlador("","listarcanal",idcanal);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Canal  =======================
+
+==============================================================================*/
+function eliminarcanal(id){
+
+  confirmarcanal(id);
+}
+
+
+
+/*=======================================================================
+
+     =====================  Ver Persona  =======================
+
+==============================================================================*/
+function verEditarperson(idperson){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarperson).controlador("","listarperson",idperson);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Persona  =======================
+
+==============================================================================*/
+function eliminarperson(id){
+
+  confirmarperson(id);
+}
+
+/*=======================================================================
+
+     =====================  Ver Productos  =======================
+
+==============================================================================*/
+function verEditarprod(idprod){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarprod).controlador("","listarprod",idprod);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Productos  =======================
+
+==============================================================================*/
+function eliminarprod(id){
+
+  confirmarprod(id);
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Ver alertas  =======================
+
+==============================================================================*/
+function verEditaralerta(idalerta){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditaralerta).controlador("","listaralerta",idalerta);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar alertas  =======================
+
+==============================================================================*/
+function eliminaralerta(id){
+
+  confirmaralerta(id);
+}
+
+
+
+/*=======================================================================
+
+     =====================  Ver Riesgos  =======================
+
+==============================================================================*/
+function verEditarriesgos(idriesgos){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarriesgos).controlador("","listarriesgos",idriesgos);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Riesgos  =======================
+
+==============================================================================*/
+function eliminarriesgos(id){
+
+  confirmarriesgos(id);
+}
+/*=======================================================================
+
+     =====================  Ver Usuario Editar  =======================
+
+==============================================================================*/
+function verEditarUsuario(idUsuario){
+
+  $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarUsuario).controlador("","listarUsuarios",idUsuario);
+}
+
+/*=======================================================================
+
+     =====================  Eliminar usuario   =======================
+
+==============================================================================*/
+function eliminarUsuario(id){
+  
+  confirmarUsuario(id);
+
+}
+
+
+/*=======================================================================
+
+     =====================  Ver Info Ticket  =======================
+
+==============================================================================*/
+function verInfoSolicitud(idTicket){
+
+  $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarGestionTicket).controlador("","verInfoTicket",idTicket);
+
+}
+
+
+/*=======================================================================
+
+     =====================  Ver Info Mis  Ticket  =======================
+
+==============================================================================*/
+function verInfoMisSolicitud(idTicket){
+
+  $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarGestionMisTickets).controlador("","verInfoTicket",idTicket);
+
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Cerrar Ticket  =======================
+
+==============================================================================*/
+function closeTicket(form){
+
+  $.LoadingOverlay("show");
+
+   var fileName = document.querySelector("#evidenciaTicketCerrar").value;
+   var bandera = 0;
+   
+   if(fileName != ""){
+     
+     var extension = fileName.replace(/^.*\./, '');
+     if(extension == "jpeg" || extension == "png" || extension == "jpg" || extension == "jfif" ||
+        extension == "JPEG" || extension == "PNG" || extension == "JPG" || extension == "JFIF"){
+        bandera = 0;
+        form.txtExtensionEvidenciaTicket.value=extension;     
+     }else{
+        
+        bandera = 1;
+        return mostrarAlerta("extensionNoValida");
+     
+     }   
+   }
+   
+   if(bandera == 0){
+     google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarAlerta).controlador(form);
+   }   
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Ticket  =======================
+
+==============================================================================*/
+
+function eliminarTicket(id){
+
+ confirmarTicket(id);
+
+}
+
+/*=======================================================================
+
+     =====================  Ver Graficas  =======================
+
+==============================================================================*/
+function verGraficas(){
+
+ google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(datosGraficas).controlador("","verGraficasAdmin");
+ mostrarContent('smart')
+
+}
+
+
+</script>

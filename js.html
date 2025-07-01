@@ -1,0 +1,3348 @@
+<script>
+
+/*=======================================================================
+
+     =====================  Crear Table Etiquetas =======================
+
+==============================================================================*/
+
+function crearTablaEtiquetas(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Riesgos</h2>"+
+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearEtiquetas'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaEtiquetas' >"+
+                  "<thead>"+
+                   " <tr>"+
+                      "<th scope='col' style='font-size: smaller;'>#</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Id Riesgos</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Riesgos</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Imp. Procesos</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Imp. Legal</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Imp. Reputacional</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Imp. Contagio</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Prob. Procesos</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Prob. Legal</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Prob. Reputacional</th>"+
+                      "<th scope='col' style='font-size: smaller;'>Prob. Contagio</th>"+                   
+                      "<th scope='col' style='font-size: smaller;'>Compañia</th>"+                             
+                      "<th scope='col' style='font-size: smaller;'>Accion</th>"+    
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+
+/*=======================================================================
+
+     =====================  Listar Etiquetas  =======================
+
+==============================================================================*/
+
+  function mostrarEtiquetas(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaEtiquetas();
+     
+     $('#tablaEtiquetas').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion1" },
+            { data: "descripcion2" },
+            { data: "descripcion3" },
+            { data: "descripcion4" },
+            { data: "descripcion5" },
+            { data: "descripcion6" },
+            { data: "descripcion7" },
+            { data: "descripcion8" },    
+            { data: "descripcion9" },                                                                       
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaEtiquetas();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+  
+  
+/*=======================================================================
+
+     =====================  Mostrar Etiqueta  =======================
+
+==============================================================================*/  
+function mostrarEditarEtiqueta(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarEtiqueta").value=respuesta[0].id;
+   document.querySelector("#nombreEditarEtiqueta").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarEtiqueta").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarEtiqueta1").value=respuesta[0].descripcion1;
+   document.querySelector("#descipcionEditarEtiqueta2").value=respuesta[0].descripcion2;
+   document.querySelector("#descipcionEditarEtiqueta3").value=respuesta[0].descripcion3;
+   document.querySelector("#descipcionEditarEtiqueta4").value=respuesta[0].descripcion4;
+   document.querySelector("#descipcionEditarEtiqueta5").value=respuesta[0].descripcion5;
+   document.querySelector("#descipcionEditarEtiqueta6").value=respuesta[0].descripcion6;
+   document.querySelector("#descipcionEditarEtiqueta7").value=respuesta[0].descripcion7;
+   document.querySelector("#descipcionEditarEtiqueta8").value=respuesta[0].descripcion8; 
+   document.querySelector("#descipcionEditarEtiqueta9").value=respuesta[0].descripcion9;                        
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Areas =======================
+
+==============================================================================*/
+
+function crearTablaAreas(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Controles</h2>"+
+                
+              "<div class='modal-title small-text'>"+
+              "<h6>🔍 No es válido definir el mismo control para dos o más causas diferentes dentro de un mismo riesgo.<br>🔍 Debe existir al menos un control por cada causa identificada.<br>🔍 Una política por sí sola no es un control.<br>🔍 La redacción debe contemplar palabras tales como revisar, verificar, cotejar, validar, realizar seguimiento, comprobar, confrontar o evidenciar.<br>🔍 La estructura de redacción es la siguiente: Responsable de la Ejecución del Control + Acción + Complemento.<br>🔍 Codificación: Inicia con la sigla “CTRL” seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.</h6></div>"+  
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearArea'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> "+
+                "<a href='https://docs.google.com/document/d/13cTyx2i28wmi23yzrxYxiplm4blZ2spmZFcIHDlQy98/edit?tab=t.0#heading=h.a9pherle1osa' class='btn btn-primary' target='_blank' rel='noopener noreferrer'> Prompt </a>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaAreas' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>ID DE CONTROL</th>"+
+                     " <th scope='col'>CONTROL</th>"+
+                     " <th scope='col'>COMPAÑIA</th>"+                     
+                     " <th scope='col'>ACCION</th>"+
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Areas =======================
+
+==============================================================================*/
+function mostrarAreas(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaAreas();
+     
+     $('#tablaAreas').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion26" },                                 
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaAreas();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Area  =======================
+
+==============================================================================*/
+function mostrarEditarArea(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarAreas").value=respuesta[0].id;
+   document.querySelector("#nombreEditarAreas").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarAreas").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarAreas2").value=respuesta[0].descripcion2; 
+   document.querySelector("#descipcionEditarAreas3").value=respuesta[0].descripcion3; 
+   document.querySelector("#descipcionEditarAreas4").value=respuesta[0].descripcion4; 
+   document.querySelector("#descipcionEditarAreas5").value=respuesta[0].descripcion5; 
+   document.querySelector("#descipcionEditarAreas6").value=respuesta[0].descripcion6; 
+   document.querySelector("#descipcionEditarAreas7").value=respuesta[0].descripcion7;             
+   document.querySelector("#descipcionEditarAreas8").value=respuesta[0].descripcion8; 
+   document.querySelector("#descipcionEditarAreas9").value=respuesta[0].descripcion9; 
+   document.querySelector("#descipcionEditarAreas10").value=respuesta[0].descripcion10; 
+   document.querySelector("#descipcionEditarAreas11").value=respuesta[0].descripcion11; 
+   document.querySelector("#descipcionEditarAreas12").value=respuesta[0].descripcion12; 
+   document.querySelector("#descipcionEditarAreas13").value=respuesta[0].descripcion13;
+   document.querySelector("#descipcionEditarAreas14").value=respuesta[0].descripcion14;
+   document.querySelector("#descipcionEditarAreas15").value=respuesta[0].descripcion15;
+   document.querySelector("#descipcionEditarAreas16").value=respuesta[0].descripcion16;
+   document.querySelector("#descipcionEditarAreas17").value=respuesta[0].descripcion17;
+   document.querySelector("#descipcionEditarAreas18").value=respuesta[0].descripcion18;
+   document.querySelector("#descipcionEditarAreas19").value=respuesta[0].descripcion19;
+   document.querySelector("#descipcionEditarAreas20").value=respuesta[0].descripcion20;
+   document.querySelector("#descipcionEditarAreas21").value=respuesta[0].descripcion21;
+   document.querySelector("#descipcionEditarAreas22").value=respuesta[0].descripcion22;                     
+   document.querySelector("#descipcionEditarAreas23").value=respuesta[0].descripcion23;
+   document.querySelector("#descipcionEditarAreas24").value=respuesta[0].descripcion24;
+   document.querySelector("#descipcionEditarAreas25").value=respuesta[0].descripcion25;
+   document.querySelector("#descipcionEditarAreas26").value=respuesta[0].descripcion26;
+   document.querySelector("#descipcionEditarAreas27").value=respuesta[0].descripcion27;               
+   document.querySelector("#descipcionEditarAreas28").value=respuesta[0].descripcion28;
+   document.querySelector("#descipcionEditarAreas29").value=respuesta[0].descripcion29;
+   document.querySelector("#descipcionEditarAreas30").value=respuesta[0].descripcion30;
+   document.querySelector("#descipcionEditarAreas31").value=respuesta[0].descripcion31;
+   
+   const descripcion18 = respuesta[0].descripcion18;
+    if (descripcion18) {
+      const valores = descripcion18.split(",");  // Divide la cadena por coma
+      document.querySelectorAll("#descipcionEditarAreas18 .form-check-input").forEach(checkbox => {
+        if (valores.includes(checkbox.value)) {
+          checkbox.checked = true; // Marca el checkbox si su valor está en la lista
+        } else {
+          checkbox.checked = false; // Desmarca el checkbox si no está en la lista
+        }
+      });
+    }
+
+   const descripcion29 = respuesta[0].descripcion29;
+    if (descripcion29) {
+      const valores = descripcion29.split(",");  // Divide la cadena por coma
+      document.querySelectorAll("#descipcionEditarAreas29 .form-check-input").forEach(checkbox => {
+        if (valores.includes(checkbox.value)) {
+          checkbox.checked = true; // Marca el checkbox si su valor está en la lista
+        } else {
+          checkbox.checked = false; // Desmarca el checkbox si no está en la lista
+        }
+      });
+    }
+
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Testeo =======================
+
+==============================================================================*/
+function crearTablatest(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de test</h2>"+
+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#creartest'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button>"+
+                  "<a href='https://docs.google.com/document/d/1ttfggjK51RtqYsh5YW59ruJrQJKIYhl_/edit?usp=sharing&ouid=101910629782611746997&rtpof=true&sd=true' class='btn btn-primary' target='_blank' rel='noopener noreferrer'>Guia</a>"+             
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablatest'>"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>ID CONTROL</th>"+                   
+                     " <th scope='col'>CONTROL</th>"+
+                     " <th scope='col'>COMPAÑIA</th>"+         
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Testeos =======================
+
+==============================================================================*/
+function mostrartest(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablatest();
+     
+     $('#tablatest').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+
+            { data: "nombre" }, 
+            { data: "descripcion" },
+            { data: "descripcion26" },                                                 
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablatest();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Testeo  =======================
+
+==============================================================================*/
+function mostrarEditartest(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditartest").value=respuesta[0].id;
+   document.querySelector("#nombreEditartest").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditartest").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditartest2").value=respuesta[0].descripcion2; 
+   document.querySelector("#descipcionEditartest3").value=respuesta[0].descripcion3; 
+   document.querySelector("#descipcionEditartest4").value=respuesta[0].descripcion4; 
+   document.querySelector("#descipcionEditartest5").value=respuesta[0].descripcion5; 
+   document.querySelector("#descipcionEditartest6").value=respuesta[0].descripcion6; 
+   document.querySelector("#descipcionEditartest7").value=respuesta[0].descripcion7;             
+   document.querySelector("#descipcionEditartest8").value=respuesta[0].descripcion8; 
+   document.querySelector("#descipcionEditartest9").value=respuesta[0].descripcion9; 
+   document.querySelector("#descipcionEditartest10").value=respuesta[0].descripcion10; 
+   document.querySelector("#descipcionEditartest11").value=respuesta[0].descripcion11; 
+   document.querySelector("#descipcionEditartest12").value=respuesta[0].descripcion12; 
+   document.querySelector("#descipcionEditartest13").value=respuesta[0].descripcion13;
+   document.querySelector("#descipcionEditartest14").value=respuesta[0].descripcion14;
+   document.querySelector("#descipcionEditartest15").value=respuesta[0].descripcion15;
+   document.querySelector("#descipcionEditartest16").value=respuesta[0].descripcion16;
+   document.querySelector("#descipcionEditartest17").value=respuesta[0].descripcion17;
+   document.querySelector("#descipcionEditartest18").value=respuesta[0].descripcion18;
+   document.querySelector("#descipcionEditartest19").value=respuesta[0].descripcion19;
+   document.querySelector("#descipcionEditartest20").value=respuesta[0].descripcion20;
+   document.querySelector("#descipcionEditartest21").value=respuesta[0].descripcion21;
+   document.querySelector("#descipcionEditartest22").value=respuesta[0].descripcion22;
+   document.querySelector("#descipcionEditartest23").value=respuesta[0].descripcion23;
+   document.querySelector("#descipcionEditartest24").value=respuesta[0].descripcion24;
+   document.querySelector("#descipcionEditartest25").value=respuesta[0].descripcion25;
+   document.querySelector("#descipcionEditartest26").value=respuesta[0].descripcion26;
+   document.querySelector("#descipcionEditartest27").value=respuesta[0].descripcion27;
+   document.querySelector("#descipcionEditartest28").value=respuesta[0].descripcion28;
+   document.querySelector("#descipcionEditartest29").value=respuesta[0].descripcion29;
+   document.querySelector("#descipcionEditartest30").value=respuesta[0].descripcion30;
+   document.querySelector("#descipcionEditartest31").value=respuesta[0].descripcion31;
+   document.querySelector("#descipcionEditartest32").value=respuesta[0].descripcion32;
+   document.querySelector("#descipcionEditartest33").value=respuesta[0].descripcion33;
+   document.querySelector("#descipcionEditartest34").value=respuesta[0].descripcion34;
+   document.querySelector("#descipcionEditartest35").value=respuesta[0].descripcion35;
+   document.querySelector("#descipcionEditartest36").value=respuesta[0].descripcion36;
+   document.querySelector("#descipcionEditartest37").value=respuesta[0].descripcion37;
+   document.querySelector("#descipcionEditartest38").value=respuesta[0].descripcion38;
+   document.querySelector("#descipcionEditartest39").value=respuesta[0].descripcion39;
+   document.querySelector("#descipcionEditartest40").value=respuesta[0].descripcion40;
+   document.querySelector("#descipcionEditartest41").value=respuesta[0].descripcion41;
+   document.querySelector("#descipcionEditartest42").value=respuesta[0].descripcion42;
+   document.querySelector("#descipcionEditartest43").value=respuesta[0].descripcion43;
+   document.querySelector("#descipcionEditartest44").value=respuesta[0].descripcion44;
+   document.querySelector("#descipcionEditartest45").value=respuesta[0].descripcion45;
+   document.querySelector("#descipcionEditartest46").value=respuesta[0].descripcion46;
+   document.querySelector("#descipcionEditartest47").value=respuesta[0].descripcion47;
+   document.querySelector("#descipcionEditartest48").value=respuesta[0].descripcion48;   
+         
+   $.LoadingOverlay("hide");
+
+}
+
+
+/*=======================================================================
+
+     =====================  Crear Table Causas =======================
+
+==============================================================================*/
+
+function crearTablacausas(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Causas</h2>"+
+                "<div class='modal-title small-text'>"+
+                  "<br><h6>🔍 La estructura de redacción es la siguiente: Sujeto + Operación + Objeto determinado + Contexto que describe circunstancias específicas.<br>🔍 Codificación: Inicia con la sigla “CAU” seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>🔍 Codificación: Inicia con la sigla “CAU” seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>🔍 Objeto determinado: Elemento (s) sobre los que recae la acción, especificando su naturaleza, cantidad o características.<br>🔍 Contexto que describe circunstancias específicas: Se describe el delito y cómo se comete, incluyendo circunstancias, métodos o herramientas como suelen ser descritas en las tipologías.<br>🎯 La Causa debe proponer como la entidad puede ser utilizada para LAFT.<br>🎯 La causa debe identificar al menos 3 factores de riesgo.<br></h6></div>"+
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearcausas'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button>"+
+                "<a href='https://docs.google.com/document/d/13cTyx2i28wmi23yzrxYxiplm4blZ2spmZFcIHDlQy98/edit?tab=t.0#heading=h.a9pherle1osa' class='btn btn-primary' target='_blank' rel='noopener noreferrer'> Prompt </a>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablacausas' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>ID CAUSA</th>"+                   
+                     " <th scope='col'>CAUSA</th>"+
+                     " <th scope='col'>COMPAÑIA</th>"+         
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla CAUSAS =======================
+
+==============================================================================*/
+function mostrarcausas(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablacausas();
+     
+     $('#tablacausas').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+
+            { data: "nombre" }, 
+            { data: "descripcion" },
+            { data: "descripcion7" },                                                 
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablacausas();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar causas  =======================
+
+==============================================================================*/
+function mostrarEditarcausas(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarcausas").value=respuesta[0].id;
+   document.querySelector("#nombreEditarcausas").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarcausas").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarcausas2").value=respuesta[0].descripcion2;
+   document.querySelector("#descipcionEditarcausas3").value=respuesta[0].descripcion3;
+   document.querySelector("#descipcionEditarcausas4").value=respuesta[0].descripcion4;
+   document.querySelector("#descipcionEditarcausas5").value=respuesta[0].descripcion5;
+   document.querySelector("#descipcionEditarcausas6").value=respuesta[0].descripcion6;
+   document.querySelector("#descipcionEditarcausas7").value=respuesta[0].descripcion7;                  
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Actividad Economica =======================
+
+==============================================================================*/
+
+function crearTablaacti(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Actividad Economica</h2>"+
+                " <a href='https://lookerstudio.google.com/reporting/1e8dbc19-3cdd-4dc7-be21-73cf147c0116' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+                  
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearacti'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaacti' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Código</th>"+
+                     " <th scope='col'>Descripción</th>"+
+                     " <th scope='col'>Clasificación</th>"+
+                     " <th scope='col'>Nivel de riesgo</th>"+                             
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Actividad Economica =======================
+
+==============================================================================*/
+function mostraracti(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaacti();
+     
+     $('#tablaacti').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" },
+            { data: "descripcion3" },                                                
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaacti();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Actividad Economica  =======================
+
+==============================================================================*/
+function mostrarEditaracti(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditaracti").value=respuesta[0].id;
+   document.querySelector("#nombreEditaracti").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditaracti").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditaracti2").value=respuesta[0].descripcion2;
+   document.querySelector("#descipcionEditaracti3").value=respuesta[0].descripcion3;                  
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Listas =======================
+
+==============================================================================*/
+
+function crearTablalistas(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Listas</h2>"+
+                " <a href='https://lookerstudio.google.com/reporting/1e8dbc19-3cdd-4dc7-be21-73cf147c0116' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+                 
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearlistas'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablalistas' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>CODIGO</th>"+
+                     " <th scope='col'>DESCRIPCION</th>"+
+                     " <th scope='col'>NIVEL DE RIESGO</th>"+        
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Listas =======================
+
+==============================================================================*/
+function mostrarlistas(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablalistas();
+     
+     $('#tablalistas').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" },                                                 
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablalistas();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Listas  =======================
+
+==============================================================================*/
+function mostrarEditarlistas(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarlistas").value=respuesta[0].id;
+   document.querySelector("#nombreEditarlistas").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarlistas").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarlistas2").value=respuesta[0].descripcion2;                  
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Nacionalidad =======================
+
+==============================================================================*/
+
+function crearTablapais(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Nacionalidad</h2>"+
+                " <a href='https://lookerstudio.google.com/reporting/1e8dbc19-3cdd-4dc7-be21-73cf147c0116' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+ 
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearpais'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablapais' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>NOMBRE</th>"+
+                     " <th scope='col'>Riesgo LAFT Basilea</th>"+
+                     " <th scope='col'>Nivel de riesgo asignado</th>"+        
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Nacionalidades =======================
+
+==============================================================================*/
+function mostrarpais(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablapais();
+     
+     $('#tablapais').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" },                                                
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablapais();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Nacionalidades  =======================
+
+==============================================================================*/
+function mostrarEditarpais(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarpais").value=respuesta[0].id;
+   document.querySelector("#nombreEditarpais").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarpais").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarpais2").value=respuesta[0].descripcion2;                 
+   $.LoadingOverlay("hide");
+
+}
+
+
+/*=======================================================================
+
+     =====================  Crear Table Requerimientos =======================
+
+==============================================================================*/
+
+function crearTablarequ(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Requerimientos - Dirección de LAFT</h2>"+
+                " <a href='https://lookerstudio.google.com/reporting/68114e26-8702-47d8-9df2-2b4e6eeefb30' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+  
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearrequ'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablarequ' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Tipo de Requerimiento</th>"+
+                     " <th scope='col'>Asunto del Requerimiento (Correo)</th>"+
+                     " <th scope='col'>Fecha Recibido</th>"+     
+                     " <th scope='col'>Estado de Requerimiento</th>"+                         
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Requerimientos =======================
+
+==============================================================================*/
+function mostrarrequ(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablarequ();
+     
+     $('#tablarequ').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" },       
+            { data: "descripcion6" },                                                       
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablarequ();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Requerimietnos  =======================
+
+==============================================================================*/
+function mostrarEditarrequ(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarrequ").value=respuesta[0].id;
+   document.querySelector("#nombreEditarrequ").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarrequ").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarrequ2").value=respuesta[0].descripcion2;
+   document.querySelector("#descipcionEditarrequ3").value=respuesta[0].descripcion3;
+   document.querySelector("#descipcionEditarrequ4").value=respuesta[0].descripcion4;
+   document.querySelector("#descipcionEditarrequ5").value=respuesta[0].descripcion5;  
+   document.querySelector("#descipcionEditarrequ6").value=respuesta[0].descripcion6;                            
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table tablero =======================
+
+==============================================================================*/
+
+function crearTabladash(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Madurez de Programas</h2>"+
+
+                " <a href='https://app.powerbi.com/groups/me/reports/f6344bbc-a242-4bc0-8e17-f19b95f2c948/a0f9fd9bef37523f3995?ctid=e62b3c46-c775-4b6a-9c2f-9dbe85c61a85&openReportSource=ReportInvitation&experience=power-bi' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+          
+                " <a href='https://drive.google.com/file/d/1m0kitGn6KRCn_EIKbPeQWCad7o0g_h4I/view?usp=sharing' target='_blank' class='btn btn-custom'>Documentación Modelo Madurez</a>"
+                + "<h3> </h3>"+                         
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#creardash'>"
+                
+                +
+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+            
+                
+                "<table class='table table-striped table-hover table-bordered' id='tabladash' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Programa</th>"+
+                     " <th scope='col'>Responsable</th>"+
+                     " <th scope='col'>Fecha Actualización</th>"+        
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla tablero =======================
+
+==============================================================================*/
+function mostrardash(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTabladash();
+     
+     $('#tabladash').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion7" },   
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTabladash();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar tablero   =======================
+
+==============================================================================*/
+function mostrarEditardash(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditardash").value=respuesta[0].id;
+   document.querySelector("#nombreEditardash").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditardash").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditardash2").value=respuesta[0].descripcion2;                 
+   document.querySelector("#descipcionEditardash3").value=respuesta[0].descripcion3;                 
+   document.querySelector("#descipcionEditardash4").value=respuesta[0].descripcion4;                 
+   document.querySelector("#descipcionEditardash5").value=respuesta[0].descripcion5;                 
+   document.querySelector("#descipcionEditardash6").value=respuesta[0].descripcion6;                 
+   document.querySelector("#descipcionEditardash7").value=respuesta[0].descripcion7;                                                
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table MAtriz =======================
+
+==============================================================================*/
+
+function crearTablamatriz(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Matrices</h2>"+
+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearmatriz'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablamatriz' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>ID de Riesgo</th>"+
+                     " <th scope='col'>ID de Causa</th>"+
+                     " <th scope='col'>Peso % de Causas</th>"+  
+                     " <th scope='col'>ID de Control</th>"+                             
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Matriz =======================
+
+==============================================================================*/
+function mostrarmatriz(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablamatriz();
+     
+     $('#tablamatriz').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" }, 
+            { data: "descripcion3" },                                                            
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablamatriz();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar matriz  =======================
+
+==============================================================================*/
+function mostrarEditarmatriz(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarmatriz").value=respuesta[0].id;
+   document.querySelector("#nombreEditarmatriz").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarmatriz").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarmatriz2").value=respuesta[0].descripcion2;
+   document.querySelector("#descipcionEditarmatriz3").value=respuesta[0].descripcion3;                    
+   $.LoadingOverlay("hide");
+
+}
+
+
+/*=======================================================================
+
+     =====================  Crear Table person =======================
+
+==============================================================================*/
+
+function crearTablaperson(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Usuario</h2>"+
+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearperson'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaperson' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Nombre</th>"+
+                     " <th scope='col'>Correo</th>"+
+                     " <th scope='col'>Perfil</th>"+        
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla usuario =======================
+
+==============================================================================*/
+function mostrarperson(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaperson();
+     
+     $('#tablaperson').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" },                                                
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaperson();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Nacionalidades  =======================
+
+==============================================================================*/
+function mostrarEditarperson(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarperson").value=respuesta[0].id;
+   document.querySelector("#nombreEditarperson").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarperson").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarperson2").value=respuesta[0].descripcion2;                 
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Transaccionalidad =======================
+
+==============================================================================*/
+
+function crearTablatrans(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Transaccionalidad</h2>"+
+                " <a href='https://lookerstudio.google.com/reporting/1e8dbc19-3cdd-4dc7-be21-73cf147c0116' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+                  
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#creartrans'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablatrans' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Codigo de Transaccion</th>"+
+                     " <th scope='col'>Nombre Transaccion</th>"+
+                     " <th scope='col'>Nivel de riesgo</th>"+        
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Transaccionalidad =======================
+
+==============================================================================*/
+function mostrartrans(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablatrans();
+     
+     $('#tablatrans').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" },                                                
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablatrans();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Nacionalidades  =======================
+
+==============================================================================*/
+function mostrarEditartrans(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditartrans").value=respuesta[0].id;
+   document.querySelector("#nombreEditartrans").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditartrans").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditartrans2").value=respuesta[0].descripcion2;                 
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Canal =======================
+
+==============================================================================*/
+
+function crearTablacanal(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Canales</h2>"+
+                " <a href='https://lookerstudio.google.com/reporting/1e8dbc19-3cdd-4dc7-be21-73cf147c0116' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+                  
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearcanal'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablacanal' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Codigo Canal de vinculación</th>"+
+                     " <th scope='col'>Canal de vinculación</th>"+
+                     " <th scope='col'>Nivel de riesgo</th>"+        
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Canales =======================
+
+==============================================================================*/
+function mostrarcanal(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablacanal();
+     
+     $('#tablacanal').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" },                                                
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablacanal();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar canales  =======================
+
+==============================================================================*/
+function mostrarEditarcanal(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarcanal").value=respuesta[0].id;
+   document.querySelector("#nombreEditarcanal").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarcanal").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarcanal2").value=respuesta[0].descripcion2;                 
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Productos =======================
+
+==============================================================================*/
+
+function crearTablaprod(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Productos</h2>"+
+                " <a href='https://lookerstudio.google.com/reporting/1e8dbc19-3cdd-4dc7-be21-73cf147c0116' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+                  
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearprod'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaprod' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Codigo compañia</th>"+
+                     " <th scope='col'>Código del Ramo</th>"+
+                     " <th scope='col'>Nombre de ramo</th>"+  
+                     " <th scope='col'>Código de Producto</th>"+  
+                     " <th scope='col'>Código Alternativo</th>"+  
+                     " <th scope='col'>Nombre del Producto</th>"+ 
+                     " <th scope='col'>Nivel de Riesgo</th>"+                                                                                            
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Productos =======================
+
+==============================================================================*/
+function mostrarprod(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaprod();
+     
+     $('#tablaprod').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" }, 
+            { data: "descripcion3" }, 
+            { data: "descripcion4" }, 
+            { data: "descripcion5" }, 
+            { data: "descripcion6" },                                                                                                
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaprod();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Productos  =======================
+
+==============================================================================*/
+function mostrarEditarprod(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarprod").value=respuesta[0].id;
+   document.querySelector("#nombreEditarprod").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarprod").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarprod2").value=respuesta[0].descripcion2;  
+   document.querySelector("#descipcionEditarprod3").value=respuesta[0].descripcion3;  
+   document.querySelector("#descipcionEditarprod4").value=respuesta[0].descripcion4;  
+   document.querySelector("#descipcionEditarprod5").value=respuesta[0].descripcion5;  
+   document.querySelector("#descipcionEditarprod6").value=respuesta[0].descripcion6;                             
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Alerta =======================
+
+==============================================================================*/
+
+function crearTablaalerta(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Alertas</h2>"+
+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearalerta'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaalerta' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Fecha TRX</th>"+                     
+                     " <th scope='col'>Tomador</th>"+
+                     " <th scope='col'>Nombre</th>"+
+                     " <th scope='col'>Insuial</th>"+
+                     " <th scope='col'>Analisis Prevencion</th>"+
+                     " <th scope='col'>Descripcion</th>"+
+                     " <th scope='col'>Accion</th>"+                     
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Alertas =======================
+
+==============================================================================*/
+function mostraralerta(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaalerta();
+     
+     $('#tablaalerta').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "descripcion3" },
+            { data: "descripcion4" },
+            { data: "descripcion5" },   
+            { data: "descripcion22" },   
+            { data: "descripcion23" },   
+            { data: "descripcion24" },   
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaalerta();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Alertas  =======================
+
+==============================================================================*/
+function mostrarEditaralerta(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditaralerta").value=respuesta[0].id;
+   document.querySelector("#nombreEditaralerta").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditaralerta").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditaralerta2").value=respuesta[0].descripcion2;
+   document.querySelector("#descipcionEditaralerta3").value=respuesta[0].descripcion3;
+   document.querySelector("#descipcionEditaralerta4").value=respuesta[0].descripcion4;
+   document.querySelector("#descipcionEditaralerta5").value=respuesta[0].descripcion5;
+   document.querySelector("#descipcionEditaralerta6").value=respuesta[0].descripcion6;
+   document.querySelector("#descipcionEditaralerta7").value=respuesta[0].descripcion7; 
+   document.querySelector("#descipcionEditaralerta8").value=respuesta[0].descripcion8; 
+   document.querySelector("#descipcionEditaralerta9").value=respuesta[0].descripcion9; 
+   document.querySelector("#descipcionEditaralerta10").value=respuesta[0].descripcion10; 
+   document.querySelector("#descipcionEditaralerta11").value=respuesta[0].descripcion11; 
+   document.querySelector("#descipcionEditaralerta12").value=respuesta[0].descripcion12; 
+   document.querySelector("#descipcionEditaralerta13").value=respuesta[0].descripcion13; 
+   document.querySelector("#descipcionEditaralerta14").value=respuesta[0].descripcion14; 
+   document.querySelector("#descipcionEditaralerta15").value=respuesta[0].descripcion15; 
+   document.querySelector("#descipcionEditaralerta16").value=respuesta[0].descripcion16; 
+   document.querySelector("#descipcionEditaralerta17").value=respuesta[0].descripcion17; 
+   document.querySelector("#descipcionEditaralerta18").value=respuesta[0].descripcion18; 
+   document.querySelector("#descipcionEditaralerta19").value=respuesta[0].descripcion19; 
+   document.querySelector("#descipcionEditaralerta20").value=respuesta[0].descripcion20; 
+   document.querySelector("#descipcionEditaralerta21").value=respuesta[0].descripcion21; 
+   document.querySelector("#descipcionEditaralerta22").value=respuesta[0].descripcion22; 
+   document.querySelector("#descipcionEditaralerta23").value=respuesta[0].descripcion23; 
+   document.querySelector("#descipcionEditaralerta24").value=respuesta[0].descripcion24;  
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Riesgos =======================
+
+==============================================================================*/
+
+function crearTablariesgos(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Riesgos</h2>"+
+                    "<div class='modal-title small-text'>"+
+                    "<br><h6>🔍 La estructura de redacción es la siguiente: Posibilidad de + Impacto + Causa Inmediata.<br>🔍 Codificación: Inicia con la sigla 'PLA' seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>🔍 Codificación Corrupción: Inicia con la sigla 'PLA' seguido de la sigla 'COR', seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>ㅤ</h6></div>"+
+                    
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearriesgos'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button>"+
+                "<a href='https://docs.google.com/document/d/13cTyx2i28wmi23yzrxYxiplm4blZ2spmZFcIHDlQy98/edit?tab=t.0#heading=h.a9pherle1osa' class='btn btn-primary' target='_blank' rel='noopener noreferrer'> Prompt </a>"+
+                "<table class='table table-striped table-hover table-bordered' id='tablariesgos' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>ID RIESGO</th>"+                     
+                     " <th scope='col'>RIESGO</th>"+                                          
+                     " <th scope='col'>COMPAÑIA</th>"+         
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Riesgos =======================
+
+==============================================================================*/
+function mostrarriesgos(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablariesgos();
+     
+     $('#tablariesgos').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },    
+            { data: "descripcion10" },                                            
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablariesgos();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Riesgos  =======================
+
+==============================================================================*/
+function mostrarEditarriesgos(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarriesgos").value=respuesta[0].id;
+   document.querySelector("#nombreEditarriesgos").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarriesgos").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarriesgos2").value=respuesta[0].descripcion2;
+   document.querySelector("#descipcionEditarriesgos3").value=respuesta[0].descripcion3;
+   document.querySelector("#descipcionEditarriesgos4").value=respuesta[0].descripcion4;
+   document.querySelector("#descipcionEditarriesgos5").value=respuesta[0].descripcion5;
+   document.querySelector("#descipcionEditarriesgos6").value=respuesta[0].descripcion6;
+   document.querySelector("#descipcionEditarriesgos7").value=respuesta[0].descripcion7; 
+   document.querySelector("#descipcionEditarriesgos8").value=respuesta[0].descripcion8; 
+   document.querySelector("#descipcionEditarriesgos9").value=respuesta[0].descripcion9; 
+   document.querySelector("#descipcionEditarriesgos10").value=respuesta[0].descripcion10;
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+/*=======================================================================
+
+     =====================  Tabla Usuarios  =======================
+
+==============================================================================*/
+ function crearTablaUsuario(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Usuarios</h2>"+
+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearUsuarios'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaUsuarios' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Nombre</th>"+
+                     " <th scope='col'>Foto</th>"+
+                     " <th scope='col'>Correo</th>"+
+                     " <th scope='col'>Teléfono</th>"+
+                     " <th scope='col'>Área</th>"+
+                     " <th scope='col'>Perfil</th>"+
+                     " <th scope='col'>Acciones</th>"+
+                     
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+/*=======================================================================
+
+     =====================  Listar Usuarios  =======================
+
+==============================================================================*/
+function mostrarUsuarios(resultado){
+
+    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaUsuario();
+     
+     $('#tablaUsuarios').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "foto" },
+            { data: "correo" },
+            { data: "telefono" },
+            { data: "area" },
+            { data: "perfil" },
+            { data: "acciones"}
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaUsuario();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+
+
+}
+
+function mostrarSelectAreas(resultado){
+      
+   var usuario = resultado[0].arrayUsuario;
+   rol = usuario[0].rol;
+   
+   if(usuario[0].rol == "ADMIN" || usuario[0].rol == "SPECIAL" || usuario[0].rol == "STANDAR"){
+     
+      document.getElementById("rolGestionar").style.display="";
+      document.getElementById("navbarDropdownMenuLink1").style.display="";                       
+      document.getElementById("navbarDropdownMenuLink3").style.display=""; 
+      document.getElementById("navbarDropdownMenuLink4").style.display=""; 
+      document.getElementById("navbarDropdownMenuLink7").style.display=""; 
+      document.getElementById("navbarDropdownMenuLink8").style.display="";   
+      document.getElementById("navbarDropdownMenuLink9").style.display="";                                
+   }else if (rol === "EVALUATOR") {
+    document.getElementById("navbarDropdownMenuLink4").style.display = "";
+    document.getElementById("navbarDropdownMenuLink1").style.display = "";
+
+    
+    // Oculta los demás elementos
+    document.getElementById("navbarDropdownMenuLink3").style.display = "none";
+    document.getElementById("navbarDropdownMenuLink9").style.display = "none";
+    document.getElementById("rolGestionar").style.display = "none";
+    document.getElementById("navbarDropdownMenuLink8").style.display = "none";
+    document.getElementById("navbarDropdownMenuLink7").style.display = "none";
+  }
+  else if (rol === "GESTOR") {
+    document.getElementById("navbarDropdownMenuLink1").style.display = "";
+    document.getElementById("rolGestionar").style.display = "";
+    document.getElementById("navbarDropdownMenuLink9").style.display = "";
+    document.getElementById("navbarDropdownMenuLink3").style.display = "";    
+    
+    // Oculta los demás elementos
+    document.getElementById("navbarDropdownMenuLink7").style.display = "none";
+    document.getElementById("navbarDropdownMenuLink8").style.display = "none";
+    document.getElementById("navbarDropdownMenuLink4").style.display = "none";
+
+
+  }
+// Si el rol no es ADMIN, SPECIAL, STANDAR o OTRO, oculta todos los elementos
+  else {
+      document.getElementById("rolGestionar").style.display = "none";
+      document.getElementById("navbarDropdownMenuLink1").style.display = "none";
+      document.getElementById("navbarDropdownMenuLink3").style.display = "none";
+      document.getElementById("navbarDropdownMenuLink4").style.display = "none";
+      document.getElementById("navbarDropdownMenuLink7").style.display = "none";
+      document.getElementById("navbarDropdownMenuLink8").style.display = "none";
+      document.getElementById("navbarDropdownMenuLink9").style.display = "none";
+  }
+
+
+   
+   var foto = document.getElementById("fotoUsuarioActivo");
+   
+   if(usuario[0].foto != ""){
+     
+     foto.setAttribute("src","https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/logo-seguros-bolivar-Photoroom-4-removebg-preview-removebg-preview.png"); 
+     
+   }else{
+   
+     foto.setAttribute("src","https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/logo-seguros-bolivar-Photoroom-4-removebg-preview-removebg-preview.png"); 
+    
+   }
+   
+   var nombre = usuario[0].nombre.split(' ');
+   document.getElementById("nombreUsuarioActivo").innerHTML="Hola "+nombre[0]+"!!";
+   
+   
+  
+  document.querySelector("#areaUsuario").innerHTML=resultado[0].arrayAreas;
+}
+
+
+function mostrarEditarUsuario(resultado){
+ 
+  document.querySelector("#idEditarUsuarios").value=resultado[0].id;
+  document.querySelector("#nombreUsuarioEditar").value=resultado[0].nombre;
+  document.querySelector("#correoUsuarioEditar").value=resultado[0].correo;
+  document.querySelector("#telefonoUsuarioEditar").value=resultado[0].telefono;
+  document.querySelector("#perfilUsuarioEditar").innerHTML=resultado[0].perfil;
+  document.querySelector("#areaUsuarioEditar").innerHTML=resultado[0].area;
+  
+  $.LoadingOverlay("hide");
+}
+
+
+
+/*=======================================================================
+
+     =====================  Tabla Tickets  =======================
+
+==============================================================================*/
+function crearTablaTickets(){
+     
+      var titulo;
+        
+        if(pagActual=="listarTicketsNuevos"){
+          
+          titulo = "Tickets Nuevos";
+        }else if(pagActual=="listarTicketsPendientes"){
+          
+          titulo = "Tickets En Curso"; 
+          
+        }else if(pagActual=="listarTicketsResueltos"){
+          
+          titulo = "Tickets Resueltos";        
+        }else if(pagActual=="listarTicketsBorrados"){
+          
+          titulo = "Tickets Borrados";        
+        }else if(pagActual=="listarMisTickets"){
+          
+          titulo = "Mis Tickets";        
+        }else if(pagActual=="listarMisTareas"){
+          
+          titulo = "Mis Tareas";        
+        }else if(pagActual=="listarTicketsAll"){
+          
+          titulo = "Tickets Sin Resolver";        
+        }
+        
+          
+      var tabla ="<div class='container'>"+      
+                 "<h2>"+titulo+"</h2>"+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearTicket'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                 
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaTickets' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Asunto</th>"+
+                     " <th scope='col'>Estado</th>"+
+                     " <th scope='col'>Fecha</th>"+
+                     " <th scope='col'>Agente</th>"+
+                     " <th scope='col'>Cliente</th>"+
+                     " <th scope='col'>Área</th>"+
+                     " <th scope='col'>T. Soporte</th>"+ 
+                     " <th scope='col'>Acciones</th>"+ 
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+
+
+
+}
+/*=======================================================================
+
+     =====================  Listar Usuarios  =======================
+
+==============================================================================*/
+function mostrarTickets(resultado){
+
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaTickets();
+     
+     $('#tablaTickets').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "asunto" },
+            { data: "estado" },
+            { data: "fechaI" },
+            { data: "agente" },
+            { data: "cliente" },
+            { data: "area" },
+            { data: "etiqueta"},
+            { data: "acciones"}
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaTickets();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  GestionarTickets  =======================
+
+==============================================================================*/
+function mostrarGestionTicket(respuesta){
+
+//  console.log(respuesta);
+  
+  var tickets = respuesta[0].respuestaA;
+  var respuestas = respuesta[0].respuestas;
+  
+  ticketActivo = tickets[0].id;
+//  Botonos de estado  
+  if(tickets[0].estado=="Nuevo"){    
+     var estado = "<a class='btn btn-warning btn-sm botonesEstado' title='Estado'>"+
+                     "Nuevo"+
+                  "</a>";
+                  
+  }else if(tickets[0].estado=="Abierto"){   
+    var estado = "<a class='btn btn-danger btn-sm botonesEstado' title='Estado'>"+
+                   "Abierto"+
+                 "</a>";
+  
+  }else if(tickets[0].estado=="En Curso"){   
+    var estado = "<a class='btn btn-info btn-sm botonesEstado' title='Estado'>"+
+                   "En Curso"+
+                 "</a>";
+  
+  }else if(tickets[0].estado=="Cerrado"){  
+    var estado = "<a class='btn btn-success btn-sm botonesEstado' title='Estado'>"+
+                    "Cerrado"+
+                  "</a>";
+                  
+  }else if(tickets[0].estado=="Borrado"){  
+    var estado = "<a class='btn btn-secondary btn-sm botonesEstado' title='Estado'>"+
+                   "Borrado"+
+                 "</a>";
+  }
+ 
+ var html = estado;
+ 
+// Numero de Tickets
+  
+  html = html + "<strong class='numeroTicket'>Ticket #"+tickets[0].id+"</strong><br>";
+  
+  html = html + "<div class='container row'>"+
+                 "<div class='col-md-3'>"+
+                  "<form id='formResolverTicket' autoplete='off' onsubmit='closeTicket(this); return false;'>"+
+                  "<input type='hidden' value='"+tickets[0].id+"' name='txtIdCerrarTicket'>"+
+                  "<input type='hidden' value='cerrarTicket' name='txtAccion'>"+
+                     "<div class='row'>"+
+                     
+                       "<div class='form-group col-md-12'>"+
+                         "<label>Agente Asignado</label>"+
+                         "<select class='form-select' id='agenteAsignadoTicket' name='txtAgenteAsignadoTicket'>";
+                         html = html + tickets[0].agente;
+                         html = html +
+                         "</select>"+
+                       "</div>"+
+                       
+                       "<div class='form-group col-md-12'>"+
+                         "<label>Tipo de soporte</label>"+
+                         "<select class='form-select' id='tipoSoporteTicket' name='txtTipoSoporteTicket'>";
+                         html = html + tickets[0].etiqueta;
+                         html = html +
+                         "</select>"+
+                       "</div>"+
+                       
+                       "<div class='form-group col-md-6'>"+
+                         "<label>Prioridad</label>"+
+                         "<select class='form-select' id='prioridadTicket' name='txtPrioridadTicket'>";
+                         html = html + tickets[0].prioridad;
+                         html = html +
+                         "</select>"+
+                       "</div>"+
+                       
+                       "<div class='form-group col-md-6'>"+
+                         "<label>Área</label>"+
+                         "<select class='form-select' id='areaTicket' name='txtAreaTicket'>";
+                         html = html + tickets[0].area;
+                         html = html +
+                         "</select>"+
+                       "</div>"+
+                       
+                       "<div class='form-group col-md-12'>"+
+                         "<label>Estado</label>"+
+                         "<select class='form-select' id='estadoTicket' name='txtEstadoTicket'>";
+                         html = html + tickets[0].estadoForm;
+                         html = html +
+                         "</select>"+
+                       "</div>"+
+                       
+                       "<div class='form-group col-md-12'>"+
+                         "<label>Adjunto</label>"+
+                         "<input type='hidden' id='extensionEvidenciaTicket' name='txtExtensionEvidenciaTicket'>"+
+                         "<input class='form-control' type='file' id='evidenciaTicketCerrar' name='txtEvidenciaTicket'>"+           
+                       "</div>"+
+                       
+                       "<div class='form-group col-md-12'>"+
+                         "<label>Respuesta</label>"+
+                         "<textarea class='form-control' rows='5' id='respuestaTicket' name='txtRespuestaTicket'>"+           
+                         "</textarea>"+
+                       "</div>"+         
+                     "</div><br>"+
+                     "<button type='submit' class='btn btn-primary'>Guardar</button>"+
+                  "</form>"+
+                "</div>"+
+                "<div class='col-md-9'>"+
+                  "<div class='row'>"+
+                    
+                    "<div class='col-md-12'>"+
+                      "<img src='https://drive.google.com/uc?id=";
+                      
+                         if(tickets[0].fotoCliente==""){
+                           html = html + "1xn2f_cMA8xbeSTsVjlHVYQWtehCE4E5o";
+                         }else{
+                           html = html + tickets[0].fotoCliente;
+                         }
+                         
+                         html = html +
+                         
+                      "' class='img-thumbnail img-fluid rounded-circle imgTickets'>"+
+                      "<strong>";
+                         html = html + tickets[0].nombreCliente;
+                         html = html +
+                         "</strong>"+
+                      "<strong class='tamanoFecha'> ";
+                         html = html + tickets[0].fechaI;
+                         html = html +
+                      "</strong>"+        
+                    "</div>"+
+                    "<div class='col-md-12'>"+
+                      "<p class='posicionParrafo'>";
+                         html = html + tickets[0].descripcion;
+                         html = html +          
+                        "<br>";
+                        
+                        if(tickets[0].adjunto!=""){
+                          html = html +
+                          "<img src='https://drive.google.com/uc?id=";
+                             html = html + tickets[0].adjunto;
+                             html = html +
+                          "' class='img-thumbnail img-fluid'>"; 
+                        }
+                       html = html +
+                                  
+                      "</p>"+
+                    "</div>"+
+                    
+                    "<hr>";
+                    
+                    for(var j = 0; j<respuestas.length; j++){                    
+                      html = html +
+                      "<div class='col-md-12'>"+
+                          "<img src='https://drive.google.com/uc?id=";
+                          
+                          if(respuestas[j].fotoAgente == ""){
+                            html = html + "1xn2f_cMA8xbeSTsVjlHVYQWtehCE4E5o";
+                          }else{
+                            html = html + respuestas[j].fotoAgente;
+                          }
+                          
+                          html = html +
+                          "' class='img-thumbnail img-fluid rounded-circle imgTickets'>"+
+                          "<strong>";
+                          
+                           html = html + respuestas[j].nombreAgente;
+                           html = html+                          
+                           
+                          "</strong>"+
+                          "<strong class='tamanoFecha'>";
+                          html = html + respuestas[j].fecha;
+                          html = html +
+                          "</strong>"+        
+                       "</div>"+
+                       "<div class='col-md-12'>"+
+                          "<p class='posicionParrafo'>";
+                            html = html + respuestas[j].descripcionRespuesta;
+                            html = html +                      
+                            "<br>";
+                            
+                            if(respuestas[j].adjuntoRespuesta!=""){
+                                 html = html +
+                                   "<img src='https://drive.google.com/uc?id=";
+                                 html = html + respuestas[j].adjuntoRespuesta;
+                                 html = html +
+                                 "' class='img-thumbnail img-fluid'>";
+                            }
+                                      
+                          html = html +            
+                          "</p>"+
+                        "</div>"+
+                        "<hr>";
+                     }
+                     
+                     html = html +
+                      "</div>"+
+                    "</div>"+ 
+                  "</div>"; 
+ 
+ document.getElementById("contenidos").innerHTML=html;
+ $.LoadingOverlay("hide");  
+}
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Gestionar Mis Tickets  =======================
+
+==============================================================================*/
+
+function mostrarGestionMisTickets(respuesta){
+
+//  console.log(respuesta);
+  
+  var tickets = respuesta[0].respuestaA;
+  var respuestas = respuesta[0].respuestas;
+  
+  ticketActivo = tickets[0].id;
+//  Botonos de estado  
+  if(tickets[0].estado=="Nuevo"){    
+     var estado = "<a class='btn btn-warning btn-sm botonesEstado' title='Estado'>"+
+                     "Nuevo"+
+                  "</a>";
+                  
+  }else if(tickets[0].estado=="Abierto"){   
+    var estado = "<a class='btn btn-danger btn-sm botonesEstado' title='Estado'>"+
+                   "Abierto"+
+                 "</a>";
+  
+  }else if(tickets[0].estado=="En Curso"){   
+    var estado = "<a class='btn btn-info btn-sm botonesEstado' title='Estado'>"+
+                   "En Curso"+
+                 "</a>";
+  
+  }else if(tickets[0].estado=="Cerrado"){  
+    var estado = "<a class='btn btn-success btn-sm botonesEstado' title='Estado'>"+
+                    "Cerrado"+
+                  "</a>";
+                  
+  }else if(tickets[0].estado=="Borrado"){  
+    var estado = "<a class='btn btn-secondary btn-sm botonesEstado' title='Estado'>"+
+                   "Borrado"+
+                 "</a>";
+  }
+ 
+ var html = estado;
+ 
+// Numero de Tickets
+  
+  html = html + "<strong class='numeroTicket'>Ticket #"+tickets[0].id+"</strong><br>";
+  
+  html = html + "<div class='container row'>"+
+                 "<div class='col-md-3'>"+
+                  "<form id='formResolverTicket' autoplete='off' onsubmit='closeTicket(this); return false;'>"+
+                  "<input type='hidden' value='"+tickets[0].id+"' name='txtIdCerrarTicket'>"+
+                  "<input type='hidden' value='respuestaCliente' name='txtAccion'>"+
+                     "<div class='row'>"+
+                     
+                       "<div class='form-group col-md-12'>"+
+                         "<label>Adjunto</label>"+
+                         "<input type='hidden' id='extensionEvidenciaTicket' name='txtExtensionEvidenciaTicket'>"+
+                         "<input class='form-control' type='file' id='evidenciaTicketCerrar' name='txtEvidenciaTicket'>"+           
+                       "</div>"+
+                       
+                       "<div class='form-group col-md-12'>"+
+                         "<label>Respuesta</label>"+
+                         "<textarea class='form-control' rows='5' id='respuestaTicket' name='txtRespuestaTicket'>"+           
+                         "</textarea>"+
+                       "</div>"+         
+                     "</div><br>"+
+                     "<button type='submit' class='btn btn-primary'>Guardar</button>"+
+                  "</form>"+
+                "</div>"+
+                "<div class='col-md-9'>"+
+                  "<div class='row'>"+
+                    
+                    "<div class='col-md-12'>"+
+                      "<img src='https://drive.google.com/uc?id=";
+                      
+                         if(tickets[0].fotoCliente==""){
+                           html = html + "1xn2f_cMA8xbeSTsVjlHVYQWtehCE4E5o";
+                         }else{
+                           html = html + tickets[0].fotoCliente;
+                         }
+                         
+                         html = html +
+                         
+                      "' class='img-thumbnail img-fluid rounded-circle imgTickets'>"+
+                      "<strong>";
+                         html = html + tickets[0].nombreCliente;
+                         html = html +
+                         "</strong>"+
+                      "<strong class='tamanoFecha'> ";
+                         html = html + tickets[0].fechaI;
+                         html = html +
+                      "</strong>"+        
+                    "</div>"+
+                    "<div class='col-md-12'>"+
+                      "<p class='posicionParrafo'>";
+                         html = html + tickets[0].descripcion;
+                         html = html +          
+                        "<br>";
+                        
+                        if(tickets[0].adjunto!=""){
+                          html = html +
+                          "<img src='https://drive.google.com/uc?id=";
+                             html = html + tickets[0].adjunto;
+                             html = html +
+                          "' class='img-thumbnail img-fluid'>"; 
+                        }
+                       html = html +
+                                  
+                      "</p>"+
+                    "</div>"+
+                    
+                    "<hr>";
+                    
+                    for(var j = 0; j<respuestas.length; j++){
+                    
+                      html = html +
+                      "<div class='col-md-12'>"+
+                          "<img src='https://drive.google.com/uc?id=";
+                          
+                          if(respuestas[j].fotoAgente == ""){
+                            html = html + "1xn2f_cMA8xbeSTsVjlHVYQWtehCE4E5o";
+                          }else{
+                            html = html + respuestas[j].fotoAgente;
+                          }
+                          
+                          html = html +
+                          "' class='img-thumbnail img-fluid rounded-circle imgTickets'>"+
+                          "<strong>";
+                          
+                           html = html + respuestas[j].nombreAgente;
+                           html = html+                          
+                           
+                          "</strong>"+
+                          "<strong class='tamanoFecha'>";
+                          html = html + respuestas[j].fecha;
+                          html = html +
+                          "</strong>"+        
+                       "</div>"+
+                       "<div class='col-md-12'>"+
+                          "<p class='posicionParrafo'>";
+                            html = html + respuestas[j].descripcionRespuesta;
+                            html = html +                      
+                            "<br>";
+                            
+                            if(respuestas[j].adjuntoRespuesta!=""){
+                                 html = html +
+                                   "<img src='https://drive.google.com/uc?id=";
+                                 html = html + respuestas[j].adjuntoRespuesta;
+                                 html = html +
+                                 "' class='img-thumbnail img-fluid'>";
+                            }
+                                      
+                          html = html +            
+                          "</p>"+
+                        "</div>"+
+                        "<hr>";
+                     }
+                     
+                     html = html +
+                      "</div>"+
+                    "</div>"+ 
+                  "</div>"; 
+ 
+ document.getElementById("contenidos").innerHTML=html;
+ $.LoadingOverlay("hide");  
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Graficas INFO  =======================
+
+==============================================================================*/
+function datosGraficas(respuesta){
+
+ var tickets = respuesta[0].arrayTickets;
+ 
+ document.querySelector("#nuevoCantidad").innerHTML="Nuevos "+tickets[0].tickets[0];
+ document.querySelector("#abiertoCantidad").innerHTML="Abiertos "+tickets[0].tickets[1];
+ document.querySelector("#enCursoCantidad").innerHTML="En Curso "+tickets[0].tickets[2];
+ 
+ graficaLineas(respuesta[0].arrayTicketsMes);
+ graficaBarras(respuesta[0].arrayAgentes);
+ graficaTorta(respuesta[0].arrayEtiquetas);
+ graficaAreas(respuesta[0].arrayAreas);
+ tablaUsuarios(respuesta[0].arrayUsuarios);
+
+}
+
+
+/*=======================================================================
+
+     =====================  Grafica de Lineas  =======================
+
+==============================================================================*/
+function  graficaLineas(respuesta){
+
+ var mes = [];
+ var abiertos = [];
+ var enCurso = [];
+ var cerrados = [];
+ 
+ for(var i = 0; i<respuesta.length; i++){
+   
+   mes.push(respuesta[i].mes);
+   abiertos.push(respuesta[i].abiertos);
+   enCurso.push(respuesta[i].enCurso);
+   cerrados.push(respuesta[i].cerrados);   
+ }
+
+  const labels = mes;
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Abiertos',
+        data: abiertos,
+        borderColor: '#dc3545',
+        backgroundColor: '#dc3545',
+        tension:0.1
+      },
+      {
+        label: 'En Curso',
+        data: enCurso,
+        borderColor: '#0dcaf0',
+        backgroundColor: '#0dcaf0',
+        tension:0.1
+      },
+      {
+        label: 'Cerrados',
+        data: cerrados,
+        borderColor: '#198754',
+        backgroundColor: '#198754',
+        tension:0.1
+      }
+      
+    ]
+  };
+  
+  const config = {
+  type: 'line',
+  data: data,
+  options: {
+    responsive: true,
+    interaction:{
+      mode:'index',
+      intersect:false
+      },plugins:{
+        title:{
+          display:true,
+          text:'Tickets por Estados'
+        }
+      }     
+    } 
+  };
+
+ var div = document.getElementById("graficaTickets");
+ 
+ div.innerHTML="";
+ 
+ var canvas = document.createElement("canvas");
+ canvas.setAttribute('style','width:1200px; height:350px;');
+ canvas.setAttribute('id',"myChart");
+ div.appendChild(canvas);
+ 
+ var grafica = new Chart(canvas,config);
+
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Grafica de Barras  =======================
+
+==============================================================================*/
+
+function graficaBarras(respuesta){
+
+ var nombre = [];
+ var abiertos = [];
+ var enCurso = [];
+ var cerrados = [];
+ 
+ for(var i = 0; i<4; i++){
+   
+   nombre.push(respuesta[i].nombre);
+   abiertos.push(respuesta[i].abiertos);
+   enCurso.push(respuesta[i].enCurso);
+   cerrados.push(respuesta[i].cerrados);   
+ }
+
+  const labels = nombre;
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Abiertos',
+        data: abiertos,
+        borderColor: '#dc3545',
+        backgroundColor: '#dc3545',
+        tension:0.1,
+        fill:false
+      },
+      {
+        label: 'En Curso',
+        data: enCurso,
+        borderColor: '#0dcaf0',
+        backgroundColor: '#0dcaf0',
+        tension:0.1,
+        fill:false
+      },
+      {
+        label: 'Cerrados',
+        data: cerrados,
+        borderColor: '#198754',
+        backgroundColor: '#198754',
+        tension:0.1,
+        fill:false
+      }
+      
+    ]
+  };
+  
+  const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    responsive: true,
+    interaction:{
+      mode:'index',
+      intersect:false
+      },plugins:{
+        title:{
+          display:true,
+          text:'Tickets por Agentes'
+        }
+      }     
+    } 
+  };
+
+ var div = document.getElementById("graficaAgentes");
+ 
+ div.innerHTML="";
+ 
+ var canvas = document.createElement("canvas");
+ canvas.setAttribute('style','width:600px; height:300px; margin:auto;');
+ canvas.setAttribute('id',"myChart2");
+ div.appendChild(canvas);
+ 
+ var grafica = new Chart(canvas,config);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Grafica de Torta  =======================
+
+==============================================================================*/
+function graficaTorta(respuesta){
+
+ var nombre = [];
+ var tickets = [];
+ var colores = [];
+  
+ for(var i = 0; i<respuesta.length; i++){
+   
+   nombre.push(respuesta[i].nombre);
+   tickets.push(respuesta[i].tickets);
+   colores.push(respuesta[i].colores);   
+ }
+
+  const labels = nombre;
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        
+        data: tickets,
+        borderColor:colores,
+        backgroundColor: colores,
+        tension:0.1
+      }
+      
+    ]
+  };
+  
+  const config = {
+  type: 'doughnut',
+  data: data,
+  options: {
+    responsive: true,
+    interaction:{
+      mode:'index',
+      intersect:false
+      },plugins:{
+        title:{
+          display:true,
+          text:'Tickets By T Soporte'
+        }
+      }     
+    } 
+  };
+
+ var div = document.getElementById("graficaEtiquetas");
+ 
+ div.innerHTML="";
+ 
+ var canvas = document.createElement("canvas");
+ canvas.setAttribute('style','width:300px; height:70px; margin:auto;');
+ canvas.setAttribute('id',"myChart3");
+ div.appendChild(canvas);
+ 
+ var grafica = new Chart(canvas,config);
+
+
+}
+
+/*=======================================================================
+
+     =====================  Grafica de Lineas Areas  =======================
+
+==============================================================================*/
+function graficaAreas(respuesta){
+
+ var nombre = [];
+ var tickets = [];
+   
+ for(var i = 0; i<respuesta.length; i++){
+   
+   nombre.push(respuesta[i].nombre);
+   tickets.push(respuesta[i].tickets);
+   
+ }
+
+  const labels = nombre;
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label:'Áreas',
+        data: tickets,
+        fill:false,
+        borderColor:'#dc3545',
+        backgroundColor:'#dc3545',
+        tension:0.1,
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
+
+      }
+      
+    ]
+  };
+  
+  const config = {
+  type: 'line',
+  data: data,
+  options: {
+    responsive: true,
+    interaction:{
+      mode:'index',
+      intersect:false
+      },plugins:{
+        title:{
+          display:true,
+          text:'Tickets By Áreas'
+        }
+      }     
+    } 
+  };
+
+ var div = document.getElementById("graficaAreas");
+ 
+ div.innerHTML="";
+ 
+ var canvas = document.createElement("canvas");
+ canvas.setAttribute('style','width:800px; height:400px; margin:auto;');
+ canvas.setAttribute('id',"myChart4");
+ div.appendChild(canvas);
+ 
+ var grafica = new Chart(canvas,config);
+}
+
+
+/*=======================================================================
+
+     =====================  Tba Tickets Usuarios  =======================
+
+==============================================================================*/
+
+function tablaUsuarios(respuesta){
+
+ var html = "<table class='table table-striped table-hover table-bodered table-condensed'"+
+              "<thead>"+
+                 "<th>#</th>"+
+                 "<th>Nombre</th>"+
+                 "<th>Tickets</th>"+
+              "</thead>"+
+              "<tbody>";
+              
+              for(var i=0; i<respuesta.length; i++){
+                html=html+
+                "<tr>"+
+                    "<td>"+(i+1)+"</td>";
+                    
+                    if(respuesta[i].foto != ""){
+                      html = html+
+                      "<td><img src='https://drive.google.com/uc?id="+respuesta[i].foto+"'";
+                      
+                      }else{
+                        html = html+
+                        "<td><img src='https://drive.google.com/uc?id=1xn2f_cMA8xbeSTsVjlHVYQWtehCE4E5o'";                                            
+                      }
+                      
+                      html=html+
+                      
+                      "class='img-thumbnail img-fluid rounded-circle' style='object-fit:cover;"+
+                      "width:30px; height:30px; margin-right:20px;'>"+respuesta[i].nombre+"</td>"+
+                      "<td>"+respuesta[i].tickets+"</td></tr>";
+                    }
+                    
+                    html+html
+                   
+              "</tbody>"+
+            "</table>";
+
+  var div = document.getElementById("graficaUsuarios");
+  div.innerHTML=html;
+
+   $.LoadingOverlay("hide");
+}
+
+
+
+/*=======================================================================
+
+     =====================  Mostrar Graficas HTML  =======================
+
+==============================================================================*/
+
+function mostrarGraficasHTML(respuesta){
+
+  document.getElementById("contenidos").innerHTML=respuesta;
+  
+}
+
+/*=======================================================================
+
+     =====================  Mostrar Inicio HTML  =======================
+
+==============================================================================*/
+function mostrarInicio(respuesta){
+
+  document.getElementById("contenidos").innerHTML=respuesta;
+  
+  $.LoadingOverlay("hide");
+
+}
+
+
+/*=======================================================================
+
+     =====================  ir Arriba  =======================
+
+==============================================================================*/
+
+addEventListener('DOMContentLoaded', () =>{
+
+  const barraIndicador = document.querySelector(".indicadorScroll")
+  const obtenerPixelInicio = () => document.documentElement.scrollTop || document.body.scrollTop
+  
+  const indicarScoll = () => {
+    
+    let alto = document.documentElement.scrollHeight - document.documentElement.clientHeight
+    let avanceScroll = Math.round((obtenerPixelInicio() / alto)*100)
+    var avance = avanceScroll+'%';
+    
+    console.log(avance);
+    
+    barraIndicador.style.width = avance;
+  }
+  
+  window.addEventListener('scroll', indicarScoll)
+
+});
+
+
+$(document).ready(function(){
+  
+  $('.irArriba').click(function(){
+     
+     $('body, html').animate({
+       scrollTop:'0px'
+     }, 300);
+  
+  });
+  
+  $(window).scroll(function(){
+     if( $(this).scrollTop()>0){
+       $('.irArriba').slideDown(350);
+     }else{        
+        $('.irArriba').slideUp(350);     
+     }  
+  });
+});
+
+
+
+</script>

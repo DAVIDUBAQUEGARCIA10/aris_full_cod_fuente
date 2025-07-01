@@ -1,0 +1,452 @@
+<style>
+.posicionBoton{
+
+  margin-right:4px;
+
+}
+
+.imagenes{
+
+   object-fit:cover;
+   width:65px;
+   height:55px;   
+
+}
+
+.tamano{
+   
+   font-size:10px;
+   width:70%;
+   color:#FFFFFF;
+
+}
+
+.botonesEstado{
+   
+   font-size:10px;
+   color:#FFFFFF;  
+}
+
+.numeroTicket{
+
+ font-size:12px;
+ padding-left:10px; 
+}
+
+.imgTickets{
+  
+  object-fit: cover;
+  width:50px;
+  height:50px;
+
+}
+
+.tamanoFecha{
+  font-size:10px;
+}
+
+.posicionParrafo{
+   
+   position:relative;
+   left:45px;
+   z-index:1;
+
+}
+
+.tamanoCajaSmartNuevos{
+
+  background:#FFC107;
+  width:180px;
+  height:60px;
+  margin:auto;
+}
+
+.colorTexto{
+  
+  color:#FFFFFF;
+  text-align:center;
+  font-size:25;
+  padding:10%;  
+}
+
+.tamanoCajaSmartAbiertos{
+
+  background:#dc3545;
+  width:180px;
+  height:60px;
+  margin:auto;
+
+}
+
+.tamanoCajaSmartPendientes{
+
+  background:#0dcaf0;
+  width:180px;
+  height:60px;
+  margin:auto;
+
+}
+
+.irArriba{
+ display:none;
+ position:fixed;
+ z-index:1000;
+ right:15px;
+ bottom:15px;
+ background-color:#31B404;
+ width:55px;
+ height:55px;
+ color:white;
+ text-align:center;
+ border-radius:50%;
+ transition: all .2s;
+}
+
+
+.irArriba:hover{  
+  cursor:pointer;
+  transform:scale(1.1);  
+}
+
+.indicadorContenido{
+  
+  width:100%;
+  position:fixed;
+  top:-1;
+  height:7px;
+  z-index:1001;
+}
+
+.indicadorScroll{
+  
+  height:100%;
+  width:0;
+  background-color:#31B404;
+}
+
+.mostrar{
+  
+  opacity:1;
+  visibility:visible;
+
+}
+
+.nombreUsuarioActivo{
+
+ margin-top:13px;
+}
+
+.img2{
+  
+  margin-right:10px;
+ 
+}
+
+
+.bg-green {
+    background-color: green;
+}
+
+.text-white {
+    color: white;
+}
+
+
+    .title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #7AB44C;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      color: #d1d1d1;
+      background-color: #7AB44C;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; /* Espacio entre los botones */
+      margin-bottom: 0mm; /* Ajusta el valor según la cantidad de espacio que necesites */
+    }
+    .gauge-wrapper {
+      margin-top: 30px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 200px; /* Ancho del medidor */
+    }
+    h1 {
+      font-size: 18px;
+    }
+    .gauge {
+      background: #e7e7e7;
+      box-shadow: 0 -3px 6px 2px rgba(0, 0, 0, 0.50);
+      width: 200px; /* Ancho del medidor */
+      height: 100px;
+      border-radius: 100px 100px 0 0!important;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto; /* Centrar horizontalmente */
+    }
+    .gauge-center {
+      content: '';
+      color: #fff;
+      width: 60%;
+      height: 60%;
+      background: #15222E;
+      border-radius: 100px 100px 0 0!important;
+      position: absolute;
+      box-shadow: 0 -13px 15px -10px rgba(0, 0, 0, 0.28);
+      right: 21%;
+      bottom: 0;
+      color: #fff;
+      z-index:10;
+    }
+    .gauge-center .label, .gauge-center .number {
+      display:block;
+      width: 100%;
+      text-align: center;
+      border:0!important;
+    }
+    .gauge-center .label {
+      font-size:0.75em;
+      opacity:0.6;
+      margin:1.1em 0 0.3em 0;
+    }
+    .gauge-center .number {
+      font-size:1.2em;
+    }
+    .needle {
+      width: 80px;
+      height: 7px;
+      background: #15222E;
+      border-bottom-left-radius: 100%!important;
+      border-bottom-right-radius: 5px!important;
+      border-top-left-radius: 100%!important;
+      border-top-right-radius: 5px!important;
+      position: absolute;
+      bottom: -2px;
+      left: 20px;
+      transform-origin: 100% 4px;
+      transform: rotate(0deg);
+      box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.38);
+      display:none;
+      z-index:9;
+    }
+    .four.rischio1 .needle {animation: fourspeed1 2s 1 both; animation-delay: 1s; display:block;}
+    .four.rischio2 .needle {animation: fourspeed2 2s 1 both; animation-delay: 1s; display:block;}
+    .four.rischio3 .needle {animation: fourspeed3 2s 1 both; animation-delay: 1s; display:block;}
+    .four.rischio4 .needle {animation: fourspeed4 2s 1 both; animation-delay: 1s; display:block;}
+    .slice-colors {height:100%;}
+    .slice-colors .st {
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;  
+    }
+    .four .slice-colors .st.slice-item:nth-child(2) {
+      border-top: 50px #f1c40f solid;
+      border-right: 50px #f1c40f solid;
+      background-color:#1eaa59;
+    }
+    .four .slice-colors .st.slice-item:nth-child(4) {
+      left:50%;
+      border-bottom: 50px #E84C3D solid;
+      border-right: 50px #E84C3D solid;
+      background-color:#e67e22;
+    }
+    @-webkit-keyframes fourspeed1 {
+      0% {transform: rotate(0);}
+      100% {transform: rotate(16deg);}
+    }
+    @-webkit-keyframes fourspeed2 {
+      0% {transform: rotate(0);}
+      100% {transform: rotate(65deg);}
+    }
+    @-webkit-keyframes fourspeed3 {
+      0% {transform: rotate(0);}
+      100% {transform: rotate(115deg);}
+    }
+    @-webkit-keyframes fourspeed4 {
+      0% {transform: rotate(0);}
+      100% {transform: rotate(164deg);}
+    }
+    {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        padding: 1px 0;
+        font-size: 12px; /* Tamaño de fuente más pequeño */
+
+    }
+    .titulo {
+            background-color: #008000; /* Color verde de fondo */
+            color: white; /* Color blanco del texto */
+            text-align: center; /* Texto centrado */
+            padding: 10px; /* Espaciado alrededor del texto */
+            font-size: 2em; /* Tamaño de fuente más grande */
+            font-family: Arial, sans-serif; /* Tipo de fuente */
+            font-size: 18px; /* Tamaño de fuente más pequeño */
+        }
+    .btn-custom {
+            background-color: #7AB44C; /* Verde claro */
+            color: white; /* Color del texto */
+    }    
+    .mb-3 {
+        margin-bottom: 1rem; /* Aumenta el espacio inferior para ambos botones */
+    }
+    .mr-3 {
+        margin-right: 1rem; /* Añade margen derecho al primer botón */
+    }    
+  .small-text {
+    font-size: 10px; /* Ajusta el tamaño de fuente según tus necesidades */
+  } 
+  .clear {
+    clear: both;
+  } 
+
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E6F4EA; /* Color de fondo */
+    border: 2px solid #137333; /* Color del borde */
+    border-radius: 20px; /* Bordes redondeados */
+    width: 90px; /* Ancho más pequeño */
+    height: 30px; /* Altura más pequeña */
+    color: #137333; /* Color del icono */
+    font-size: 16px; /* Tamaño del icono más pequeño */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-bottom:6px;
+  }
+
+  .btn-primary i {
+    color: #137333; /* Color del icono */
+    font-size: 14px; /* Ajusta el tamaño del icono */
+  }
+
+  .btn-primary:hover {
+    background-color: #D4EAD7; /* Cambio de color en hover */
+    border-color: #0F5A27;
+  }
+
+    .btn-danger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F8D7DA; /* Color de fondo rojo claro */
+      border: 2px solid #D32F2F; /* Borde rojo oscuro */
+      border-radius: 20px; /* Bordes redondeados */
+      width: 90px; /* Ancho más pequeño */
+      height: 30px; /* Altura más pequeña */
+      color: #D32F2F; /* Color del icono */
+      font-size: 16px; /* Tamaño del icono más pequeño */
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .btn-danger i {
+      color: #D32F2F; /* Color del icono */
+      font-size: 14px; /* Ajusta el tamaño del icono */
+    }
+
+    .btn-danger:hover {
+      background-color: #F5C6CB; /* Cambio de color en hover */
+      border-color: #B71C1C;
+    }
+
+
+    /* Contenedor de los botones para que estén en fila */
+    .dt-buttons {
+      display: flex; /* Asegura que los botones estén en fila */
+      gap: 10px; /* Espacio entre los botones */
+    }
+
+    /* Estilos para los botones tipo "btn-success" */
+    button.dt-button, div.dt-button, a.dt-button {
+      display: inline-flex; /* Se mantiene en línea con otros elementos */
+      align-items: center;
+      justify-content: center;
+      background-color: #D4EDDA; /* Color de fondo verde claro */
+      border: 2px solid #218838; /* Borde verde oscuro */
+      border-radius: 20px; /* Bordes redondeados */
+      width: 120px; /* 🔴 Aumenté el ancho */
+      height: 30px; /* 🔴 Aumenté la altura */
+      color: #155724; /* Color del icono y texto */
+      font-size: 12px; /* Tamaño del icono más pequeño */
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    /* Icono dentro del botón */
+    button.dt-button i, div.dt-button i, a.dt-button i {
+      color: #155724; /* Color del icono */
+      font-size: 18px; /* 🔴 Aumenté el tamaño del icono */
+    }
+
+    /* Efecto hover (cambia a un tono más oscuro de verde) */
+    button.dt-button:hover, div.dt-button:hover, a.dt-button:hover {
+      background-color: #C3E6CB; /* Cambio de color en hover */
+      border-color: #1E7E34;
+    }
+
+
+
+    .btn-custom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #E6F4EA; /* Color de fondo */
+      border: 2px solid #137333; /* Color del borde */
+      border-radius: 20px; /* Bordes redondeados */
+      width: 270px; /* Ancho más pequeño */
+      height: 30px; /* Altura más pequeña */
+      color: #137333; /* Color del icono */
+      font-size: 16px; /* Tamaño del icono más pequeño */
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .btn-custom i {
+      color: #137333; /* Color del icono */
+      font-size: 14px; /* Ajusta el tamaño del icono */
+    }
+
+    .btn-custom:hover {
+      background-color: #D4EAD7; /* Cambio de color en hover */
+      border-color: #0F5A27;
+    }
+
+    h2{
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #6C6C6C;
+    }
+
+
+
+
+</style>
+
+
