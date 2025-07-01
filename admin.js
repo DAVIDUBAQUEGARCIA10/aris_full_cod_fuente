@@ -3140,12 +3140,12 @@ function listarUsuarios(idUsuario, rol){
     
     if(datos[i][2]!=""){
       var img  = "<div class='text-center'>"+
-                    "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/logo-seguros-bolivar-Photoroom-4-removebg-preview-removebg-preview.png' class='img-thumbnail img-fluid imagenes'> "+
+                    "<img src='https://raw.githubusercontent.com/DAVIDUBAQUEGARCIA10/PROYECTO_ARIS/refs/heads/main/BANNER/ChatGPT%20Image%201%20jul%202025%2C%2000_08_18.png' class='img-thumbnail img-fluid imagenes'> "+
                  "</div>";
     }else{
     
       var img  = "<div class='text-center'>"+
-                    "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/logo-seguros-bolivar-Photoroom-4-removebg-preview-removebg-preview.png' class='img-thumbnail img-fluid imagenes'> "+
+                    "<img src='https://raw.githubusercontent.com/DAVIDUBAQUEGARCIA10/PROYECTO_ARIS/refs/heads/main/BANNER/ChatGPT%20Image%201%20jul%202025%2C%2000_08_18.png' class='img-thumbnail img-fluid imagenes'> "+
                  "</div>";  
     }
     
