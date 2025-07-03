@@ -336,14 +336,15 @@
   }
 
   .help-icon {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    margin-left: 6px;
-    color: #666;
-    font-weight: bold;
-    font-size: 0.65rem; /* Tamaño más pequeño */
-
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-left: -5px;
+  color: #666;
+  font-weight: bold;
+  font-size: 0.75rem; /* Tamaño más pequeño */
+  margin-bottom: -0.23rem;
+  position: relative; top: -3px;
   }
 
   .help-icon .help-text {
@@ -356,7 +357,9 @@
     font-size: 0.75rem;
     padding: 6px 10px;
     border-radius: 5px;
-    white-space: nowrap;
+    white-space: normal;       /* Permite saltos de línea */
+    max-width: 165px;          /* Aumenta el ancho máximo */
+    width: max-content;     /* 🔹 Rompe palabras largas si es necesario */
     z-index: 1000;
   }
 
