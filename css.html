@@ -93,7 +93,7 @@
  position:fixed;
  z-index:1000;
  right:15px;
- bottom:74px;
+ bottom:10px;
  background-color:#32CD32;
  width:55px;
  height:55px;
@@ -309,6 +309,60 @@
   color: #ccc;
 }
 
+
+.cifra { font-size: 1.8rem; 
+  font-weight: bold; 
+  color: #2e8b57; 
+  margin: 0.5rem 0; 
+}
+
+  .indicador-box {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #fff;
+    min-width: 240px;
+  }
+
+  .bg-verde {
+    border-color: #32CD32 !important;
+    background-color: #eaffea !important;
+  }
+
+  .bg-rojo {
+    border-color: #e74c3c !important;
+    background-color: #ffe6e6 !important;
+  }
+
+  .help-icon {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-left: 6px;
+    color: #666;
+    font-weight: bold;
+    font-size: 0.65rem; /* Tamaño más pequeño */
+
+  }
+
+  .help-icon .help-text {
+    display: none;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #333;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 1000;
+  }
+
+  .help-icon:hover .help-text {
+    display: block;
+  }
 
 
 

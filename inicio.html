@@ -26,9 +26,204 @@
 </div>
 
 
+
+<!-- Completitud Datos Clientes (variableA) ------------------------------------------------------
+----------------------------------------------------------------------Cifras para front -->
+<div>
+  <h1 class="titulo">Indicadores de Operación</h1>  
+</div>
+
+<div style="width: 700px; height: 4px; background-color: #32CD32; margin: 0.5rem auto; border-radius: 2px;"></div>
+
+
+<div style="display: flex; gap: 20px; flex-wrap: wrap; margin-left:2rem;margin-right:2rem; padding-left: 2rem; padding-right: 2rem; padding-bottom: 1.5rem; padding-top: 1.5rem">
+
+  <!-- Nivel de Madurez -->
+  <div id="box_madurez" class="indicador-box">
+    <h4>
+      Indicador de Madurez
+      <span class="help-icon">🔎
+        <span class="help-text">Se calcula de acuerdo al modelo, de manera trimestral.</span>
+      </span>
+    </h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="capi_madurez">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="seguros_madurez">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="comerci_madurez">--</span></div>
+    <small id="leyenda_madurez">Meta: &gt;95% | Resultado: CUMPLE</small>
+  </div>
+
+  <!-- Composición Accionaria -->
+  <div id="box_accionaria" class="indicador-box">
+    <h4>Beneficiario Final</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="benef_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="benef_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="benef_comer">--</span></div>
+    <small id="leyenda_accionaria">Meta: &ge;90% | Resultado: CUMPLE</small>
+  </div>
+
+  <!-- Coherencia Matriz -->
+  <div id="box_coherencia" class="indicador-box">
+    <h4>Coherencia Matriz</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="coherencia_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="coherencia_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="coherencia_comer">--</span></div>
+    <small id="leyenda_coherencia">Meta: &gt;90% | Resultado: CUMPLE</small>
+  </div>
+
+  <!-- Perfil de Riesgo Residual -->
+  <div id="box_perfil" class="indicador-box">
+    <h4>Perfil de Riesgo Residual</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="pefil_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="pefil_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="pefil_comer">--</span></div>
+    <small id="leyenda_perfil">Meta: &lt;5% | Resultado: CUMPLE</small>
+  </div>
+</div>
+
+
+
+
+
+<div>
+  <h1 class="titulo">Indicadores de Monitoreo</h1>  
+</div>
+
+<div style="width: 700px; height: 4px; background-color: #32CD32; margin: 0.5rem auto; border-radius: 2px;"></div>
+
+
+<div style="display: flex; gap: 20px; flex-wrap: wrap; margin-left:2rem;margin-right:2rem; padding-left: 2rem; padding-right: 2rem; padding-bottom: 1.5rem; padding-top: 1.5rem">
+
+  <!-- Indicador Rosz -->
+  <div id="box_ros" class="indicador-box">
+    <h4 style="font-size: 1.6rem;">Ros</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="capi_ros">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="seguros_ros">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="comerci_ros">--</span></div>
+    <small id="leyenda_ros">Meta: &gt;70% | Resultado: CUMPLE</small>
+  </div>
+
+  <!-- Tasa de Alertas Normalizadas-->
+  <div id="box_normal" class="indicador-box">
+    <h4>Normalización</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="normal_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="normal_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="normal_comer">--</span></div>
+    <small id="leyenda_normal">Meta: &lt;10% | Resultado: CUMPLE</small>
+  </div>
+
+  <!-- Coherencia Matriz -->
+  <div id="box_i_normal" class="indicador-box">
+    <h4>Inusuales Normalizadas</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="i_normal_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="i_normal_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="i_normal_comer">--</span></div>
+    <small id="leyenda_i_normal">Meta: &lt;10% | Resultado: CUMPLE</small>
+  </div>
+
+  <!-- Perfil de Riesgo Residual -->
+  <div id="box_segmenta" class="indicador-box">
+    <h4>Segmentación</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="segmenta_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="segmenta_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="segmenta_comer">--</span></div>
+    <small id="leyenda_segmenta">Meta: &gt;70% | Resultado: CUMPLE</small>
+  </div>
+</div>
+
+
+
+
+
+<div>
+  <h1 class="titulo">Indicador Calidad de Datos</h1>  
+</div>
+
+<div style="width: 700px; height: 4px; background-color: #32CD32; margin: 0.5rem auto; border-radius: 2px;"></div>
+
+
+<div style="display: flex; gap: 20px; flex-wrap: wrap; margin-left:2rem;margin-right:2rem; padding-left: 2rem; padding-right: 2rem; padding-bottom: 1.5rem; padding-top: 1.5rem">
+
+  <!-- Indicador Rosz -->
+  <div id="box_calidad" class="indicador-box">
+    <h4 style="font-size: 1.6rem;">Calidad de Datos</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="capi_calidaddatos">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="seguros_calidaddatos">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="comerci_calidaddatos">--</span></div>
+    <small id="leyenda_calidad">Meta: &gt;90% | Resultado: CUMPLE</small>
+  </div>
+
+  
+  <!-- Indicador Rosz -->
+  <div id="box_completitud" class="indicador-box">
+    <h4 style="font-size: 1.6rem;">Completitud</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="capi_completitud">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="seguros_completitud">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="comerci_completitud">--</span></div>
+    <small id="leyenda_completitud">Meta: &gt;90% | Resultado: CUMPLE</small>
+  </div>
+
+  <!-- Tasa de Alertas Normalizadas-->
+  <div id="box_consistencia" class="indicador-box">
+    <h4>Consistencia</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="consistencia_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="consistencia_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="consistencia_comer">--</span></div>
+    <small id="leyenda_consistencia">Meta: &gt;90% | Resultado: CUMPLE</small>
+  </div>
+
+</div>
+
+
+
+
+
+<div style="display: flex; gap: 20px; flex-wrap: wrap; margin-left:2rem;margin-right:2rem; padding-left: 2rem; padding-right: 2rem; padding-bottom: 1.5rem; padding-top: 0rem">
+  <!-- Coherencia Matriz -->
+  <div id="box_unicidad" class="indicador-box">
+    <h4>Unicidad</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="unicidad_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="unicidad_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="unicidad_comer">--</span></div>
+    <small id="leyenda_unicidad">Meta: &gt;90% | Resultado: CUMPLE</small>
+  </div>
+
+  <!-- Perfil de Riesgo Residual -->
+  <div id="box_precision" class="indicador-box">
+    <h4>Precision</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="precision_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="precision_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="precision_comer">--</span></div>
+    <small id="leyenda_precision">Meta: &gt;90% | Resultado: CUMPLE</small>
+  </div>
+
+  <div id="box_oportunidad" class="indicador-box">
+    <h4>Oportunidad</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="oportunidad_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="oportunidad_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="oportunidad_comer">--</span></div>
+    <small id="leyenda_oportunidad">Meta: &gt;90% | Resultado: CUMPLE</small>
+  </div>
+
+  <div id="box_validez" class="indicador-box">
+    <h4>Validez</h4>
+    <div style="display: flex; justify-content: space-between;"><strong>Capitalizadora</strong> <span id="validez_capi">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Seguros</strong> <span id="validez_seg">--</span></div>
+    <div style="display: flex; justify-content: space-between;"><strong>Comerciales</strong> <span id="validez_comer">--</span></div>
+    <small id="leyenda_validez">Meta: &gt;90% | Resultado: CUMPLE</small>
+  </div>
+
+</div>
+
+
+
+
+
+
+
 <div>
   <h1 class="titulo">Modelos del Ecosistema Integral de Gestión de Riesgo</h1>  
 </div>
+
   <div style="width: 700px; height: 4px; background-color: #32CD32; margin: 0.5rem auto; border-radius: 2px;"></div>
 
 <div class="features-grid">

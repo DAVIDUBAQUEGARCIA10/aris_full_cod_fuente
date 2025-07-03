@@ -3345,4 +3345,383 @@ $(document).ready(function(){
 
 
 
+/*=======================================================================
+
+     =====================  Obener informacion de la hoja de calculo en front  =======================
+
+==============================================================================*/
+
+
+ // Ejecuta la función para traer los datos del backend
+google.script.run.withSuccessHandler(function(cifras) {
+    const variableA = parseFloat(cifras[0]);  // capi_madurez
+    const variableB = parseFloat(cifras[1]);  // seguros_madurez
+    const variableC = parseFloat(cifras[2]);  // comerci_madurez
+    const variableD = parseFloat(cifras[3]);  // benef_capi
+    const variableE = parseFloat(cifras[4]);  // benef_seg
+    const variableF = parseFloat(cifras[5]);  // benef_comer
+    const variableG = parseFloat(cifras[6]);  // coherencia_capi
+    const variableH = parseFloat(cifras[7]);  // coherencia_seg
+    const variableI = parseFloat(cifras[8]);  // coherencia_comer
+    const variableJ = parseFloat(cifras[9]);  // pefil_capi
+    const variableK = parseFloat(cifras[10]); // pefil_seg
+    const variableL = parseFloat(cifras[11]); // pefil_comer
+    const variableM  = parseFloat(cifras[12]);// capi_ros mayor a 70
+    const variableN  = parseFloat(cifras[13]); //seguros_ros mayor a 70
+    const variableO  = parseFloat(cifras[14]);//comerci_ros mayor a 70
+    const variableP  = parseFloat(cifras[15]);//normal_capi menor a 10%
+    const variableQ  = parseFloat(cifras[16]);//normal_seg menor a 10%
+    const variableR  = parseFloat(cifras[17]);//normal_comer menor a 10%
+    const variableS  = parseFloat(cifras[18]);//i_normal_capi menor a 10%
+    const variableT  = parseFloat(cifras[19]);//i_normal_seg menor a 10%
+    const variableU  = parseFloat(cifras[20]);//i_normal_comer menor a 10%
+    const variableV  = parseFloat(cifras[21]);//segmenta_capi mayor 90
+    const variableW  = parseFloat(cifras[22]);// segmenta_seg mayor 90 
+    const variableX  = parseFloat(cifras[23]);//segmenta_comer mayor  ---
+    const variableY  = parseFloat(cifras[24]);// capi_calidaddatos mayor a 90
+    const variableZ  = parseFloat(cifras[25]);//seguros_calidaddatos mayor a 90
+    const variableAA = parseFloat(cifras[26]);//comerci_calidaddatos mayor a 90
+    const variableAB = parseFloat(cifras[27]);//capi_Completitud mayor a 90
+    const variableAC = parseFloat(cifras[28]);//seguros_Completitud mayor a 90
+    const variableAD = parseFloat(cifras[29]);//comerci_Completitud mayor a 90
+    const variableAE = parseFloat(cifras[30]);//Consistencia_capi mayor a 90
+    const variableAF = parseFloat(cifras[31]);//Consistencia_seg mayor a 90
+    const variableAG = parseFloat(cifras[32]);//Consistencia_comer mayor a 90
+    const variableAH = parseFloat(cifras[33]);//Unicidad_capi mayor a 90
+    const variableAI = parseFloat(cifras[34]);//Unicidad_seg mayor a 90
+    const variableAJ = parseFloat(cifras[35]);//Unicidad_comer mayor a 90
+    const variableAK = parseFloat(cifras[36]);//Precision_capi mayor a 90
+    const variableAL = parseFloat(cifras[37]);//Precision_seg mayor a 90
+    const variableAM = parseFloat(cifras[38]);//Precision_comer mayor a 90
+    const variableAN = parseFloat(cifras[39]);//Oportunidad_capi mayor a 90
+    const variableAO = parseFloat(cifras[40]);//Oportunidad_seg mayor a 90
+    const variableAP = parseFloat(cifras[41]);//Oportunidad_comer mayor a 90
+    const variableAQ = parseFloat(cifras[42]);//Validez_capi mayor a 90
+    const variableAR = parseFloat(cifras[43]);//Validez_seg mayor a 90
+    const variableAS = parseFloat(cifras[44]);//Validez_comer mayor a 90
+    const variableAT = parseFloat(cifras[45]);
+    const variableAU = parseFloat(cifras[46]);
+    const variableAV = parseFloat(cifras[47]);
+    const variableAW = parseFloat(cifras[48]);
+    const variableAX = parseFloat(cifras[49]);
+
+    // Función para pintar con color verde o rojo según condición booleana
+    function pintarCondicional(id, valor, condicionVerde, mostrarSimbolo = true) {
+      const el = document.getElementById(id);
+      el.textContent = mostrarSimbolo ? valor + '%' : valor;
+      el.style.fontWeight = 'bold';
+      el.style.color = condicionVerde(valor) ? 'green' : 'red';
+    }
+
+    // MADUREZ: Verde si >= 95%
+    pintarCondicional('capi_madurez', variableA, v => v >= 95);
+    pintarCondicional('seguros_madurez', variableB, v => v >= 95);
+    pintarCondicional('comerci_madurez', variableC, v => v >= 95);
+
+    // BENEFICIARIOS: Verde si >= 90%
+    pintarCondicional('benef_capi', variableD, v => v >= 90);
+    pintarCondicional('benef_seg', variableE, v => v >= 90);
+    pintarCondicional('benef_comer', variableF, v => v >= 90);
+
+    // COHERENCIA: Verde si >= 90%
+    pintarCondicional('coherencia_capi', variableG, v => v >= 90);
+    pintarCondicional('coherencia_seg', variableH, v => v >= 90);
+    pintarCondicional('coherencia_comer', variableI, v => v >= 90);
+
+    // PERFIL: Verde si < 5%
+    pintarCondicional('pefil_capi', variableJ, v => v < 5);
+    pintarCondicional('pefil_seg', variableK, v => v < 5);
+    pintarCondicional('pefil_comer', variableL, v => v < 5);
+
+        // ROS: Verde si >= 70%
+    pintarCondicional('capi_ros', variableM, v => v >= 70);
+    pintarCondicional('seguros_ros', variableN, v => v >= 70);
+    pintarCondicional('comerci_ros', variableO, v => v >= 70);
+
+    // NORMAL: Verde si < 10%
+    pintarCondicional('normal_capi', variableP, v => v < 10);
+    pintarCondicional('normal_seg', variableQ, v => v < 10);
+    pintarCondicional('normal_comer', variableR, v => v < 10);
+
+    // I_NORMAL: Verde si < 10%
+    pintarCondicional('i_normal_capi', variableS, v => v < 10);
+    pintarCondicional('i_normal_seg', variableT, v => v < 10);
+    pintarCondicional('i_normal_comer', variableU, v => v < 10);
+
+    // SEGMENTACIÓN: Verde si >= 90%
+    pintarCondicional('segmenta_capi', variableV, v => v >= 90);
+    pintarCondicional('segmenta_seg', variableW, v => v >= 90);
+    pintarCondicional('segmenta_comer', variableX, v => v >= 90);
+
+    // CALIDAD DE DATOS
+    pintarCondicional('capi_calidaddatos', variableY, v => v >= 90);
+    pintarCondicional('seguros_calidaddatos', variableZ, v => v >= 90);
+    pintarCondicional('comerci_calidaddatos', variableAA, v => v >= 90);
+
+    // COMPLETITUD
+    pintarCondicional('capi_completitud', variableAB, v => v >= 90);
+    pintarCondicional('seguros_completitud', variableAC, v => v >= 90);
+    pintarCondicional('comerci_completitud', variableAD, v => v >= 90);
+
+    // CONSISTENCIA
+    pintarCondicional('consistencia_capi', variableAE, v => v >= 90);
+    pintarCondicional('consistencia_seg', variableAF, v => v >= 90);
+    pintarCondicional('consistencia_comer', variableAG, v => v >= 90);
+
+    // UNICIDAD
+    pintarCondicional('unicidad_capi', variableAH, v => v >= 90);
+    pintarCondicional('unicidad_seg', variableAI, v => v >= 90);
+    pintarCondicional('unicidad_comer', variableAJ, v => v >= 90);
+
+    // PRECISIÓN
+    pintarCondicional('precision_capi', variableAK, v => v >= 90);
+    pintarCondicional('precision_seg', variableAL, v => v >= 90);
+    pintarCondicional('precision_comer', variableAM, v => v >= 90);
+
+    // OPORTUNIDAD
+    pintarCondicional('oportunidad_capi', variableAN, v => v >= 90);
+    pintarCondicional('oportunidad_seg', variableAO, v => v >= 90);
+    pintarCondicional('oportunidad_comer', variableAP, v => v >= 90);
+
+    // VALIDEZ
+    pintarCondicional('validez_capi', variableAQ, v => v >= 90);
+    pintarCondicional('validez_seg', variableAR, v => v >= 90);
+    pintarCondicional('validez_comer', variableAS, v => v >= 90);
+
+
+
+
+    // Cambiar color del cuadro de madurez
+    const contenedorMadurez = document.getElementById('box_madurez');
+    const leyendaMadurez = document.getElementById('leyenda_madurez');
+    const valoresMadurez = [variableA, variableB, variableC];
+
+    if (valoresMadurez.every(v => v >= 95)) {
+      contenedorMadurez.style.borderColor = '#32CD32';
+      contenedorMadurez.style.backgroundColor = '#eaffea';
+      leyendaMadurez.textContent = 'Meta: >95% | Resultado: CUMPLE';
+    } else if (valoresMadurez.every(v => v >= 90)) {
+      contenedorMadurez.style.borderColor = '#f5b940';
+      contenedorMadurez.style.backgroundColor = '#fff8e6';
+      leyendaMadurez.textContent = 'Meta: >95% | Resultado: CERCA';
+    } else {
+      contenedorMadurez.style.borderColor = '#e74c3c';
+      contenedorMadurez.style.backgroundColor = '#ffe6e6';
+      leyendaMadurez.textContent = 'Meta: >95% | Resultado: NO CUMPLE';
+    }
+
+    const contenedorAccionaria = document.getElementById('box_accionaria');
+    const leyendaAccionaria = document.getElementById('leyenda_accionaria');
+    const valoresAccionaria = [variableD, variableE, variableF];
+
+    if (valoresAccionaria.every(v => v >= 90)) {
+    contenedorAccionaria.style.borderColor = '#32CD32';
+    contenedorAccionaria.style.backgroundColor = '#eaffea';
+    leyendaAccionaria.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    contenedorAccionaria.style.borderColor = '#e74c3c';
+    contenedorAccionaria.style.backgroundColor = '#ffe6e6';
+    leyendaAccionaria.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+
+
+    const contenedorCoherencia = document.getElementById('box_coherencia');
+    const leyendaCoherencia = document.getElementById('leyenda_coherencia');
+    const valoresCoherencia = [variableG, variableH, variableI];
+
+    if (valoresCoherencia.every(v => v > 90)) {
+    contenedorCoherencia.style.borderColor = '#32CD32';
+    contenedorCoherencia.style.backgroundColor = '#eaffea';
+    leyendaCoherencia.textContent = 'Meta: >90% | Resultado: CUMPLE';
+    } else {
+    contenedorCoherencia.style.borderColor = '#e74c3c';
+    contenedorCoherencia.style.backgroundColor = '#ffe6e6';
+    leyendaCoherencia.textContent = 'Meta: >90% | Resultado: NO CUMPLE';
+    }
+
+
+    const contenedorPerfil = document.getElementById('box_perfil');
+    const leyendaPerfil = document.getElementById('leyenda_perfil');
+    const valoresPerfil = [variableJ, variableK, variableL];
+
+    if (valoresPerfil.every(v => v < 5)) {
+    contenedorPerfil.style.borderColor = '#32CD32';
+    contenedorPerfil.style.backgroundColor = '#eaffea';
+    leyendaPerfil.textContent = 'Meta: <5% | Resultado: CUMPLE';
+    } else {
+    contenedorPerfil.style.borderColor = '#e74c3c';
+    contenedorPerfil.style.backgroundColor = '#ffe6e6';
+    leyendaPerfil.textContent = 'Meta: <5% | Resultado: NO CUMPLE';
+    }
+
+    
+    const contenedorROS = document.getElementById('box_ros');
+    const leyendaROS = document.getElementById('leyenda_ros');
+    const valoresROS = [variableM, variableN, variableO];
+
+    if (valoresROS.every(v => v >= 70)) {
+      contenedorROS.style.borderColor = '#32CD32';
+      contenedorROS.style.backgroundColor = '#eaffea';
+      leyendaROS.textContent = 'Meta: ≥70% | Resultado: CUMPLE';
+    } else {
+      contenedorROS.style.borderColor = '#e74c3c';
+      contenedorROS.style.backgroundColor = '#ffe6e6';
+      leyendaROS.textContent = 'Meta: ≥70% | Resultado: NO CUMPLE';
+    }
+
+
+    const contenedorNormal = document.getElementById('box_normal');
+    const leyendaNormal = document.getElementById('leyenda_normal');
+    const valoresNormal = [variableP, variableQ, variableR];
+
+    if (valoresNormal.every(v => v < 10)) {
+    contenedorNormal.style.borderColor = '#32CD32';
+    contenedorNormal.style.backgroundColor = '#eaffea';
+    leyendaNormal.textContent = 'Meta: <10% | Resultado: CUMPLE';
+    } else {
+    contenedorNormal.style.borderColor = '#e74c3c';
+    contenedorNormal.style.backgroundColor = '#ffe6e6';
+    leyendaNormal.textContent = 'Meta: <10% | Resultado: NO CUMPLE';
+    }
+
+
+
+    const contenedorINormal = document.getElementById('box_i_normal');
+    const leyendaINormal = document.getElementById('leyenda_i_normal');
+    const valoresINormal = [variableS, variableT, variableU];
+
+    if (valoresINormal.every(v => v < 10)) {
+    contenedorINormal.style.borderColor = '#32CD32';
+    contenedorINormal.style.backgroundColor = '#eaffea';
+    leyendaINormal.textContent = 'Meta: <10% | Resultado: CUMPLE';
+    } else {
+    contenedorINormal.style.borderColor = '#e74c3c';
+    contenedorINormal.style.backgroundColor = '#ffe6e6';
+    leyendaINormal.textContent = 'Meta: <10% | Resultado: NO CUMPLE';
+    }
+
+
+
+
+    const contenedorSegmenta = document.getElementById('box_segmenta');
+    const leyendaSegmenta = document.getElementById('leyenda_segmenta');
+    const valoresSegmenta = [variableV, variableW, variableX];
+
+    if (valoresSegmenta.every(v => v >= 90)) {
+    contenedorSegmenta.style.borderColor = '#32CD32';
+    contenedorSegmenta.style.backgroundColor = '#eaffea';
+    leyendaSegmenta.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    contenedorSegmenta.style.borderColor = '#e74c3c';
+    contenedorSegmenta.style.backgroundColor = '#ffe6e6';
+    leyendaSegmenta.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+
+
+    const boxCalidad = document.getElementById('box_calidad');
+    const leyendaCalidad = document.getElementById('leyenda_calidad');
+    const valoresCalidad = [variableY, variableZ, variableAA];
+
+    if (valoresCalidad.every(v => v >= 90)) {
+    boxCalidad.style.borderColor = '#32CD32';
+    boxCalidad.style.backgroundColor = '#eaffea';
+    leyendaCalidad.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    boxCalidad.style.borderColor = '#e74c3c';
+    boxCalidad.style.backgroundColor = '#ffe6e6';
+    leyendaCalidad.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+
+
+    const boxCompletitud = document.getElementById('box_completitud');
+    const leyendaCompletitud = document.getElementById('leyenda_completitud');
+    const valoresCompletitud = [variableAB, variableAC, variableAD];
+
+    if (valoresCompletitud.every(v => v >= 90)) {
+    boxCompletitud.style.borderColor = '#32CD32';
+    boxCompletitud.style.backgroundColor = '#eaffea';
+    leyendaCompletitud.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    boxCompletitud.style.borderColor = '#e74c3c';
+    boxCompletitud.style.backgroundColor = '#ffe6e6';
+    leyendaCompletitud.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+
+
+    const boxConsistencia = document.getElementById('box_consistencia');
+    const leyendaConsistencia = document.getElementById('leyenda_consistencia');
+    const valoresConsistencia = [variableAE, variableAF, variableAG];
+
+    if (valoresConsistencia.every(v => v >= 90)) {
+    boxConsistencia.style.borderColor = '#32CD32';
+    boxConsistencia.style.backgroundColor = '#eaffea';
+    leyendaConsistencia.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    boxConsistencia.style.borderColor = '#e74c3c';
+    boxConsistencia.style.backgroundColor = '#ffe6e6';
+    leyendaConsistencia.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+
+
+    const boxUnicidad = document.getElementById('box_unicidad');
+    const leyendaUnicidad = document.getElementById('leyenda_unicidad');
+    const valoresUnicidad = [variableAH, variableAI, variableAJ];
+
+    if (valoresUnicidad.every(v => v >= 90)) {
+    boxUnicidad.style.borderColor = '#32CD32';
+    boxUnicidad.style.backgroundColor = '#eaffea';
+    leyendaUnicidad.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    boxUnicidad.style.borderColor = '#e74c3c';
+    boxUnicidad.style.backgroundColor = '#ffe6e6';
+    leyendaUnicidad.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+
+
+
+    const boxPrecision = document.getElementById('box_precision');
+    const leyendaPrecision = document.getElementById('leyenda_precision');
+    const valoresPrecision = [variableAK, variableAL, variableAM];
+
+    if (valoresPrecision.every(v => v >= 90)) {
+    boxPrecision.style.borderColor = '#32CD32';
+    boxPrecision.style.backgroundColor = '#eaffea';
+    leyendaPrecision.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    boxPrecision.style.borderColor = '#e74c3c';
+    boxPrecision.style.backgroundColor = '#ffe6e6';
+    leyendaPrecision.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+
+
+    const boxOportunidad = document.getElementById('box_oportunidad');
+    const leyendaOportunidad = document.getElementById('leyenda_oportunidad');
+    const valoresOportunidad = [variableAN, variableAO, variableAP];
+
+    if (valoresOportunidad.every(v => v >= 90)) {
+    boxOportunidad.style.borderColor = '#32CD32';
+    boxOportunidad.style.backgroundColor = '#eaffea';
+    leyendaOportunidad.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    boxOportunidad.style.borderColor = '#e74c3c';
+    boxOportunidad.style.backgroundColor = '#ffe6e6';
+    leyendaOportunidad.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+
+    
+    const boxValidez = document.getElementById('box_validez');
+    const leyendaValidez = document.getElementById('leyenda_validez');
+    const valoresValidez = [variableAQ, variableAR, variableAS];
+
+    if (valoresValidez.every(v => v >= 90)) {
+    boxValidez.style.borderColor = '#32CD32';
+    boxValidez.style.backgroundColor = '#eaffea';
+    leyendaValidez.textContent = 'Meta: ≥90% | Resultado: CUMPLE';
+    } else {
+    boxValidez.style.borderColor = '#e74c3c';
+    boxValidez.style.backgroundColor = '#ffe6e6';
+    leyendaValidez.textContent = 'Meta: ≥90% | Resultado: NO CUMPLE';
+    }
+}).obtenerCifrasARIS();
+
 </script>

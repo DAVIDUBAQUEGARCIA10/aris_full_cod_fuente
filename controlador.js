@@ -330,13 +330,15 @@ function controlador(form, accion, id){
   }
 }
 
+/*=======================================================================
 
+     =====================  Obener informacion de la hoja de calculo para tablero en front   =======================
 
+==============================================================================*/
 
-
-
-
-
-
-
-
+function obtenerCifrasARIS() {
+  const sheet = SpreadsheetApp.openById('1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E')
+                             .getSheetByName('CIFRAS');
+  const valores = sheet.getRange("B1:B200").getValues().flat(); // Aplana la matriz en arreglo
+  return valores;
+}
