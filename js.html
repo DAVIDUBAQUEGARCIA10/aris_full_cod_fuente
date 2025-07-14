@@ -903,9 +903,10 @@ function crearTablapais(){
                   "<thead>"+
                    " <tr>"+
                      " <th scope='col'>#</th>"+
-                     " <th scope='col'>NOMBRE</th>"+
-                     " <th scope='col'>Riesgo LAFT Basilea</th>"+
-                     " <th scope='col'>Nivel de riesgo asignado</th>"+        
+                     " <th scope='col'>Ciudad</th>"+
+                     " <th scope='col'>Nacionalidad</th>"+
+                     " <th scope='col'>Codazzi</th>"+
+                     " <th scope='col'>Nivel de riesgo asignado</th>"+                             
                      " <th scope='col'>Acción</th>"+                                                        
                   " </tr>"+
                   "</thead>"+
@@ -940,7 +941,8 @@ function mostrarpais(resultado){
             { data: "id" },
             { data: "nombre" },
             { data: "descripcion" },
-            { data: "descripcion2" },                                                
+            { data: "descripcion2" }, 
+            { data: "descripcion3" },                                                            
             { data: "acciones" }
              ],
                 
@@ -999,9 +1001,147 @@ function mostrarEditarpais(respuesta){
    document.querySelector("#nombreEditarpais").value=respuesta[0].nombre;
    document.querySelector("#descipcionEditarpais").value=respuesta[0].descripcion;
    document.querySelector("#descipcionEditarpais2").value=respuesta[0].descripcion2;                 
+   document.querySelector("#descipcionEditarpais3").value=respuesta[0].descripcion3;                 
    $.LoadingOverlay("hide");
 
 }
+
+
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Jurisdiccion  =======================
+
+==============================================================================*/
+
+function crearTablajurisd(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Jurisdicciones Nacionales</h2>"+
+                " <a href='https://lookerstudio.google.com/reporting/1e8dbc19-3cdd-4dc7-be21-73cf147c0116' target='_blank' class='btn btn-custom'>Dashboard</a>"
+                + "<h3> </h3>"+ 
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearjurisd'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablajurisd' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Codigo Dane</th>"+
+                     " <th scope='col'>Departamento</th>"+
+                     " <th scope='col'>Codigo Dane Municipio</th>"+
+                     " <th scope='col'>Municipio</th>"+                     
+                     " <th scope='col'>Nivel de riesgo asignado</th>"+                             
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Nacionalidades =======================
+
+==============================================================================*/
+function mostrarjurisd(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablajurisd();
+     
+     $('#tablajurisd').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },
+            { data: "descripcion2" }, 
+            { data: "descripcion3" },   
+            { data: "descripcion4" },                                                                        
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablajurisd();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Nacionalidades  =======================
+
+==============================================================================*/
+function mostrarEditarjurisd(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarjurisd").value=respuesta[0].id;
+   document.querySelector("#nombreEditarjurisd").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarjurisd").value=respuesta[0].descripcion;
+   document.querySelector("#descipcionEditarjurisd2").value=respuesta[0].descripcion2;                 
+   document.querySelector("#descipcionEditarjurisd3").value=respuesta[0].descripcion3; 
+   document.querySelector("#descipcionEditarjurisd4").value=respuesta[0].descripcion4;                       
+   $.LoadingOverlay("hide");
+
+}
+
+
+
 
 
 /*=======================================================================
@@ -1393,6 +1533,273 @@ function mostrarEditarmatriz(respuesta){
    $.LoadingOverlay("hide");
 
 }
+
+
+
+
+
+
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Profesiones =======================
+
+==============================================================================*/
+
+function crearTablaprofes(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Profesiones</h2>"+
+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearprofes'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaprofes' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Profesion</th>"+
+                     " <th scope='col'>Nivel de Riesgo Profesion</th>"+                          
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Profesion =======================
+
+==============================================================================*/
+function mostrarprofes(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaprofes();
+     
+     $('#tablaprofes').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },                                                           
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaprofes();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar profesionales  =======================
+
+==============================================================================*/
+function mostrarEditarprofes(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarprofes").value=respuesta[0].id;
+   document.querySelector("#nombreEditarprofes").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarprofes").value=respuesta[0].descripcion;                  
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear Table Ocupacion =======================
+
+==============================================================================*/
+
+function crearTablaocupa(){
+   
+   var tabla ="<div class='container'>"+
+                "<h2>Gestor de Ocupaciones</h2>"+
+                
+//                "<!-- Button trigger modal -->  
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearocupa'>"+
+                  "<i class='fa-solid fa-plus'></i>"+
+                "</button> <br><br>"+
+                
+                
+                "<table class='table table-striped table-hover table-bordered' id='tablaocupa' >"+
+                  "<thead>"+
+                   " <tr>"+
+                     " <th scope='col'>#</th>"+
+                     " <th scope='col'>Ocupación</th>"+
+                     " <th scope='col'>Nivel de Riesgo Ocupación</th>"+                          
+                     " <th scope='col'>Acción</th>"+                                                        
+                  " </tr>"+
+                  "</thead>"+
+                "</table>"+
+                "</div> <br><br>";
+                
+                document.getElementById("contenidos").innerHTML=tabla;
+                               
+                return tabla;
+
+}
+
+
+/*=======================================================================
+
+     =====================  Mostrar Tabla Ocupacion =======================
+
+==============================================================================*/
+function mostrarocupa(resultado){
+  
+//    console.log(resultado);
+   
+   if(resultado.length >0 && resultado[0].id!="ID"){
+   
+     crearTablaocupa();
+     
+     $('#tablaocupa').DataTable({
+    
+        responsive: true, 
+        data: resultado,
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "descripcion" },                                                           
+            { data: "acciones" }
+             ],
+                
+         dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, 100, 500, -1],
+                    ['10 filas', '25 filas', '50 filas', '100 filas', '500 filas', 'Ver Todo']
+                ],
+                buttons: [
+                     'copy', 'excel' , 'pageLength'
+                     ],                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total Registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                rowCallback: function (row, data) {
+                }           
+         });
+     }else{
+        
+        crearTablaocupa();
+        alertaOK('No se encontraron registros');
+     
+     }
+     
+     $.LoadingOverlay("hide");
+  }
+
+
+/*=======================================================================
+
+     =====================  Mostrar Ocupacion  =======================
+
+==============================================================================*/
+function mostrarEditarocupa(respuesta){
+  
+//  console.log(respuesta);
+   
+   document.querySelector("#idEditarocupa").value=respuesta[0].id;
+   document.querySelector("#nombreEditarocupa").value=respuesta[0].nombre;
+   document.querySelector("#descipcionEditarocupa").value=respuesta[0].descripcion;                  
+   $.LoadingOverlay("hide");
+
+}
+
+
+
+
+
+
+
 
 
 /*=======================================================================
@@ -3429,9 +3836,9 @@ google.script.run.withSuccessHandler(function(cifras) {
     pintarCondicional('coherencia_comer', variableI, v => v >= 90);
 
     // PERFIL: Verde si < 5%
-    pintarCondicional('pefil_capi', variableJ, v => v < 5);
-    pintarCondicional('pefil_seg', variableK, v => v < 5);
-    pintarCondicional('pefil_comer', variableL, v => v < 5);
+    pintarCondicional('pefil_capi', variableJ, v => v < 4);
+    pintarCondicional('pefil_seg', variableK, v => v < 4);
+    pintarCondicional('pefil_comer', variableL, v => v < 4);
 
         // ROS: Verde si >= 70%
     pintarCondicional('capi_ros', variableM, v => v >= 70);
@@ -3544,10 +3951,10 @@ google.script.run.withSuccessHandler(function(cifras) {
     const leyendaPerfil = document.getElementById('leyenda_perfil');
     const valoresPerfil = [variableJ, variableK, variableL];
 
-    if (valoresPerfil.every(v => v < 5)) {
+    if (valoresPerfil.every(v => v < 4)) {
     contenedorPerfil.style.borderColor = '#32CD32';
     contenedorPerfil.style.backgroundColor = '#eaffea';
-    leyendaPerfil.textContent = 'Meta: <5% | Resultado: CUMPLE';
+    leyendaPerfil.textContent = 'Meta: <4% | Resultado: CUMPLE';
     } else {
     contenedorPerfil.style.borderColor = '#e74c3c';
     contenedorPerfil.style.backgroundColor = '#ffe6e6';

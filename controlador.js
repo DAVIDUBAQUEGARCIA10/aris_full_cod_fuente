@@ -105,7 +105,7 @@ function controlador(form, accion, id){
   
   var rol;
   
-  if(accion[0]=="listarEtiquetas" || accion[0]=="listarAreas"|| accion[0]=="listarcausas"||accion[0]=="listaracti"|| accion[0]=="listarlistas" ||accion[0]=="listarpais"||accion[0]=="listarrequ"||accion[0]=="listardash"||accion[0]=="listarmoni"||accion[0]=="listarmatriz"||accion[0]=="listarperson"||accion[0]=="listartrans"||accion[0]=="listarcanal"||accion[0]=="listarprod"  ||accion[0]=="listaralerta"||accion[0]=="listartest"||accion[0]=="listarriesgos"  || accion[0] =="listarUsuarios" || accion[0]=="listarTicketsNuevos" || accion[0]=="listarTicketsAll" || accion[0]=="listarTicketsPendientes" ||
+  if(accion[0]=="listarEtiquetas" || accion[0]=="listarAreas"|| accion[0]=="listarcausas"||accion[0]=="listaracti"|| accion[0]=="listarlistas" ||accion[0]=="listarpais"||accion[0]=="listarjurisd"||accion[0]=="listarrequ"||accion[0]=="listardash"||accion[0]=="listarmoni"||accion[0]=="listarmatriz"||accion[0]=="listarprofes"|| accion[0]=="listarperson"||accion[0]=="listartrans"||accion[0]=="listarcanal"||accion[0]=="listarprod"  ||accion[0]=="listaralerta"||accion[0]=="listartest"||accion[0]=="listarriesgos"  || accion[0] =="listarUsuarios" || accion[0]=="listarocupa" || accion[0]=="listarTicketsNuevos" || accion[0]=="listarTicketsAll" || accion[0]=="listarTicketsPendientes" ||
      accion[0]=="listarTicketsResueltos"){
     
     rol = accion[1];
@@ -188,6 +188,15 @@ function controlador(form, accion, id){
      case "editarpais":
         return crearpais(form);
         break; 
+     case "listarjurisd":
+        return listarjurisd(id,rol);
+        break;         
+     case "crearjurisd":
+        return crearjurisd(form);
+        break; 
+     case "editarjurisd":
+        return crearjurisd(form);
+        break;  
      case "listarrequ":
         return listarrequ(id,rol);
         break;         
@@ -214,7 +223,27 @@ function controlador(form, accion, id){
         break; 
      case "editarmatriz":
         return crearmatriz(form);
+        break;  
+     case "listarprofes":
+        return listarprofes(id,rol);
         break;         
+     case "crearprofes":
+        return crearprofes(form);
+        break; 
+     case "editarprofes":
+        return crearprofes(form);
+        break;  
+
+     case "listarocupa":
+        return listarocupa(id,rol);
+        break;         
+     case "crearocupa":
+        return crearocupa(form);
+        break; 
+     case "editarocupa":
+        return crearocupa(form);
+        break;        
+
      case "listarperson":
         return listarperson(id,rol);
         break;         

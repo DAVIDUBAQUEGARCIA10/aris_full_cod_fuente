@@ -2933,24 +2933,25 @@
         <form id="formCrearpais" autocomplete="off" onsubmit="crear(this); return false;">
           <input type="hidden" value="crearpais" id="accion" name="txtAccion">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">NOMBRE</label>
+            <label for="exampleInputEmail1" class="form-label">CIUDAD</label>
             <input type="text" class="form-control" id="nombreCrearpais" name="nombreCrearpais">
           </div>
 
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">NACIONALIDAD</label>
+            <input type="text" class="form-control" id="descipcionCrearpais" name="descipcionCrearpais">
+          </div>          
 
           <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Riesgo LAFT Basilea</label>
-              <select class="form-select" id="descipcionCrearpais" name="descipcionCrearpais">
-                  <option value="Alto">Alto</option>
-                  <option value="Medio">Medio</option>
-                  <option value="Bajo">Bajo</option>                                                        
-              </select>
-          </div> 
+            <label for="exampleInputEmail1" class="form-label">NACIONALIDAD</label>
+            <input type="text" class="form-control" id="descipcionCrearpais2" name="descipcionCrearpais2">
+          </div>                  
+
 
 
           <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Riesgo LAFT Basilea</label>
-              <select class="form-select" id="descipcionCrearpais2" name="descipcionCrearpais2">
+              <label for="exampleInputPassword1" class="form-label">Nivel de Riesgo</label>
+              <select class="form-select" id="descipcionCrearpais3" name="descipcionCrearpais3">
                   <option value="Alto">Alto</option>
                   <option value="Medio">Medio</option>
                   <option value="Bajo">Bajo</option>                                                        
@@ -2984,24 +2985,25 @@
           <input type="hidden" value="editarpais" id="accion" name="txtAccion">
           <input type="hidden" id="idEditarpais" name="idEditarpais">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">NOMBRE</label>
+            <label for="exampleInputEmail1" class="form-label">CIUDAD</label>
             <input type="text" class="form-control" id="nombreEditarpais" name="nombreEditarpais">
           </div>
 
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">NACIONALIDAD</label>
+            <input type="text" class="form-control" id="descipcionEditarpais" name="descipcionEditarpais">
+          </div>
 
-         <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Riesgo LAFT Basilea</label>
-              <select class="form-select" id="descipcionEditarpais" name="descipcionEditarpais">
-                  <option value="Alto">Alto</option>
-                  <option value="Medio">Medio</option>
-                  <option value="Bajo">Bajo</option>                                                        
-              </select>
-          </div> 
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Codigo Codazzi</label>
+            <input type="text" class="form-control" id="descipcionEditarpais2" name="descipcionEditarpais2">
+          </div>
+
 
 
           <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Riesgo LAFT Basilea</label>
-              <select class="form-select" id="descipcionEditarpais2" name="descipcionEditarpais2">
+              <label for="exampleInputPassword1" class="form-label">Nivel de Riesgo</label>
+              <select class="form-select" id="descipcionEditarpais3" name="descipcionEditarpais3">
                   <option value="Alto">Alto</option>
                   <option value="Medio">Medio</option>
                   <option value="Bajo">Bajo</option>                                                        
@@ -3017,6 +3019,135 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+<!--=======================================================================
+     =====================  Crear Jurisdiccion  =======================
+==============================================================================*/-->
+
+<div class="modal fade" id="crearjurisd" tabindex="-1" aria-labelledby="crearjurisd" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Jurisdicción</h5>
+        <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form id="formCrearjurisd" autocomplete="off" onsubmit="crear(this); return false;">
+          <input type="hidden" value="crearjurisd" id="accion" name="txtAccion">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Codigo Dane Departamento</label>
+            <input type="text" class="form-control" id="nombreCrearjurisd" name="nombreCrearjurisd">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="descipcionCrearjurisd" name="descipcionCrearjurisd">
+          </div>          
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Codigo Dane Municipio</label>
+            <input type="text" class="form-control" id="descipcionCrearjurisd2" name="descipcionCrearjurisd2">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Codigo Dane Municipio</label>
+            <input type="text" class="form-control" id="descipcionCrearjurisd3" name="descipcionCrearjurisd3">
+          </div>            
+
+
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nivel de Riesgo</label>
+              <select class="form-select" id="descipcionCrearjurisd4" name="descipcionCrearjurisd4">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Bajo">Bajo</option>                                                        
+              </select>
+          </div>           
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cerrarCrearjurisd">Cancelar</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--=======================================================================
+     =====================  Editar Nacionalidad  =======================
+==============================================================================*/-->
+
+<div class="modal fade" id="editarjurisd" tabindex="-1" aria-labelledby="editarjurisd" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Gestor de Jurisdicciones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form id="formEditarjurisd" autocomplete="off" onsubmit="crear(this); return false;">
+          <input type="hidden" value="editarjurisd" id="accion" name="txtAccion">
+          <input type="hidden" id="idEditarjurisd" name="idEditarjurisd">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Codigo Dane Departamento</label>
+            <input type="text" class="form-control" id="nombreEditarjurisd" name="nombreEditarjurisd">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="descipcionEditarjurisd" name="descipcionEditarjurisd">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Codigo Dane Municipio</label>
+            <input type="text" class="form-control" id="descipcionEditarjurisd2" name="descipcionEditarjurisd2">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Municipio</label>
+            <input type="text" class="form-control" id="descipcionEditarjurisd3" name="descipcionEditarjurisd3">
+          </div>          
+
+
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nivel de Riesgo</label>
+              <select class="form-select" id="descipcionEditarjurisd4" name="descipcionEditarjurisd4">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Bajo">Bajo</option>                                                        
+              </select>
+          </div>           
+
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cerrarEditarjurisd">Cancelar</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--=======================================================================
@@ -3403,6 +3534,203 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+<!--=======================================================================
+     =====================  Crear Profesionales  =======================
+==============================================================================*/-->
+
+<div class="modal fade" id="crearprofes" tabindex="-1" aria-labelledby="crearprofes" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Profesion</h5>
+        <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form id="formCrearprofes" autocomplete="off" onsubmit="crear(this); return false;">
+          <input type="hidden" value="crearprofes" id="accion" name="txtAccion">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Profesion<span data-bs-toggle="tooltip" data-bs-placement="top" title="" class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
+            <input type="text" class="form-control" id="nombreCrearprofes" name="nombreCrearprofes">
+          </div>
+
+               
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nivel de Riesgo</label>
+              <select class="form-select" id="descipcionCrearprofes" name="descipcionCrearprofes">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Bajo">Bajo</option>                                                        
+              </select>
+          </div>           
+
+          
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cerrarCrearprofes">Cancelar</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--=======================================================================
+     =====================  Editar Profesiones  =======================
+==============================================================================*/-->
+
+<div class="modal fade" id="editarprofes" tabindex="-1" aria-labelledby="editarprofes" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Gestor de Profesiones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form id="formEditarprofes" autocomplete="off" onsubmit="crear(this); return false;">
+          <input type="hidden" value="editarprofes" id="accion" name="txtAccion">
+          <input type="hidden" id="idEditarprofes" name="idEditarprofes">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Profesion<span data-bs-toggle="tooltip" data-bs-placement="top" title="" class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
+            <input type="text" class="form-control" id="nombreEditarprofes" name="nombreEditarprofes">
+          </div>
+
+
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nivel de Riesgo</label>
+              <select class="form-select" id="descipcionEditarprofes" name="descipcionEditarprofes">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Bajo">Bajo</option>                                                        
+              </select>
+          </div>   
+          
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cerrarEditarprofes">Cancelar</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--=======================================================================
+     =====================  Crear Ocupaciones  =======================
+==============================================================================*/-->
+
+<div class="modal fade" id="crearocupa" tabindex="-1" aria-labelledby="crearocupa" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Ocupación</h5>
+        <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form id="formCrearocupa" autocomplete="off" onsubmit="crear(this); return false;">
+          <input type="hidden" value="crearocupa" id="accion" name="txtAccion">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Ocupación<span data-bs-toggle="tooltip" data-bs-placement="top" title="" class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
+            <input type="text" class="form-control" id="nombreCrearocupa" name="nombreCrearocupa">
+          </div>
+
+               
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nivel de Riesgo</label>
+              <select class="form-select" id="descipcionCrearocupa" name="descipcionCrearocupa">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Bajo">Bajo</option>                                                        
+              </select>
+          </div>           
+
+          
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cerrarCrearocupa">Cancelar</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--=======================================================================
+     =====================  Editar Ocupacion  =======================
+==============================================================================*/-->
+
+<div class="modal fade" id="editarocupa" tabindex="-1" aria-labelledby="editarocupa" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Gestor de Ocupaciones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form id="formEditarocupa" autocomplete="off" onsubmit="crear(this); return false;">
+          <input type="hidden" value="editarocupa" id="accion" name="txtAccion">
+          <input type="hidden" id="idEditarocupa" name="idEditarocupa">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Ocupación<span data-bs-toggle="tooltip" data-bs-placement="top" title="" class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
+            <input type="text" class="form-control" id="nombreEditarocupa" name="nombreEditarocupa">
+          </div>
+
+
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Nivel de Riesgo</label>
+              <select class="form-select" id="descipcionEditarocupa" name="descipcionEditarocupa">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Bajo">Bajo</option>                                                        
+              </select>
+          </div>   
+          
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cerrarEditarocupa">Cancelar</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--=======================================================================
      =====================  Crear Person  =======================

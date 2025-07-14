@@ -151,6 +151,25 @@ function mostrarAlerta(respuesta){
      mostrarContent('listarpais');
      alertaOK("Se elimino correctamente");
 
+}else if(respuesta=="crearjurisdOk"){
+     
+     document.getElementById('cerrarCrearjurisd').click();
+     document.getElementById('formCrearjurisd').reset();
+     mostrarContent('listarjurisd');
+     alertaOK("Se creo correctamente");
+  
+  }else if(respuesta=="editarjurisdOk"){
+  
+     document.getElementById('cerrarEditarjurisd').click();
+     document.getElementById('formEditarjurisd').reset();
+     mostrarContent('listarjurisd');
+     alertaOK("Se edito correctamente");
+  
+  }else if(respuesta=="eliminarjurisdOK"){
+  
+     mostrarContent('listarjurisd');
+     alertaOK("Se elimino correctamente");     
+
 }else if(respuesta=="crearrequOk"){
      
      document.getElementById('cerrarCrearrequ').click();
@@ -209,6 +228,54 @@ function mostrarAlerta(respuesta){
   
      mostrarContent('listarmatriz');
      alertaOK("Se elimino correctamente");
+
+
+
+
+     
+}else if(respuesta=="crearprofesOk"){
+     
+     document.getElementById('cerrarCrearprofes').click();
+     document.getElementById('formCrearprofes').reset();
+     mostrarContent('listarprofes');
+     alertaOK("Se creo correctamente");
+  
+  }else if(respuesta=="editarprofesOk"){
+  
+     document.getElementById('cerrarEditarprofes').click();
+     document.getElementById('formEditarprofes').reset();
+     mostrarContent('listarprofes');
+     alertaOK("Se edito correctamente");
+  
+  }else if(respuesta=="eliminarprofesOK"){
+  
+     mostrarContent('listarprofes');
+     alertaOK("Se elimino correctamente");
+
+
+
+
+}else if(respuesta=="crearocupaOk"){
+     
+     document.getElementById('cerrarCrearocupa').click();
+     document.getElementById('formCrearocupa').reset();
+     mostrarContent('listarocupa');
+     alertaOK("Se creo correctamente");
+  
+  }else if(respuesta=="editarocupaOk"){
+  
+     document.getElementById('cerrarEditarocupa').click();
+     document.getElementById('formEditarocupa').reset();
+     mostrarContent('listarocupa');
+     alertaOK("Se edito correctamente");
+  
+  }else if(respuesta=="eliminarocupaOK"){
+  
+     mostrarContent('listarocupa');
+     alertaOK("Se elimino correctamente");
+
+
+
 
 
 
@@ -589,6 +656,31 @@ function confirmarpais(id){
   })
 }
 
+/*=======================================================================
+     =====================  Eliminar Jurisdicciones  =======================
+==============================================================================*/
+function confirmarjurisd(id){
+
+  Swal.fire({
+    
+    title:"Estás seguro? ",
+    text:"Estás apunto de eliminar!",
+    icon:"warning",
+    showCancelButton:true,
+    confirmButtonColor:"#3085d6",
+    cancelButtonColor:"#d33",
+    confirmButtonText:"Si, Eliminar!",
+    cancelButtonText:"Cancelar!"  
+  }).then((result) =>{
+    
+    if(result.isConfirmed){
+       $.LoadingOverlay("show");
+       google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarAlerta).eliminarjurisdAdmin(id);
+    }
+  })
+}
+
+
 
 /*=======================================================================
      =====================  Eliminar REquerimientos  =======================
@@ -661,6 +753,68 @@ function confirmarmatriz(id){
     }
   })
 }
+
+
+
+
+
+/*=======================================================================
+     =====================  Eliminar Profesion  =======================
+==============================================================================*/
+function confirmarprofes(id){
+
+  Swal.fire({
+    
+    title:"Estás seguro? ",
+    text:"Estás apunto de eliminar!",
+    icon:"warning",
+    showCancelButton:true,
+    confirmButtonColor:"#3085d6",
+    cancelButtonColor:"#d33",
+    confirmButtonText:"Si, Eliminar!",
+    cancelButtonText:"Cancelar!"  
+  }).then((result) =>{
+    
+    if(result.isConfirmed){
+       $.LoadingOverlay("show");
+       google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarAlerta).eliminarprofesAdmin(id);
+    }
+  })
+}
+
+
+
+/*=======================================================================
+     =====================  Eliminar Ocupacion  =======================
+==============================================================================*/
+function confirmarocupa(id){
+
+  Swal.fire({
+    
+    title:"Estás seguro? ",
+    text:"Estás apunto de eliminar!",
+    icon:"warning",
+    showCancelButton:true,
+    confirmButtonColor:"#3085d6",
+    cancelButtonColor:"#d33",
+    confirmButtonText:"Si, Eliminar!",
+    cancelButtonText:"Cancelar!"  
+  }).then((result) =>{
+    
+    if(result.isConfirmed){
+       $.LoadingOverlay("show");
+       google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarAlerta).eliminarocupaAdmin(id);
+    }
+  })
+}
+
+
+
+
+
+
+
+
 
 /*=======================================================================
      =====================  Eliminar Persona  =======================

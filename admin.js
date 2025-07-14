@@ -1148,30 +1148,31 @@ function eliminaractiAdmin(id){
 
 /*=======================================================================
 
-     =====================  Listar - Uno o Todos Ncionalidades  =======================
+     =====================  Listar - Uno o Todos Nacionalidades  =======================
 
 ==============================================================================*/
 
 function listarpais(id,rol) {
   
   var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
-  var hoja = libro.getSheetByName("Nacionalidad");
+  var hoja = libro.getSheetByName("Nacionalidad_real");
   var fila = hoja.getLastRow();
-  var datos = hoja.getRange("A2:E"+fila).getValues();
+  var datos = hoja.getRange("A2:F"+fila).getValues();
   var resultado = [];
   
   if(id!=null){
      
     for(var i = 0; i<datos.length; i++){
     
-    if(datos[i][4]=="A" && datos[i][0]== id){
+    if(datos[i][5]=="A" && datos[i][0]== id){
       
       resultado.push({
          
         id:datos[i][0],
         nombre:datos[i][1],
         descripcion:datos[i][2],
-        descripcion2:datos[i][3]                             
+        descripcion2:datos[i][3],
+        descripcion3:datos[i][4]                                     
       })
       
       break;
@@ -1184,7 +1185,7 @@ function listarpais(id,rol) {
   
   for(var i = 0; i<datos.length; i++){
     
-    if(datos[i][4]=="A"){
+    if(datos[i][5]=="A"){
         
       if(rol=="ADMIN"){
          
@@ -1212,7 +1213,8 @@ function listarpais(id,rol) {
         id:datos[i][0],
         nombre:datos[i][1],
         descripcion:datos[i][2],
-        descripcion2:datos[i][3],                   
+        descripcion2:datos[i][3],   
+        descripcion3:datos[i][4],                            
         acciones:botones
               
       })
@@ -1235,24 +1237,25 @@ function listarpais(id,rol) {
 function crearpais(form){
 
   var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
-  var hoja = libro.getSheetByName("Nacionalidad");
+  var hoja = libro.getSheetByName("Nacionalidad_real");
   var fila = hoja.getLastRow();
   var idActual = hoja.getRange("A"+fila).getValue();
   
-  if(form.nombreCrearpais!="" && form.descipcionCrearpais!="" && form.descipcionCrearpais2!="" && form.txtAccion=="crearpais"){
+  if(form.nombreCrearpais!="" && form.descipcionCrearpais!="" && form.descipcionCrearpais2!=""&& form.descipcionCrearpais3!="" && form.txtAccion=="crearpais"){
      
     hoja.getRange("A"+(fila+1)).setValue(idActual+1);
     hoja.getRange("B"+(fila+1)).setValue(form.nombreCrearpais);
     hoja.getRange("C"+(fila+1)).setValue(form.descipcionCrearpais);
-    hoja.getRange("D"+(fila+1)).setValue(form.descipcionCrearpais2);                    
-    hoja.getRange("E"+(fila+1)).setValue("A");
+    hoja.getRange("D"+(fila+1)).setValue(form.descipcionCrearpais2);
+    hoja.getRange("E"+(fila+1)).setValue(form.descipcionCrearpais3);                        
+    hoja.getRange("F"+(fila+1)).setValue("A");
   
     return "crearpaisOk";
     
     
-  }else if(form.nombreEditarpais!="" && form.descipcionEditarpais!=""&& form.descipcionEditarpais2!="" && form.txtAccion=="editarpais" && form.idEditarpais!=""){
+  }else if(form.nombreEditarpais!="" && form.descipcionEditarpais!="" && form.descipcionEditarpais2!="" && form.descipcionEditarpais3!="" && form.txtAccion=="editarpais" && form.idEditarpais!=""){
      
-    var datos = hoja.getRange("A2:E"+fila).getValues();
+    var datos = hoja.getRange("A2:F"+fila).getValues();
     
     for(var i=0; i<datos.length; i++){
       
@@ -1260,7 +1263,8 @@ function crearpais(form){
       
         hoja.getRange("B"+(i+2)).setValue(form.nombreEditarpais);
         hoja.getRange("C"+(i+2)).setValue(form.descipcionEditarpais); 
-        hoja.getRange("D"+(i+2)).setValue(form.descipcionEditarpais2);                        
+        hoja.getRange("D"+(i+2)).setValue(form.descipcionEditarpais2); 
+        hoja.getRange("E"+(i+2)).setValue(form.descipcionEditarpais3);                                
         return "editarpaisOk";
       }
     
@@ -1283,20 +1287,194 @@ function crearpais(form){
 function eliminarpaisAdmin(id){
   
   var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
-  var hoja = libro.getSheetByName("Nacionalidad");
+  var hoja = libro.getSheetByName("Nacionalidad_real");
   var fila = hoja.getLastRow();
-  var datos = hoja.getRange("A2:E"+fila).getValues();
+  var datos = hoja.getRange("A2:F"+fila).getValues();
   
   for(var i=0; i<datos.length; i++){
     
     if(id==datos[i][0]){
       
-      hoja.getRange("E"+(i+2)).setValue("D");
+      hoja.getRange("F"+(i+2)).setValue("D");
       
       return "eliminarpaisOK";
     }      
   } 
 }
+
+
+
+
+/*=======================================================================
+
+     =====================  Listar - Uno o Todos Jurisdicciones de colombia  =======================
+
+==============================================================================*/
+
+function listarjurisd(id,rol) {
+  
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Jurisdicciones");
+  var fila = hoja.getLastRow();
+  var datos = hoja.getRange("A2:G"+fila).getValues();
+  var resultado = [];
+  
+  if(id!=null){
+     
+    for(var i = 0; i<datos.length; i++){
+    
+    if(datos[i][6]=="A" && datos[i][0]== id){
+      
+      resultado.push({
+         
+        id:datos[i][0],
+        nombre:datos[i][1],
+        descripcion:datos[i][2],
+        descripcion2:datos[i][3],
+        descripcion3:datos[i][4],  
+        descripcion4:datos[i][5]                                             
+      })
+      
+      break;
+    }  
+  
+  }
+    
+  }else{
+  
+  
+  for(var i = 0; i<datos.length; i++){
+    
+    if(datos[i][6]=="A"){
+        
+      if(rol=="ADMIN"){
+         
+         var botones = "<a class='btn btn-primary posicionBoton' title='Editar jurisd' "+
+                       "data-bs-toggle='modal' data-bs-target='#editarjurisd' "+
+                       "onclick='verEditarjurisd("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-pencil'></i>  </a>"+
+                       "<a class='btn btn-danger' title='Eliminar jurisd' "+
+                       "onclick='eliminarjurisd("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-trash-can'></i> </a>";
+      
+      }else if(rol=="SPECIAL"){
+         
+         var botones = "<a class='btn btn-primary posicionBoton' title='Editar jurisd' "+
+                       "data-bs-toggle='modal' data-bs-target='#editarjurisd' "+
+                       "onclick='verEditarjurisd("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-pencil'></i>  </a>";
+                      
+      
+      }
+      
+      
+      resultado.push({
+         
+        id:datos[i][0],
+        nombre:datos[i][1],
+        descripcion:datos[i][2],
+        descripcion2:datos[i][3],   
+        descripcion3:datos[i][4],    
+        descripcion4:datos[i][5],                                    
+        acciones:botones
+              
+      })
+    }  
+  
+  }  
+  
+ }
+   return resultado;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Crear-Editar Nacionalidad  =======================
+
+==============================================================================*/
+
+function crearjurisd(form){
+
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Jurisdicciones");
+  var fila = hoja.getLastRow();
+  var idActual = hoja.getRange("A"+fila).getValue();
+  
+  if(form.nombreCrearjurisd!="" && form.descipcionCrearjurisd!="" && form.descipcionCrearjurisd2!=""&& form.descipcionCrearjurisd3!=""&& form.descipcionCrearjurisd4!="" && form.txtAccion=="crearjurisd"){
+     
+    hoja.getRange("A"+(fila+1)).setValue(idActual+1);
+    hoja.getRange("B"+(fila+1)).setValue(form.nombreCrearjurisd);
+    hoja.getRange("C"+(fila+1)).setValue(form.descipcionCrearjurisd);
+    hoja.getRange("D"+(fila+1)).setValue(form.descipcionCrearjurisd2);
+    hoja.getRange("E"+(fila+1)).setValue(form.descipcionCrearjurisd3);  
+    hoja.getRange("F"+(fila+1)).setValue(form.descipcionCrearjurisd4);                            
+    hoja.getRange("G"+(fila+1)).setValue("A");
+  
+    return "crearjurisdOk";
+    
+    
+  }else if(form.nombreEditarjurisd!="" && form.descipcionEditarjurisd!="" && form.descipcionEditarjurisd2!="" && form.descipcionEditarjurisd3!=""&& form.descipcionEditarjurisd4!="" && form.txtAccion=="editarjurisd" && form.idEditarjurisd!=""){
+     
+    var datos = hoja.getRange("A2:G"+fila).getValues();
+    
+    for(var i=0; i<datos.length; i++){
+      
+      if(form.idEditarjurisd==datos[i][0]){
+      
+        hoja.getRange("B"+(i+2)).setValue(form.nombreEditarjurisd);
+        hoja.getRange("C"+(i+2)).setValue(form.descipcionEditarjurisd); 
+        hoja.getRange("D"+(i+2)).setValue(form.descipcionEditarjurisd2); 
+        hoja.getRange("E"+(i+2)).setValue(form.descipcionEditarjurisd3);
+        hoja.getRange("F"+(i+2)).setValue(form.descipcionEditarjurisd4);                                        
+        return "editarjurisdOk";
+      }
+    
+    }
+     
+    
+  }else{
+  
+    return "faltaInformacion";
+  }
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Nacionalidades  =======================
+
+==============================================================================*/
+function eliminarjurisdAdmin(id){
+  
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Jurisdicciones");
+  var fila = hoja.getLastRow();
+  var datos = hoja.getRange("A2:G"+fila).getValues();
+  
+  for(var i=0; i<datos.length; i++){
+    
+    if(id==datos[i][0]){
+      
+      hoja.getRange("G"+(i+2)).setValue("D");
+      
+      return "eliminarjurisdOK";
+    }      
+  } 
+}
+
+
 
 
 
@@ -1813,6 +1991,345 @@ function eliminarmatrizAdmin(id){
     }      
   } 
 }
+
+
+
+
+
+
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Listar - Uno o Todos Profesiones  =======================
+
+==============================================================================*/
+
+function listarprofes(id,rol) {
+  
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Profesion");
+  var fila = hoja.getLastRow();
+  var datos = hoja.getRange("A2:D"+fila).getValues();
+  var resultado = [];
+  
+  if(id!=null){
+     
+    for(var i = 0; i<datos.length; i++){
+    
+    if(datos[i][3]=="A" && datos[i][0]== id){
+      
+      resultado.push({
+         
+        id:datos[i][0],
+        nombre:datos[i][1],
+        descripcion:datos[i][2]                                     
+      })
+      
+      break;
+    }  
+  
+  }
+    
+  }else{
+  
+  
+  for(var i = 0; i<datos.length; i++){
+    
+    if(datos[i][3]=="A"){
+        
+      if(rol=="ADMIN"){
+         
+         var botones = "<a class='btn btn-primary posicionBoton' title='Editar profes' "+
+                       "data-bs-toggle='modal' data-bs-target='#editarprofes' "+
+                       "onclick='verEditarprofes("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-pencil'></i>  </a>"+
+                       "<a class='btn btn-danger' title='Eliminar profes' "+
+                       "onclick='eliminarprofes("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-trash-can'></i> </a>";
+      
+      }else if(rol=="SPECIAL"){
+         
+         var botones = "<a class='btn btn-primary posicionBoton' title='Editar profes' "+
+                       "data-bs-toggle='modal' data-bs-target='#editarprofes' "+
+                       "onclick='verEditarprofes("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-pencil'></i>  </a>";
+                      
+      }else if(rol=="GESTOR"){
+         
+         var botones = "<a class='btn btn-primary posicionBoton' title='Editar profes' "+
+                       "data-bs-toggle='modal' data-bs-target='#editarprofes' "+
+                       "onclick='verEditarprofes("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-pencil'></i>  </a>";
+      }
+      
+      
+      resultado.push({
+         
+        id:datos[i][0],
+        nombre:datos[i][1],
+        descripcion:datos[i][2],                        
+        acciones:botones
+              
+      })
+    }  
+  
+  }  
+  
+ }
+   return resultado;
+  
+}
+
+
+/*=======================================================================
+
+     =====================  Crear-Editar Profesiones  =======================
+
+==============================================================================*/
+
+function crearprofes(form){
+
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Profesion");
+  var fila = hoja.getLastRow();
+  var idActual = hoja.getRange("A"+fila).getValue();
+  
+  if(form.nombreCrearprofes!="" && form.descipcionCrearprofes!="" &&  form.txtAccion=="crearprofes"){
+     
+    hoja.getRange("A"+(fila+1)).setValue(idActual+1);
+    hoja.getRange("B"+(fila+1)).setValue(form.nombreCrearprofes);
+    hoja.getRange("C"+(fila+1)).setValue(form.descipcionCrearprofes);                      
+    hoja.getRange("D"+(fila+1)).setValue("A");
+  
+    return "crearprofesOk";
+    
+    
+  }else if(form.nombreEditarprofes!="" && form.descipcionEditarprofes!=""&& form.txtAccion=="editarprofes" && form.idEditarprofes!=""){
+     
+    var datos = hoja.getRange("A2:D"+fila).getValues();
+    
+    for(var i=0; i<datos.length; i++){
+      
+      if(form.idEditarprofes==datos[i][0]){
+      
+        hoja.getRange("B"+(i+2)).setValue(form.nombreEditarprofes);
+        hoja.getRange("C"+(i+2)).setValue(form.descipcionEditarprofes);                                
+        return "editarprofesOk";
+      }
+    
+    }
+     
+    
+  }else{
+  
+    return "faltaInformacion";
+  }
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Profesiones  =======================
+
+==============================================================================*/
+function eliminarprofesAdmin(id){
+  
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Profesion");
+  var fila = hoja.getLastRow();
+  var datos = hoja.getRange("A2:D"+fila).getValues();
+  
+  for(var i=0; i<datos.length; i++){
+    
+    if(id==datos[i][0]){
+      
+      hoja.getRange("D"+(i+2)).setValue("D");
+      
+      return "eliminarprofesOK";
+    }      
+  } 
+}
+
+
+
+
+
+
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Listar - Uno o Todos Ocupacion  =======================
+
+==============================================================================*/
+
+function listarocupa(id,rol) {
+  
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Ocupacion_real");
+  var fila = hoja.getLastRow();
+  var datos = hoja.getRange("A2:D"+fila).getValues();
+  var resultado = [];
+  
+  if(id!=null){
+     
+    for(var i = 0; i<datos.length; i++){
+    
+    if(datos[i][3]=="A" && datos[i][0]== id){
+      
+      resultado.push({
+         
+        id:datos[i][0],
+        nombre:datos[i][1],
+        descripcion:datos[i][2]                                     
+      })
+      
+      break;
+    }  
+  
+  }
+    
+  }else{
+  
+  
+  for(var i = 0; i<datos.length; i++){
+    
+    if(datos[i][3]=="A"){
+        
+      if(rol=="ADMIN"){
+         
+         var botones = "<a class='btn btn-primary posicionBoton' title='Editar ocupa' "+
+                       "data-bs-toggle='modal' data-bs-target='#editarocupa' "+
+                       "onclick='verEditarocupa("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-pencil'></i>  </a>"+
+                       "<a class='btn btn-danger' title='Eliminar ocupa' "+
+                       "onclick='eliminarocupa("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-trash-can'></i> </a>";
+      
+      }else if(rol=="SPECIAL"){
+         
+         var botones = "<a class='btn btn-primary posicionBoton' title='Editar ocupa' "+
+                       "data-bs-toggle='modal' data-bs-target='#editarocupa' "+
+                       "onclick='verEditarocupa("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-pencil'></i>  </a>";
+                      
+      }else if(rol=="GESTOR"){
+         
+         var botones = "<a class='btn btn-primary posicionBoton' title='Editar ocupa' "+
+                       "data-bs-toggle='modal' data-bs-target='#editarocupa' "+
+                       "onclick='verEditarocupa("+datos[i][0]+");'> "+
+                       "<i class='fa-solid fa-pencil'></i>  </a>";
+      }
+      
+      
+      resultado.push({
+         
+        id:datos[i][0],
+        nombre:datos[i][1],
+        descripcion:datos[i][2],                        
+        acciones:botones
+              
+      })
+    }  
+  
+  }  
+  
+ }
+   return resultado;
+  
+}
+
+
+/*=======================================================================
+
+     =====================  Crear-Editar Ocupacion  =======================
+
+==============================================================================*/
+
+function crearocupa(form){
+
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Ocupacion_real");
+  var fila = hoja.getLastRow();
+  var idActual = hoja.getRange("A"+fila).getValue();
+  
+  if(form.nombreCrearocupa!="" && form.descipcionCrearocupa!="" &&  form.txtAccion=="crearocupa"){
+     
+    hoja.getRange("A"+(fila+1)).setValue(idActual+1);
+    hoja.getRange("B"+(fila+1)).setValue(form.nombreCrearocupa);
+    hoja.getRange("C"+(fila+1)).setValue(form.descipcionCrearocupa);                      
+    hoja.getRange("D"+(fila+1)).setValue("A");
+  
+    return "crearocupaOk";
+    
+    
+  }else if(form.nombreEditarocupa!="" && form.descipcionEditarocupa!=""&& form.txtAccion=="editarocupa" && form.idEditarocupa!=""){
+     
+    var datos = hoja.getRange("A2:D"+fila).getValues();
+    
+    for(var i=0; i<datos.length; i++){
+      
+      if(form.idEditarocupa==datos[i][0]){
+      
+        hoja.getRange("B"+(i+2)).setValue(form.nombreEditarocupa);
+        hoja.getRange("C"+(i+2)).setValue(form.descipcionEditarocupa);                                
+        return "editarocupaOk";
+      }
+    
+    }
+     
+    
+  }else{
+  
+    return "faltaInformacion";
+  }
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Ocupacion  =======================
+
+==============================================================================*/
+function eliminarocupaAdmin(id){
+  
+  var libro = SpreadsheetApp.openById("1Zgs6gpF2UBd3eB3LR_vm3pyBwwk6mMLNmH_bi-YwE8E");
+  var hoja = libro.getSheetByName("Ocupacion_real");
+  var fila = hoja.getLastRow();
+  var datos = hoja.getRange("A2:D"+fila).getValues();
+  
+  for(var i=0; i<datos.length; i++){
+    
+    if(id==datos[i][0]){
+      
+      hoja.getRange("D"+(i+2)).setValue("D");
+      
+      return "eliminarocupaOK";
+    }      
+  } 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

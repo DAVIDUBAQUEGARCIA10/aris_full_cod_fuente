@@ -128,6 +128,17 @@ function mostrarContent(pag){
      
     }
 
+ }else if(pag=="listarjurisd"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarjurisd).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }
+
 
  }else if(pag=="listarlistas"){
   
@@ -183,6 +194,31 @@ function mostrarContent(pag){
       mostrarAlerta("permisos")
      
     }
+
+ }else if(pag=="listarprofes"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarprofes).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }    
+
+
+ }else if(pag=="listarocupa"){
+  
+   if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
+    datosRol.push(pag,rol);
+    google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarocupa).controlador("",datosRol);
+    }else{
+      
+      mostrarAlerta("permisos")
+     
+    }    
+
+
 
  }else if(pag=="listartrans"){
   
@@ -634,6 +670,24 @@ function verEditarpais(idpais){
 
 }
 
+
+
+/*=======================================================================
+
+     =====================  Ver Jurisdiccion  =======================
+
+==============================================================================*/
+function verEditarjurisd(idjurisd){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarjurisd).controlador("","listarjurisd",idjurisd);
+
+
+}
+
+
+
+
 /*=======================================================================
 
      =====================  Ver Requerimientos  =======================
@@ -682,6 +736,18 @@ function eliminarpais(id){
   confirmarpais(id);
 }
 
+
+/*=======================================================================
+
+     =====================  Eliminar Jurisdiccion  =======================
+
+==============================================================================*/
+function eliminarjurisd(id){
+
+  confirmarjurisd(id);
+}
+
+
 /*=======================================================================
 
      =====================  Eliminar Tablero informe  =======================
@@ -716,6 +782,66 @@ function eliminarmatriz(id){
 
   confirmarmatriz(id);
 }
+
+
+
+/*=======================================================================
+
+     =====================  Ver Profesiones  =======================
+
+==============================================================================*/
+function verEditarprofes(idprofes){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarprofes).controlador("","listarprofes",idprofes);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Profesiones  =======================
+
+==============================================================================*/
+function eliminarprofes(id){
+
+  confirmarprofes(id);
+}
+
+
+
+
+
+
+
+/*=======================================================================
+
+     =====================  Ver Ocupacion  =======================
+
+==============================================================================*/
+function verEditarocupa(idocupa){
+   
+   $.LoadingOverlay("show");
+   google.script.run.withFailureHandler(mostrarAlerta).withSuccessHandler(mostrarEditarocupa).controlador("","listarocupa",idocupa);
+
+
+}
+
+
+/*=======================================================================
+
+     =====================  Eliminar Ocupacion  =======================
+
+==============================================================================*/
+function eliminarocupa(id){
+
+  confirmarocupa(id);
+}
+
+
+
+
 
 
 
