@@ -2313,25 +2313,16 @@
             <textarea class="form-control" id="descipcionCrearcausas" name="descipcionCrearcausas" rows="2" ></textarea>
           </div>
 
+     
+ 
           <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">ACTO DELICTIVO<span data-bs-toggle="tooltip" data-bs-placement="top" title="Seleccione el acto delictivo asociado al riesgo." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
-              <select class="form-select" id="descipcionCrearcausas2" name="descipcionCrearcausas2">
-                 <option value="" disabled selected hidden>Seleccione</option>
-                  <option value="lavado de activos">lavado de activos</option>
-                  <option value="terroristas o grupos armados">terroristas o grupos armados</option>
-                  <option value="proliferación de armas de destrucción masiva">proliferación de armas de destrucción masiva</option>
-                  <option value="delitos contra la Administración Pública, corrupción, soborno transnacional o desvío de recursos del estado.">delitos contra la Administración Pública, corrupción, soborno transnacional o desvío de recursos del estado.</option>
-                  <option value="impactos contra el Medio Ambiente">impactos contra el Medio Ambiente</option>
-                  <option value="enriquecimiento ilícito derivadas de delitos contra el sistema financiero">enriquecimiento ilícito derivadas de delitos contra el sistema financiero</option>
-                  <option value="Otro">Otro</option>                  
-              </select>
-          </div>    
-
-
+              <label for="exampleInputPassword1" class="form-label">PRODUCTO<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa el o los productos afectados, separados por coma." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
+              <textarea class="form-control" id="descipcionCrearcausas2" name="descipcionCrearcausas2" rows="2" >No aplica</textarea>
+          </div>            
 
           <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">ID FACTOR<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa el control, usa copie y pegue." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
-              <textarea class="form-control" id="descipcionCrearcausas3" name="descipcionCrearcausas3" rows="2" readonly>No aplica</textarea>
+              <label for="exampleInputPassword1" class="form-label">FACTORE DE RIESGO<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa el control, usa copie y pegue." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
+              <textarea class="form-control" id="descipcionCrearcausas3" name="descipcionCrearcausas3" rows="2" >No aplica</textarea>
           </div>            
 
           <div class="mb-3">
@@ -2350,13 +2341,13 @@
               </select>
           </div>
 
-          <div class="mb-3">
+          <div class="mb-3 d-none">
               <label for="exampleInputPassword1" class="form-label">ID CONTROL<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa el control, usa copie y pegue." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
               <textarea class="form-control" id="descipcionCrearcausas5" name="descipcionCrearcausas5" rows="2" readonly>No aplica</textarea>
           </div>     
 
 
-          <div class="mb-3">
+          <div class="mb-3 d-none">
               <label for="exampleInputPassword1" class="form-label">CONTROL<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa el control, usa copie y pegue." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
               <textarea class="form-control" id="descipcionCrearcausas6" name="descipcionCrearcausas6" rows="2" readonly>No aplica</textarea>
           </div>     
@@ -2419,24 +2410,17 @@
             <textarea class="form-control" id="descipcionEditarcausas" name="descipcionEditarcausas" rows="2" ></textarea>
           </div>
 
-          <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">ACTO DELICTIVO<span data-bs-toggle="tooltip" data-bs-placement="top" title="Seleccione el acto delictivo asociado al riesgo." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
-              <select class="form-select" id="descipcionEditarcausas2" name="descipcionEditarcausas2">
-                 <option value="" disabled selected hidden>Seleccione</option>
-                  <option value="lavado de activos">lavado de activos</option>
-                  <option value="terroristas o grupos armados">terroristas o grupos armados</option>
-                  <option value="proliferación de armas de destrucción masiva">proliferación de armas de destrucción masiva</option>
-                  <option value="delitos contra la Administración Pública, corrupción, soborno transnacional o desvío de recursos del estado.">delitos contra la Administración Pública, corrupción, soborno transnacional o desvío de recursos del estado.</option>
-                  <option value="impactos contra el Medio Ambiente">impactos contra el Medio Ambiente</option>
-                  <option value="enriquecimiento ilícito derivadas de delitos contra el sistema financiero">enriquecimiento ilícito derivadas de delitos contra el sistema financiero</option>
-                  <!-- Agrega más opciones según sea necesario -->
-              </select>
-          </div> 
 
 
           <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">FACTOR<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa el control, usa copie y pegue." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
-              <textarea class="form-control" id="descipcionEditarcausas3" name="descipcionEditarcausas3" rows="2" readonly>No aplica</textarea>
+              <label for="exampleInputPassword1" class="form-label">PRODUCTO<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa productos factor de riesgo, separados por comas." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
+              <textarea class="form-control" id="descipcionEditarcausas2" name="descipcionEditarcausas2" rows="2" >No aplica</textarea>
+          </div>  
+
+
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">FACTOR DE RIESGO<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa Factores de riesgo." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
+              <textarea class="form-control" id="descipcionEditarcausas3" name="descipcionEditarcausas3" rows="2" >No aplica</textarea>
           </div>          
 
           <div class="mb-3">
@@ -2456,12 +2440,12 @@
 
 
 
-          <div class="mb-3">
+          <div class="mb-3 d-none">
               <label for="exampleInputPassword1" class="form-label">ID CONTROL<span data-bs-toggle="tooltip" data-bs-placement="top" title="Digite el número de ID de control asociado a la causa." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
               <textarea class="form-control" id="descipcionEditarcausas5" name="descipcionEditarcausas5" rows="2" readonly>No aplica</textarea>
           </div>   
 
-          <div class="mb-3">
+          <div class="mb-3 d-none">
               <label for="exampleInputPassword1" class="form-label">CONTROL<span data-bs-toggle="tooltip" data-bs-placement="top" title="Describa el control, usa copie y pegue." class="ms-2 text-info"><i class="fas fa-question-circle"></i></span></label>
               <textarea class="form-control" id="descipcionEditarcausas6" name="descipcionEditarcausas6" rows="2" readonly>No aplica</textarea>
           </div>
