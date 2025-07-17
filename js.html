@@ -755,6 +755,111 @@ function mostrarEditaracti(respuesta){
 
 
 
+/*=======================================================================
+
+     =====================  Mostrar pagina de quienes somos  =======================
+
+==============================================================================*/
+
+
+
+function crearPaginaInformativa() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>Equipo de Prevención del Riesgo</h2>" +
+
+      "<div class='alert alert-info'>" +
+        "<strong>Bienvenido</strong> al módulo informativo de ARIS.</strong> Aquí podrás conocer el equipo humano de la Dirección y sus respectivos líderes." +
+      "</div>" +
+
+      "<div class='row'>";
+
+  // Jefe: JHON JAIRO
+  html +=
+    "<div class='col-md-6 mb-3'>" +
+      "<div class='card'>" +
+        "<div class='card-body'>" +
+          "<h5 class='card-title'>JHON JAIRO ESPITIA ESQUIVEL</h5>" +
+          "<p class='text-muted mb-2'><em>DIRECTOR del Dpto. de Prevención de Lavado de Activos</em></p>" +
+          "<p class='card-text'><strong>Colaboradores:</strong></p>" +
+          "<ul class='mb-2'>" +
+            "<li><strong>JAVIER DAVID UBAQUE GARCIA</strong> - 22/01/2024<br><small>ESPECIALISTA DE RIESGO Y ANALÍTICA DE CUMPLIMIENTO NORMATIVO</small></li>" +
+            "<li><strong>LAURA NATALIA SUAREZ MORA</strong> - 01/11/2023<br><small>ESPECIALISTA SENIOR RIESGO DE CORRUPCIÓN, OPACIDAD Y FRAUDE</small></li>" +
+            "<li><strong>NATHALYA YULIANA ALBARRACIN ANDRADE</strong> - 01/11/2023<br><small>ESPECIALISTA PTEE ANTICORRUPCIÓN Y ANTISOBORNO</small></li>" +
+            "<li><strong>FREDDY ALEXANDER ROJAS CORTES</strong> - 01/06/2023<br><small>ESPECIALISTA OFICIAL DE CUMPLIMIENTO EPS</small></li>" +
+          "</ul>" +
+        "</div>" +
+      "</div>" +
+    "</div>";
+
+  // Jefe: NIDIA
+  html +=
+    "<div class='col-md-6 mb-3'>" +
+      "<div class='card'>" +
+        "<div class='card-body'>" +
+          "<h5 class='card-title'>NIDIA LUCIA WONG RODRIGUEZ</h5>" +
+          "<p class='text-muted mb-2'><em>Jefe del Dpto. de Prevención de Lavado de Activos</em></p>" +
+          "<p class='card-text'><strong>Colaboradores:</strong></p>" +
+          "<ul class='mb-2'>" +
+            "<li><strong>DIEGO FERNANDO FORERO SIERRA</strong> - 21/03/2023<br><small>ASESOR EJECUTIVO CUMPLIMIENTO NORMATIVO</small></li>" +
+            "<li><strong>ANGIE LORENA VELANDIA MATEUS</strong> - 13/12/2018<br><small>ASISTENTE EJECUTIVO CUMPLIMIENTO NORMATIVO</small></li>" +
+            "<li><strong>CAMILO ANDRES RIOS GUERRERO</strong> - 09/05/2022<br><small>ASISTENTE EJECUTIVO CUMPLIMIENTO NORMATIVO</small></li>" +
+          "</ul>" +
+        "</div>" +
+      "</div>" +
+    "</div>";
+
+  // Footer institucional
+  html +=
+    "</div>" +
+    "<div class='text-center mt-4'>" +
+      "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+      "<p class='mt-3'><small>Dirección de Cumplimiento - Seguros Bolívar</small></p>" +
+    "</div>" +
+  "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+
+
+
+
+
+function crearPaginaInformeKPI() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>Tablero de Indicadores ARIS</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Este panel interactivo presenta los principales indicadores de gestión y cumplimiento en el marco del SARLAFT, SAGRILAFT y PTEE." +
+      "</div>" +
+
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/4481e048-4376-4612-9d4d-1282b80a1393/page/vDvqD' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+
+
+
+
+
+
+
+
 
 /*=======================================================================
 

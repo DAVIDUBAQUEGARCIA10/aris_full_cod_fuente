@@ -106,6 +106,34 @@ function mostrarContent(pag){
      
     }
 
+
+    /*=======================================================================
+
+     =====================  Mostrar quienes somos unicamente  =======================
+    ==============================================================================*/
+
+
+  }else if(pag=="informativo"){
+    crearPaginaInformativa();  // ✅ Todos los roles podrán verla
+  
+  
+
+  }else if(pag == "informeKPI") {
+
+  if(rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaInformeKPI();  // ✅ Solo roles autorizados pueden verla
+  } else {
+    mostrarAlerta("permisos");  // ❌ Si no tiene permiso, muestra alerta
+  }
+
+
+
+
+
+
+
+
+
  }else if(pag=="listarmoni"){
   
    if(rol =="ADMIN" || rol=="SPECIAL"|| rol=="EVALUATOR"|| rol=="GESTOR"){
