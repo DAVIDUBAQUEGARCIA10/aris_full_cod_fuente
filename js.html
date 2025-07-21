@@ -163,12 +163,14 @@ function crearTablaAreas(){
               "<div class='modal-title small-text'>"+
               "<h6>🔍 No es válido definir el mismo control para dos o más causas diferentes dentro de un mismo riesgo.<br>🔍 Debe existir al menos un control por cada causa identificada.<br>🔍 Una política por sí sola no es un control.<br>🔍 La redacción debe contemplar palabras tales como revisar, verificar, cotejar, validar, realizar seguimiento, comprobar, confrontar o evidenciar.<br>🎯 La estructura de redacción es la siguiente: Alertamiento + Análisis + Toma de decisiones + Reporte.<br>🔍 Codificación: Inicia con la sigla “CTRL” seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>🎯 El control debe estar diseñado para mitigar la conducta del riesgo.<br>🎯 Es errado diseñar o evalúar un control como si su función fuera mitigar un evento operativo, cuando en realidad el riesgo se origina en una conducta delictiva.<br>🎯 Debe guardar coherencia con la causa definida en la matriz de riesgo.</h6></div>"+  
 //                "<!-- Button trigger modal -->  
-                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearArea'>"+
-                  "<i class='fa-solid fa-plus'></i>"+
-                "</button> "+
-                "<a href='https://drive.google.com/drive/folders/1-Nw_5w3siS7MOATXeWscHIdQhtAaUlCw' class='btn btn-primary' target='_blank' rel='noopener noreferrer'> Guia </a>"+
-                
-                
+              "<div class='d-flex gap-2'>" +
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearArea'>" +
+                  "<i class='fa-solid fa-plus'></i>" +
+                "</button>" +
+                "<a href='https://docs.google.com/document/d/14Wo43eta2VW1yB_esrLOQbNvqmCurkLg/edit?usp=sharing&ouid=101910629782611746997&rtpof=true&sd=true' class='btn btn-primary' target='_blank' rel='noopener noreferrer'>Guía</a>" +
+                "<a href='https://docs.google.com/document/d/13cTyx2i28wmi23yzrxYxiplm4blZ2spmZFcIHDlQy98/edit?usp=sharing' class='btn btn-primary' target='_blank' rel='noopener noreferrer'>Prompt</a>" +
+              "</div>" +
+//                "<!-- TABLA -->  
                 "<table class='table table-striped table-hover table-bordered' id='tablaAreas' >"+
                   "<thead>"+
                    " <tr>"+
@@ -510,11 +512,14 @@ function crearTablacausas(){
                 "<div class='modal-title small-text'>"+
                   "<br><h6>🔍 La estructura de redacción es la siguiente: Sujeto + Operación + Objeto determinado + Contexto que describe circunstancias específicas.<br>🔍 Codificación: Inicia con la sigla “CAU” seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>🔍 Codificación: Inicia con la sigla “CAU” seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>🔍 Objeto determinado: Elemento (s) sobre los que recae la acción, especificando su naturaleza, cantidad o características.<br>🔍 Contexto que describe circunstancias específicas: Se describe el delito y cómo se comete, incluyendo circunstancias, métodos o herramientas como suelen ser descritas en las tipologías.<br>🎯 La Causa debe proponer como la entidad puede ser utilizada para LAFT.<br>🎯 La causa debe identificar al menos 3 factores de riesgo.<br></h6></div>"+
 //                "<!-- Button trigger modal -->  
-                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearcausas'>"+
-                  "<i class='fa-solid fa-plus'></i>"+
-                "</button>"+
-                "<a href='https://drive.google.com/drive/folders/1-Nw_5w3siS7MOATXeWscHIdQhtAaUlCw' class='btn btn-primary' target='_blank' rel='noopener noreferrer'> Guia </a>"+
-                
+                "<div class='d-flex gap-2'>" +
+                  "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearcausas'>" +
+                    "<i class='fa-solid fa-plus'></i>" +
+                  "</button>" +
+                  "<a href='https://drive.google.com/file/d/15jj-Ajs3UIA8gZfOeu-d_fDQfnOr1xx7/view?usp=sharing' class='btn btn-primary' target='_blank' rel='noopener noreferrer'>Guía</a>" +
+                  "<a href='https://docs.google.com/document/d/13cTyx2i28wmi23yzrxYxiplm4blZ2spmZFcIHDlQy98/edit?tab=t.0#heading=h.a9pherle1osa' class='btn btn-primary' target='_blank' rel='noopener noreferrer'>Prompt</a>" +
+                  "</div>" +
+
                 
                 "<table class='table table-striped table-hover table-bordered' id='tablacausas' >"+
                   "<thead>"+
@@ -2580,10 +2585,14 @@ function crearTablariesgos(){
                     "<br><h6>🔍 La estructura de redacción es la siguiente: Posibilidad de + Impacto + Causa Inmediata.<br>🔍 Codificación: Inicia con la sigla 'PLA' seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>🔍 Codificación Corrupción: Inicia con la sigla 'PLA' seguido de la sigla 'COR', seguida de un consecutivo de 3 dígitos, seguido por siglas de la empresa.<br>ㅤ</h6></div>"+
                     
 //                "<!-- Button trigger modal -->  
-                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearriesgos'>"+
-                  "<i class='fa-solid fa-plus'></i>"+
-                "</button>"+
-                "<a href='https://drive.google.com/drive/folders/1-Nw_5w3siS7MOATXeWscHIdQhtAaUlCw' class='btn btn-primary' target='_blank' rel='noopener noreferrer'> Guia </a>"+
+              "<div class='d-flex gap-2'>" +
+                "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#crearriesgos'>" +
+                  "<i class='fa-solid fa-plus'></i>" +
+                "</button>" +
+                "<a href='https://drive.google.com/file/d/1vPtvdo4jcq8JwSaHnKCa5O-yLZ3-tsQ1/view?usp=sharing' class='btn btn-primary' target='_blank' rel='noopener noreferrer'>Guía</a>" +
+                "<a href='https://docs.google.com/document/d/13cTyx2i28wmi23yzrxYxiplm4blZ2spmZFcIHDlQy98/edit?tab=t.0#heading=h.a9pherle1osa' class='btn btn-primary' target='_blank' rel='noopener noreferrer'>Prompt</a>" +
+                "</div>" + 
+
                 "<table class='table table-striped table-hover table-bordered' id='tablariesgos' >"+
                   "<thead>"+
                    " <tr>"+
