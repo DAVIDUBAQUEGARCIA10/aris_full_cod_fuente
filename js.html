@@ -831,17 +831,17 @@ function crearPaginaInformativa() {
 
 
 
-
-function crearPaginaInformeKPI() {
+function crearPaginaSARLAFT_4_Seguros_Bolivar() {
   var html =
     "<div class='container'>" +
-      "<h2 class='mb-3'>Tablero de Indicadores ARIS</h2>" +
+      "<h2 class='mb-3'>SARLAFT 4.0 - Seguros Bolívar</h2>" +
+
       "<div class='alert alert-secondary'>" +
-        "Este panel interactivo presenta los principales indicadores de gestión y cumplimiento en el marco del SARLAFT, SAGRILAFT y PTEE." +
+        "Este tablero presenta el modelo de administración del riesgo de LA/FT para Seguros Bolívar bajo el marco SARLAFT 4.0." +
       "</div>" +
 
       "<div class='ratio ratio-16x9'>" +
-        "<iframe src='https://lookerstudio.google.com/embed/reporting/4481e048-4376-4612-9d4d-1282b80a1393/page/vDvqD' " +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/1cfba3f2-3db6-4b86-88a2-24910b795640/page/Zj0qD' " +
                 "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
                 "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
         "</iframe>" +
@@ -856,6 +856,636 @@ function crearPaginaInformeKPI() {
   document.getElementById("contenidos").innerHTML = html;
   $.LoadingOverlay("hide");
 }
+
+function crearPaginaSARLAFT_4_Comerciales_Bolivar() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SARLAFT 4.0 - Comerciales Bolívar</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Este tablero presenta el modelo de riesgo SARLAFT 4.0 para la línea de negocio de Comerciales Bolívar." +
+      "</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/c04a9a17-1eac-4986-85fa-58d607bf2310/page/Zj0qD' " +
+        "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+        "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Comerciales Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSARLAFT_4_Capitalizadora_Bolivar() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SARLAFT 4.0 - Capitalizadora Bolívar</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Tablero de gestión del riesgo de LA/FT bajo SARLAFT 4.0 en la Capitalizadora Bolívar." +
+      "</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/2a326511-3db2-432b-bb9f-9de2247fdef0/page/Zj0qD' " +
+        "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+        "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Capitalizadora Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+
+
+
+// Función para SAGRILAFT - Servicios Bolívar
+function crearPaginaSAGRILAFT_Servicios_Bolivar() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Servicios Bolívar</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Este tablero presenta el modelo SAGRILAFT implementado para Servicios Bolívar." +
+      "</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/xxx_servicios_bolivar' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+// Función para SAGRILAFT - Facilities Bolívar
+function crearPaginaSAGRILAFT_Facilities_Bolivar() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Facilities Bolívar</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Este tablero presenta el modelo SAGRILAFT implementado para Facilities Bolívar." +
+      "</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/xxx_facilities_bolivar' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+// Función para SAGRILAFT - Inversiones Construcción
+function crearPaginaSAGRILAFT_Inv_Construccion() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Inversiones Construcción</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Este tablero presenta el modelo SAGRILAFT para empresas del sector construcción." +
+      "</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/xxx_inversiones_construccion' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+function crearPaginaSAGRILAFT_Inv_Inveranagrama() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Inveranagrama</h2>" +
+      "<div class='alert alert-secondary'>Este tablero muestra los indicadores y cumplimiento del programa SAGRILAFT para Inveranagrama.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/e19c3f7b-c47e-46f1-87fc-06f2a0fbcff2/page/p_1sm4vvgphc' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSAGRILAFT_Inv_Financieras() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Inversiones Financieras</h2>" +
+      "<div class='alert alert-secondary'>Este tablero muestra los indicadores y cumplimiento del programa SAGRILAFT para Inversiones Financieras.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/7752cbef-36e6-4887-81e6-4f2603f36b52/page/p_3jk9a6v6qc' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSAGRILAFT_Inv_Multinversiones() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Multinversiones</h2>" +
+      "<div class='alert alert-secondary'>Este tablero muestra los indicadores y cumplimiento del programa SAGRILAFT para Multinversiones.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/9dbf164e-6c46-4a25-9b11-53c196ff3202/page/p_xrcyvxv9mc' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSAGRILAFT_Inv_Sentido_Empresarial() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Inversiones Sentido Empresarial</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores y seguimiento al programa SAGRILAFT para Sentido Empresarial." +
+      "</div>" +
+
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSAGRILAFT_Inv_Negocios() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Inversiones Negocios</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores y seguimiento al programa SAGRILAFT para Negocios." +
+      "</div>" +
+
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+function crearPaginaSAGRILAFT_Inv_Soluciones() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SAGRILAFT - Inversiones Soluciones</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores y seguimiento al programa SAGRILAFT para Soluciones." +
+      "</div>" +
+
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSALUD_EPS() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SARLAFT - Salud EPS</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores del programa SARLAFT para entidades promotoras de salud (EPS)." +
+      "</div>" +
+
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID_EPS/page/REEMPLAZAR_PAGINA' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSALUD_IPS() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SARLAFT - Salud IPS</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores del programa SARLAFT para instituciones prestadoras de salud (IPS)." +
+      "</div>" +
+
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID_IPS/page/REEMPLAZAR_PAGINA' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaPTEE_Servicios_Bolivar() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>PTEE - Servicios Bolívar</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores y seguimiento al Programa de Transparencia y Ética Empresarial para Servicios Bolívar." +
+      "</div>" +
+
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+
+function crearPaginaPTEE_Facilities_Bolivar() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>PTEE - Facilities Bolívar</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores y seguimiento al Programa de Transparencia y Ética Empresarial para Facilities Bolívar." +
+      "</div>" +
+
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaPTEE_Multinversiones() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>PTEE - Multinversiones</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores y seguimiento al Programa de Transparencia y Ética Empresarial para Multinversiones." +
+      "</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+function crearPaginaPTEE_Sentido_Empresarial() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>PTEE - Sentido Empresarial</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores y seguimiento al Programa de Transparencia y Ética Empresarial para Sentido Empresarial." +
+      "</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+function crearPaginaPTEE_Soluciones_Bolivar() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>PTEE - Soluciones Bolívar</h2>" +
+      "<div class='alert alert-secondary'>" +
+        "Panel de control con indicadores y seguimiento al Programa de Transparencia y Ética Empresarial para Soluciones Bolívar." +
+      "</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+function crearPaginaPTEE_Fundacion_Bol_Dav() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>PTEE - Fundación Bolívar Davivienda</h2>" +
+      "<div class='alert alert-secondary'>Panel de control con indicadores y seguimiento al Programa de Transparencia y Ética Empresarial para Fundación Bolívar Davivienda.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaPTEE_Cultivarte() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>PTEE - Cultivarte</h2>" +
+      "<div class='alert alert-secondary'>Panel de control con indicadores y seguimiento al Programa de Transparencia y Ética Empresarial para Cultivarte.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSICOF_EPS() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SICOF - EPS</h2>" +
+      "<div class='alert alert-secondary'>Panel del Sistema de Control de Oficiales de Cumplimiento para EPS.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSICOF_IPS() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SICOF - IPS</h2>" +
+      "<div class='alert alert-secondary'>Panel del Sistema de Control de Oficiales de Cumplimiento para IPS.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSARGLAFT_Fundacion_Bol_Dav() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SARGLAFT - Fundación Bolívar Davivienda</h2>" +
+      "<div class='alert alert-secondary'>Matriz de riesgos y seguimiento SARGLAFT para Fundación Bolívar Davivienda.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSARGLAFT_Cultivarte() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SARGLAFT - Cultivarte</h2>" +
+      "<div class='alert alert-secondary'>Matriz de riesgos y seguimiento SARGLAFT para Cultivarte.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSARLAFT_2_Prevencion_Tecnica() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SARLAFT 2 - Prevención Técnica</h2>" +
+      "<div class='alert alert-secondary'>Modelo de prevención técnica para riesgos LA/FT en el marco de SARLAFT 2.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+function crearPaginaSIPLA_Grupo_Bolivar() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>SIPLA - Grupo Bolívar</h2>" +
+      "<div class='alert alert-secondary'>Sistema Integral para la Prevención del Lavado de Activos del Grupo Bolívar.</div>" +
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/REEMPLAZAR_ID/page/REEMPLAZAR_PAGINA' frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'></iframe>" +
+      "</div>" +
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Cumplimiento - Grupo Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function crearPaginaefectivorepo() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>Reporte de Efectivo</h2>" +
+
+      // 🔹 Botón que lleva al Google Sheets
+      "<div class='text-end mb-3'>" +
+        "<a href='https://docs.google.com/spreadsheets/d/1LwzINc61IfD0qZmr1L8IcOsYSOhO6MxG3Y-LdcvURco/edit?gid=1282403833' " +
+           "class='btn btn-success' target='_blank'>" +
+           "📥 Abrir hoja de cálculo" +
+        "</a>" +
+      "</div>" +
+
+      "<div class='alert alert-secondary'>" +
+        "Este panel presenta los registros de recaudo en efectivo captados desde Davivienda, Bancolombia y Banco de Occidente para la compañía Capitalizadora Bolívar y Seguros Bolívar." +
+      "</div>" +
+
+      // 🔹 Iframe de Looker Studio
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/073b634f-49a2-4bc3-9de1-604d0c52cd65/page/MINSF' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      // 🔹 Pie con branding
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Prevención LAFT - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+
+
+
+
+function crearPaginaremediacionpep() {
+  var html =
+    "<div class='container'>" +
+      "<h2 class='mb-3'>Remediación Clientes PEP's</h2>" +
+
+      // 🔹 Botón que lleva al Google Sheets
+      "<div class='text-end mb-3'>" +
+        "<a href='https://docs.google.com/spreadsheets/d/1LwzINc61IfD0qZmr1L8IcOsYSOhO6MxG3Y-LdcvURco/edit?gid=534987512' " +
+           "class='btn btn-success' target='_blank'>" +
+           "📥 Abrir hoja de cálculo" +
+        "</a>" +
+      "</div>" +
+
+      // 🔹 Descripción
+      "<div class='alert alert-secondary'>" +
+        "Este panel presenta los registros a remediar clientes PEP: 1. Clientes a marcar, 2. Clientes a desmarcar, 3. Confirmar formato de remediación." +
+      "</div>" +
+
+      // 🔹 Iframe de Looker Studio (nuevo)
+      "<div class='ratio ratio-16x9'>" +
+        "<iframe src='https://lookerstudio.google.com/embed/reporting/e7e12dde-9700-4db2-b482-07b483bac6d8/page/gqlSF' " +
+                "frameborder='0' style='border:0; width:100%; height:100%; min-height:500px;' allowfullscreen " +
+                "sandbox='allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox'>" +
+        "</iframe>" +
+      "</div>" +
+
+      // 🔹 Pie de página con branding
+      "<div class='text-center mt-4'>" +
+        "<img src='https://raw.githubusercontent.com/DAVEUBAQUE1996/dave/main/icon-bolivar-conmigo.png' width='100'>" +
+        "<p class='mt-3'><small>Dirección de Prevención LAFT - Seguros Bolívar</small></p>" +
+      "</div>" +
+    "</div>";
+
+  document.getElementById("contenidos").innerHTML = html;
+  $.LoadingOverlay("hide");
+}
+
+
+
+
 
 
 

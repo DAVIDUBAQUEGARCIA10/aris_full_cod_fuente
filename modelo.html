@@ -116,7 +116,10 @@ function mostrarContent(pag){
   }else if(pag=="informativo"){
     crearPaginaInformativa();  // ✅ Todos los roles podrán verla
   
-  
+    /*=======================================================================
+
+     =====================  Mostrar Tablero prueba de la matriz  =======================
+    ==============================================================================*/  
 
   }else if(pag == "informeKPI") {
 
@@ -125,6 +128,247 @@ function mostrarContent(pag){
   } else {
     mostrarAlerta("permisos");  // ❌ Si no tiene permiso, muestra alerta
   }
+
+
+   /*=======================================================================
+
+     =====================  Mostrar reporte de efectivo  =======================
+    ==============================================================================*/
+
+
+  }else if(pag == "efectivorepo") {
+
+  if(rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaefectivorepo();  // ✅ Solo roles autorizados pueden verla
+  } else {
+    mostrarAlerta("permisos");  // ❌ Si no tiene permiso, muestra alerta
+  }
+
+
+
+    /*=======================================================================
+
+     =====================  Mostrar reporte remediacion clientes pep  =======================
+    ==============================================================================*/
+
+
+  }else if(pag == "remediacionpep") {
+
+  if(rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaremediacionpep();  // ✅ Solo roles autorizados pueden verla
+  } else {
+    mostrarAlerta("permisos");  // ❌ Si no tiene permiso, muestra alerta
+  }
+ 
+
+
+
+
+
+
+
+    /*=======================================================================
+
+     =====================  Mostrar MAPAS  =======================
+    ==============================================================================*/
+
+} else if (pag == "SARLAFT_4_Seguros_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSARLAFT_4_Seguros_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SARLAFT_4_Comerciales_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSARLAFT_4_Comerciales_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SARLAFT_4_Capitalizadora_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSARLAFT_4_Capitalizadora_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Servicios_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Servicios_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Facilities_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Facilities_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Inv_Construccion") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Inv_Construccion();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Inv_Inveranagrama") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Inv_Inveranagrama();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Inv_Financieras") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Inv_Financieras();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Inv_Multinversiones") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Inv_Multinversiones();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Inv_Sentido_Empresarial") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Inv_Sentido_Empresarial();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Inv_Negocios") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Inv_Negocios();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SAGRILAFT_Inv_Soluciones") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSAGRILAFT_Inv_Soluciones();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SALUD_EPS") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSALUD_EPS();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SALUD_IPS") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSALUD_IPS();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "PTEE_Servicios_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaPTEE_Servicios_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "PTEE_Facilities_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaPTEE_Facilities_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "PTEE_Multinversiones") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaPTEE_Multinversiones();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "PTEE_Sentido_Empresarial") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaPTEE_Sentido_Empresarial();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "PTEE_Soluciones_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaPTEE_Soluciones_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "PTEE_Fundacion_Bol_Dav") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaPTEE_Fundacion_Bol_Dav();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "PTEE_Cultivarte") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaPTEE_Cultivarte();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SICOF_EPS") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSICOF_EPS();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SICOF_IPS") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSICOF_IPS();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SARGLAFT_Fundacion_Bol_Dav") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSARGLAFT_Fundacion_Bol_Dav();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SARGLAFT_Cultivarte") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSARGLAFT_Cultivarte();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SARLAFT_2_Prevencion_Tecnica") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSARLAFT_2_Prevencion_Tecnica();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "SIPLA_Grupo_Bolivar") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaSIPLA_Grupo_Bolivar();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+} else if (pag == "informeKPI") {
+  if (rol == "ADMIN" || rol == "SPECIAL" || rol == "EVALUATOR" || rol == "GESTOR") {
+    crearPaginaInformeKPI();
+  } else {
+    mostrarAlerta("permisos");
+  }
+
+
 
 
 

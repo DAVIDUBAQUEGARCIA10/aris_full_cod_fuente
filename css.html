@@ -556,6 +556,23 @@
       color: #6C6C6C;
     }
 
+    .dropdown-submenu {
+      position: relative;
+    }
+
+    .dropdown-submenu > .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -0.1rem;
+      margin-left: 0.1rem;
+      display: none;
+      position: absolute;
+      border-radius: 0.25rem;
+    }
+
+    .dropdown-submenu:hover > .dropdown-menu {
+      display: block;
+    }
 
 
 
