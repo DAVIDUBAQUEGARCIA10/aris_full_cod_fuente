@@ -9,7 +9,7 @@
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
         <a class="nav-link text-white" href="#scrollspyHeading1" onclick="mostrarContent('inicio')">
-         <i class="fa-solid fa-house-chimney-crack text-white"></i>
+         <i class="fa-solid fa-house text-white"></i>
           
         </a>
 
@@ -39,7 +39,13 @@
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa-solid fa-chart-gantt"></i> Matriz
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                          
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">  
+             
+
+    <!-- 🔹 Consulta de Matriz -->
+    <li class="dropdown-submenu">
+      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-file-circle-check"></i> Consulta Planos Matriz</a>
+      <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="https://script.google.com/a/macros/segurosbolivar.com/s/AKfycbztCRAO1-sEbPtEyLqsAOtsbf49rAbM9om6ytlUjj5auhi93lGfB6ycvR-wWffBXUZc/exec"target="_blank"><i class="fa-solid fa-file-circle-check"></i> Consulta Riesgo</a></li>                                                 
               <li><hr class="dropdown-divider"></li>                            
               <li><a class="dropdown-item" href="https://script.google.com/a/macros/segurosbolivar.com/s/AKfycbxx-VLDDV_drL3arGxfnIJXj5oBox2IW0Gl4iC9acJXrFuLc4apEnVX4p2MQqcpDL0G/exec"target="_blank"><i class="fa-solid fa-file-circle-check"></i> Consulta Causas</a></li>
@@ -47,14 +53,15 @@
               <li><a class="dropdown-item" href="https://script.google.com/a/macros/segurosbolivar.com/s/AKfycbw_7K3wiQjrtKjboxkw10VyI-cF22TRxivR6GUnUCHizYUA-ywv2TxUEgD4AUkUjkin/exec"target="_blank"><i class="fa-solid fa-file-circle-check"></i> Consulta Controles</a></li>
               <li><hr class="dropdown-divider"></li>                            
               <li><a class="dropdown-item" href="https://script.google.com/a/macros/segurosbolivar.com/s/AKfycbwlmH0h8ZgwTxP8fZOKUaW1uLIEyoZxg_Dd7yr5wo-ibro-48sRZTGUphD-AVU0-CvG/exec"target="_blank"><i class="fa-solid fa-file-circle-check"></i> Consulta Matriz</a></li> 
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="https://docs.google.com/document/d/1ueMtY29VkFTAqxBH7p3WG1B6PB6f-HR_NgVoZPYzJ1E/edit"target="_blank"><i class="fa-solid fa-file-lines"></i> Modelo de Riesgo</a></li> 
+             
+      </ul>
+    </li>            
 
     <li><hr class="dropdown-divider"></li>
 
     <!-- 🔹 SARLAFT 4.0 -->
     <li class="dropdown-submenu">
-      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> SARLAFT 4.0</a>
+      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> Mapa Sarlaft 4.0</a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#" onclick="mostrarContent('SARLAFT_4_Seguros_Bolivar')">📈 Seguros Bolívar</a></li>
         <li><a class="dropdown-item" href="#" onclick="mostrarContent('SARLAFT_4_Comerciales_Bolivar')">📈 Comerciales Bolívar</a></li>
@@ -64,7 +71,7 @@
               <li><hr class="dropdown-divider"></li> 
     <!-- 🔹 SAGRILAFT -->
     <li class="dropdown-submenu">
-      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> SAGRILAFT</a>
+      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> Mapa Sagrilaft</a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#" onclick="mostrarContent('SAGRILAFT_Servicios_Bolivar')">📈 Servicios Bolívar</a></li>
         <li><a class="dropdown-item" href="#" onclick="mostrarContent('SAGRILAFT_Facilities_Bolivar')">📈 Facilities Bolívar</a></li>
@@ -80,7 +87,7 @@
               <li><hr class="dropdown-divider"></li> 
     <!-- 🔹 SARLAFT SALUD -->
     <li class="dropdown-submenu">
-      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> SARLAFT SALUD</a>
+      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> Mapa Sarlaft salud</a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#" onclick="mostrarContent('SALUD_EPS')">📈 EPS</a></li>
         <li><a class="dropdown-item" href="#" onclick="mostrarContent('SALUD_IPS')">📈 IPS</a></li>
@@ -89,7 +96,7 @@
               <li><hr class="dropdown-divider"></li> 
     <!-- 🔹 PTEE -->
     <li class="dropdown-submenu">
-      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> PTEE</a>
+      <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> Mapa Ptee</a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#" onclick="mostrarContent('PTEE_Servicios_Bolivar')">📈 Servicios Bolívar</a></li>
         <li><a class="dropdown-item" href="#" onclick="mostrarContent('PTEE_Facilities_Bolivar')">📈 Facilities Bolívar</a></li>
@@ -103,7 +110,7 @@
         <li><hr class="dropdown-divider"></li> 
         <!-- 🔹 SICOFT -->
         <li class="dropdown-submenu">
-        <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> SICOF</a>
+        <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> Mapa Sicof</a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#" onclick="mostrarContent('SICOF_EPS')">📈 EPS</a></li>
             <li><a class="dropdown-item" href="#" onclick="mostrarContent('SICOF_IPS')">📈 IPS</a></li>
@@ -112,7 +119,7 @@
         <li><hr class="dropdown-divider"></li> 
         <!-- 🔹 SARGLAFT -->
         <li class="dropdown-submenu">
-        <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> SARGLAFT</a>
+        <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> Mapa Sarglaft</a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#" onclick="mostrarContent('SARGLAFT_Fundacion_Bol_Dav')">📈 Fundación Bol - Dav</a></li>
             <li><a class="dropdown-item" href="#" onclick="mostrarContent('SARGLAFT_Cultivarte')">📈 Cultivarte</a></li>
@@ -121,7 +128,7 @@
         <li><hr class="dropdown-divider"></li> 
         <!-- 🔹 SARLAFT 2.0 -->
         <li class="dropdown-submenu">
-        <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> SARLAFT 2.0</a>
+        <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> Mapa Sarlaft 2.0</a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#" onclick="mostrarContent('SARLAFT_2_Prevencion_Tecnica')">📈 Prevención Técnica</a></li>
         </ul>
@@ -129,7 +136,7 @@
         <li><hr class="dropdown-divider"></li> 
         <!-- 🔹 SIPLA -->
         <li class="dropdown-submenu">
-        <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> SIPLA</a>
+        <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-solid fa-chart-gantt"></i> Mapa Sipla</a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#" onclick="mostrarContent('SIPLA_Grupo_Bolivar')">📈 Grupo Bolívar</a></li>
         </ul>
@@ -174,12 +181,18 @@
           <li><a class="dropdown-item" href="#scrollspyHeading5" onclick="mostrarContent('listarAreas')">
                   <i class="fa-solid fa-shield-halved"></i> Gestor de Controles</a>
           </li>
+
+
           <li><hr class="dropdown-divider"></li>
+
           <li><a class="dropdown-item" href="#scrollspyHeading5" onclick="mostrarContent('listarmatriz')">
                   <i class="fa-solid fa-sitemap"></i> Gestor de Matriz</a>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="https://colab.research.google.com/drive/1UkycQtfXpEm7nA3kM2gsaQZjgb2WN_2Z"target="_blank"><i class="fa-solid fa-laptop-code"></i> Código</a></li>                   
-          </li>          
+          </li>  
+           <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="https://docs.google.com/document/d/1ueMtY29VkFTAqxBH7p3WG1B6PB6f-HR_NgVoZPYzJ1E/edit"target="_blank"><i class="fa-solid fa-file-lines"></i> Modelo de Riesgo</a></li> 
+
 
         </ul>
     </li>
@@ -194,7 +207,11 @@
               <li><a class="dropdown-item" href="#" onclick="mostrarContent('listartest')">
               <i class="fa-solid fa-vial-circle-check"></i> Testeo Controles</a>               
               </li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="https://docs.google.com/document/d/1ttfggjK51RtqYsh5YW59ruJrQJKIYhl_/edit"target="_blank"><i class="fa-solid fa-file-lines"></i> Modelo de Testeo</a></li> 
+
             </ul>
+
       </li> 
 
 
